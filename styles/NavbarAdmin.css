@@ -229,6 +229,24 @@
   grid-template-rows: 40px;
 }
 
+.collapsed-menu-transition-enter {
+  opacity: 0.01;
+}
+
+.collapsed-menu-transition-enter.collapsed-menu-transition-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.collapsed-menu-transition-exit {
+  opacity: 1;
+}
+
+.collapsed-menu-transition-exit-active {
+  opacity: 0;
+  transition: opacity 500ms;
+}
+
 
 
 

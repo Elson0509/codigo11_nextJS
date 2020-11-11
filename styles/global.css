@@ -1,4 +1,8 @@
 .btn-no-box-shadow:focus {
     outline: none !important;
     box-shadow: none !important;
-  }
+}
+
+.btn-no-outline:focus{
+    outline: none;
+}
