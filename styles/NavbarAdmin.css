@@ -159,7 +159,7 @@
   outline: 0;
   box-shadow: none;
   margin-top: 20px;
-  width: 250px;
+  width: 212px;
 }
 
 .search-input::placeholder {
@@ -186,7 +186,7 @@
 .collapsed-menu{
   position: absolute;
   z-index: 99;
-  top: 50px;
+  top: 70px;
   left: 50%;
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -245,10 +245,25 @@
   transition: opacity 500ms;
 }
 
-.logo-margin{
-  margin: 15px 0 15px 0;
+.logo{
+  margin: 8px 0 8px 0;
+  height: 48px;
+  width: 140px;
+  stroke-dasharray: 0;
+  stroke-dashoffset: 0;
+  animation: logo-animation 3s;
 }
 
+@keyframes logo-animation{
+  from{
+      stroke-dasharray: 60;
+      fill:none;
+  }
+  to{
+      stroke-dasharray: 163;
+      
+  }
+}
 
 
 
