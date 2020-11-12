@@ -2,7 +2,7 @@ import { faSearch, faEllipsisV } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useState, Fragment } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import { Dropdown} from 'react-bootstrap'; 
+import { Dropdown } from 'react-bootstrap'; 
 
 const NavbarAdmin = () => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -10,7 +10,7 @@ const NavbarAdmin = () => {
 
     return (
         <nav className="navbar navbar-expand-sm navbar-default bg-arielle-smile">
-            <a className="navbar-brand" href="#">Codigo11</a>
+            <img src="/img/logo-branco.png" alt="logo" height="38" className="logo-margin"/>
             <button className="navbar-toggler btn-no-outline" 
                 onClick={()=> setDropdownEllipsis(prev => !prev)}
                 type="button" 
@@ -34,7 +34,7 @@ const NavbarAdmin = () => {
                         </div>
                     </li>
                     <li className="nav-item">
-                        <Dropdown isOpen={dropdownOpen} toggle={() => setDropdownOpen(prev => !prev)}>
+                        <Dropdown isopen={dropdownOpen.toString()} toggle={() => setDropdownOpen(prev => !prev)}>
                             <Dropdown.Toggle variant="" className="text-white btn-no-box-shadow" caret="true">
                             <img className="rounded-circle" src="https://codigo11-com-br.umbler.net/profiles/user6.jpg" alt="img-user" width="50" height="50"/>
                             </Dropdown.Toggle>
@@ -49,7 +49,7 @@ const NavbarAdmin = () => {
             <CSSTransition
                 in={dropdownEllipsis}
                 timeout={200}
-                
+                unmountOnExit
                 classNames="collapsed-menu-transition">
                     <Fragment>
                 {dropdownEllipsis && 
@@ -61,7 +61,7 @@ const NavbarAdmin = () => {
                                 aria-label="Search"/>
                             <FontAwesomeIcon className="text-white search-icon-collapsed-menu" size="2x" icon={faSearch}/>
                         </div>
-                        <Dropdown isOpen={dropdownOpen} toggle={() => setDropdownOpen(prev => !prev)}>
+                        <Dropdown isopen={dropdownOpen.toString()} toggle={() => setDropdownOpen(prev => !prev)}>
                             <Dropdown.Toggle variant="" className="text-white btn-no-box-shadow" caret="true">
                             <img className="rounded-circle" src="https://codigo11-com-br.umbler.net/profiles/user6.jpg" alt="img-user" width="40" height="40"/>
                             </Dropdown.Toggle>

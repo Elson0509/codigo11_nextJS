@@ -6,3 +6,16 @@
 .btn-no-outline:focus{
     outline: none;
 }
+
+.over{
+    overflow-x: auto;
+}
+
+.logo-new{
+    display: block;
+    width: 150px;
+    height: 40px;
+    background: url("/img/logo-branco.png");
+    margin-left: 10px;
+    background-size: 150px 40px;
+}

@@ -10,8 +10,6 @@
     height:33px;
 }
 
-/*https://work.smarchal.com/twbscolor/4.0.0/css/46aef72e85c2ffffffffffff1*/
-
 .navbar .navbar-brand {
   color: #ffffff;
 }
@@ -245,6 +243,10 @@
 .collapsed-menu-transition-exit-active {
   opacity: 0;
   transition: opacity 500ms;
+}
+
+.logo-margin{
+  margin: 15px 0 15px 0;
 }
 
 

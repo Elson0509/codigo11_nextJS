@@ -1,0 +1,21 @@
+{
+  "short_name": "Codigo 11",
+  "name": "Codigo 11",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "180x180",
+      "purpose": "any"
+    },
+    {
+      "src": "maskable_icon.png",
+      "sizes": "189x189",
+      "purpose": "maskable"
+    }
+  ],
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "theme_color": "#46AEF7",
+  "background_color": "#46AEF7"
+}
