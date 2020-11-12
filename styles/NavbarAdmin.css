@@ -251,17 +251,18 @@
   width: 140px;
   stroke-dasharray: 0;
   stroke-dashoffset: 0;
-  animation: logo-animation 3s;
+  animation: logo-animation 60s ease-in-out infinite;
 }
 
 @keyframes logo-animation{
-  from{
+  0%{
       stroke-dasharray: 60;
-      fill:none;
   }
-  to{
-      stroke-dasharray: 163;
-      
+  4%{
+      stroke-dasharray: 163; 
+  }
+  100%{
+    stroke-dasharray: 163;
   }
 }
 
