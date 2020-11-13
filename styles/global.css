@@ -10,3 +10,38 @@
 .over{
     overflow-x: auto;
 }
+
+.show-md{
+    display: none;
+}
+
+.hide-md{
+    display:inherit;
+}
+
+.show-sm{
+    display: none;
+}
+
+.hide-sm{
+    display:inherit;
+}
+
+@media (max-width: 770px) {
+    .show-md{
+        display: block;
+    }
+
+    .hide-md{
+        display:none;
+    }
+}
+@media (max-width: 575px) {
+    .show-sm{
+        display: block;
+    }
+
+    .hide-sm{
+        display:none;
+    }
+}

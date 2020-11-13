@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import NavbarAdmin from '../layout/NavbarAdmin/NavbarAdmin'
+import HeaderAdmin from '../layout/HeaderAdmin/HeaderAdmin'
 
 export default function Home() {
   return (
@@ -10,10 +11,9 @@ export default function Home() {
       </Head>
 
       <NavbarAdmin/>
+      <HeaderAdmin/>
 
-      <footer>
-        footer
-      </footer>
+
     </div>
   )
 }
