@@ -2,6 +2,10 @@ import Head from 'next/head'
 import NavbarAdmin from '../layout/NavbarAdmin/NavbarAdmin'
 import HeaderAdmin from '../layout/HeaderAdmin/HeaderAdmin'
 
+const clickedToggle = () => {
+  console.log("clicked")
+}
+
 export default function Home() {
   return (
     <div>
@@ -12,7 +16,6 @@ export default function Home() {
 
       <NavbarAdmin/>
       <HeaderAdmin/>
-
 
     </div>
   )

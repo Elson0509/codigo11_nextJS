@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useState, Fragment } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { Dropdown } from 'react-bootstrap'; 
+import AnimatedEllipsisButton from '../../components/Buttons/AnimatedEllipsisButton/AnimatedEllipsisButton'
 
 const NavbarAdmin = () => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -25,13 +26,13 @@ const NavbarAdmin = () => {
                     </g>
                 </svg>
             </span>
+            
             <button className="navbar-toggler btn-no-outline" 
-                onClick={()=> setDropdownEllipsis(prev => !prev)}
                 type="button" 
                 data-toggle="collapse" 
                 aria-expanded="false" 
                 aria-label="Toggle navigation">
-                    <FontAwesomeIcon className="text-white" icon={faEllipsisV}/>
+                    <AnimatedEllipsisButton clicked={()=> setDropdownEllipsis(prev => !prev)}/>
             </button>
 
             <div className="collapse navbar-collapse">

@@ -1,0 +1,66 @@
+.Menu{
+    background: #fff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    box-shadow: 0 0 0 0 #fff;
+    transition: box-shadow .5s cubic-bezier(.58,3.16,.31,-0.09);
+}
+
+.Menu:hover{
+    box-shadow: 0 0 0 6px #fff;
+}
+
+.Menu_ellipsis{
+    display: none;
+}
+
+.Ellipsis{
+    display: block;
+    background: #000;
+    width: 7px;
+    height: 7px;
+    position: relative;
+    border-radius: 50%;
+    top: 22px;
+    left:22px;
+    transition: .5s ease-in-out;
+}
+
+.Ellipsis:before,
+.Ellipsis:after {
+    background: #000;
+    display: block;
+    border-radius: 20px;
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transition: .75s ease-in-out;
+}
+
+.Ellipsis:before{
+    top: -12px;
+}
+.Ellipsis:after{
+    bottom: -12px;
+}
+.Menu_ellipsis:checked ~ label .Ellipsis{
+    width: 3px;
+    height: 31px;
+    top: 10px;
+    left:24px;
+    transform: rotate(405deg);
+    background: #e81a4d;
+}
+.Menu_ellipsis:checked ~ label .Ellipsis:before{
+    transform: rotate(90deg);
+    background: #e81a4d;
+    top: 0;
+}
+.Menu_ellipsis:checked ~ label .Ellipsis:after{
+    transform: rotate(90deg);
+    background: #e81a4d;
+    bottom: 0;
+}
