@@ -1,6 +1,7 @@
 import React from 'react';
 import { Dropdown } from 'react-bootstrap'; 
 import { useState, Fragment } from 'react';
+import classes from './HeaderAdmin.module.css'
 
 const HeaderAdmin = () => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -10,21 +11,18 @@ const HeaderAdmin = () => {
             <div className="container">
                 <div className="row">
                     <div className="col-12 hide-md">
-                        <ul className="nav">
+                        <ul className="nav zero_auto">
                             <li className="nav-item active">
-                                <a className="nav-link text-white" href="index.html">Dashboard<span className="sr-only">(current)</span></a>
+                                <a className={["nav-link m-2", classes.Header_item].join(" ")} href="index.html">Dashboard<span className="sr-only">(current)</span></a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link text-white" href="#">Pesquisar</a>
+                                <a className={["nav-link m-2", classes.Header_item].join(" ")} href="#">Pesquisar</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link text-white" href="#">Lista de FIIs</a>
+                                <a className={["nav-link m-2", classes.Header_item].join(" ")} href="#">Lista de FIIs</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link text-white" href="#">Eventos</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link text-white" href="#">Livros recomendados</a>
+                                <a className={["nav-link m-2", classes.Header_item].join(" ")} href="#">Eventos</a>
                             </li>
                         </ul>
                     </div>
@@ -38,21 +36,8 @@ const HeaderAdmin = () => {
                                 <Dropdown.Item>Pesquisar</Dropdown.Item>
                                 <Dropdown.Item>Lista de FIIs</Dropdown.Item>
                                 <Dropdown.Item>Eventos</Dropdown.Item>
-                                <Dropdown.Item>Livros recomendados</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
-                        {/* <div className="dropdown create show-md">
-                            <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Menu
-                            </button>
-                            <div className="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                            <a className="dropdown-item" href="#">Dashboard</a>
-                            <a className="dropdown-item" href="#">Pesquisar</a>
-                            <a className="dropdown-item" href="#">Lista de FIIs</a>
-                            <a className="dropdown-item" href="#">Eventos</a>
-                            <a className="dropdown-item" href="#">Livros recomendados</a>
-                            </div>
-                        </div> */}
                     </div>
                 </div>
             </div>

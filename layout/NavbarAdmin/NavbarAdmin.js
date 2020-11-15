@@ -32,7 +32,7 @@ const NavbarAdmin = () => {
                 data-toggle="collapse" 
                 aria-expanded="false" 
                 aria-label="Toggle navigation">
-                    <AnimatedEllipsisButton clicked={()=> setDropdownEllipsis(prev => !prev)}/>
+                    <AnimatedEllipsisButton nameid="ellipsis" clicked={()=> setDropdownEllipsis(prev => !prev)}/>
             </button>
 
             <div className="collapse navbar-collapse">
