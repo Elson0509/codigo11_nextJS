@@ -2,10 +2,7 @@ import Head from 'next/head'
 import NavbarAdmin from '../layout/NavbarAdmin/NavbarAdmin'
 import HeaderAdmin from '../layout/HeaderAdmin/HeaderAdmin'
 import PanelAdmin from '../layout/PanelAdmin/PanelAdmin'
-
-const clickedToggle = () => {
-  console.log("clicked")
-}
+import MainAdmin from '../layout/MainAdmin/MainAdmin'
 
 export default function Home() {
   return (
@@ -21,7 +18,10 @@ export default function Home() {
         bgcolor="primary"
         fiiname="BANRISUL NOVAS FRONTEIRAS FDO INV IMOB - FII"
         fiiticker="BNFS"
-      />      
+      />
+      <MainAdmin>
+        Teste
+      </MainAdmin>
 
     </div>
   )

@@ -1,0 +1,26 @@
+.Accordion button{
+    color: #000;
+}
+.Accordion button:hover{
+    color: #46AEF7;
+}
+.Submenu div{
+    padding: 0.1rem;
+}
+.Submenu button{
+    padding-left: 1rem;
+}
+
+.Menu_background:hover{
+    background: #ccc;
+}
+
+.Submenu_item_border_bottom{
+    border-bottom: 1px dashed #ccc;
+}
+
+.Item_Text{
+    font-size: 1rem !important;
+    font-weight: 500;
+    letter-spacing: 1px;
+}

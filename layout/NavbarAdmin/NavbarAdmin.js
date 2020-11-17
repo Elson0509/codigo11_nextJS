@@ -1,4 +1,4 @@
-import { faSearch, faEllipsisV } from '@fortawesome/free-solid-svg-icons'
+import { faSearch, } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useState, Fragment } from 'react';
 import { CSSTransition } from 'react-transition-group';

@@ -1,6 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../styles/NavbarAdmin.css'
-import '../styles/HeaderAdmin.css'
 import '../styles/backgrounds.css'
 import '../styles/global.css'
 

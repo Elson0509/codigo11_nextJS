@@ -7,7 +7,7 @@ const HeaderAdmin = () => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
 
     return (
-        <header className="bg-premium-dark header">
+        <header className="bg-premium-dark p-2">
             <div className="container">
                 <div className="row">
                     <div className="col-12 hide-md">
