@@ -1,6 +1,6 @@
 const MainPageAdmin = (props) => {
     return (
-        <div class="col-md-9">
+        <div className="col-md-9">
             {props.children}
         </div>
     );

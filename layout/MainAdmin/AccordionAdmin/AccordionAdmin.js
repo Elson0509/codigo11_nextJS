@@ -87,7 +87,7 @@ const AccordionAdmin = (props) => {
                 {
                     MenuItems.map((item, ind) => {
                         return (
-                        <Card key={item}>
+                        <Card key={ind}>
                             <Card.Header>
                                 <Accordion.Toggle as={Button} variant="link" eventKey={ind} className={["text-left btn-no-box-shadow no_text_decoration", classes.Item_Text].join(" ")}>
                                     <FontAwesomeIcon size="lg" className="mr-2" icon={item.icon}/>
@@ -97,8 +97,8 @@ const AccordionAdmin = (props) => {
                             <div className={classes.Submenu}>
                                 {item.subItemns.map((subItem, subind) => {
                                     return (
-                                        <Accordion.Collapse eventKey={ind} key={`${item}-${subind}`}>
-                                            <div className={subind !== item.subItemns.length-1 && classes.Submenu_item_border_bottom}>
+                                        <Accordion.Collapse eventKey={ind} key={`${ind}-${subind}`}>
+                                            <div className={subind !== item.subItemns.length-1 && classes.Submenu_item_border_bottom || ""}>
                                                 <Card.Body>
                                                     <Button variant="link" className="text-left btn-no-box-shadow no_text_decoration">
                                                         {subItem.name}
