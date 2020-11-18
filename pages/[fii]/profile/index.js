@@ -8,11 +8,15 @@ import MainAdmin from '../../../layout/MainAdmin/MainAdmin'
 import NavbarAdmin from '../../../layout/NavbarAdmin/NavbarAdmin'
 import HeaderAdmin from '../../../layout/HeaderAdmin/HeaderAdmin'
 import ProfileTitleList from '../../../components/Lists/ProfileTitleList'
+import FavoritoButton from '../../../components/Buttons/FavoritoButton/FavoritoButton'
+import classes from './profile.module.css'
 
 const index = ({data}) => {
     const router = useRouter()
     const [notaCommunity, setNotaCommunity] = useState(0)
     const [notaUser, setNotaUser] = useState(0)
+     
+    console.log(data)
 
     useEffect(() => {
         axios.get(`notas/media/${router.query.fii.toUpperCase()}`)
@@ -48,43 +52,73 @@ const index = ({data}) => {
 
     console.log("data----",data)
     return (
-        !data.message && 
         <Fragment>
-            <Head>
-                <meta name="description" content={`Codigo11 - ${router.query.fii.toUpperCase()}11 - Perfil e informações gerais relevantes do Fundo imobiliário`} />
-                <title>{`Codigo11: ${data.cotacao.cod_neg} - Perfil de FII`}</title>
-                {/* <script data-ad-client="ca-pub-8540652797620487" 
-                    async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
-                </script> */}
-            </Head>
             <NavbarAdmin/>
             <HeaderAdmin/>
-            <PanelAdmin 
-                bgcolor={data.segmento.bgcolor}
-                fiiname={data.razao_social}
-                fiiticker={data.cotacao.cod_neg}
-                icon={data.segmento.icon || "building"}
-                descricao={data.segmento.descricao}
-            />
-            <MainAdmin>
-                
-                    <ProfileTitleList 
-                        segmento={data.segmento} 
-                        codigo={data.cotacao.cod_neg}
-                        cnpj={data.cnpj}
-                        site={data.site}
-                        data_func={data.data_func}
-                        idade={data.idade}
-                        tipoGestao={data.tipo_gestao}
-                        notaUsuario={notaUser}
-                        notaComunidade={notaCommunity}
-                        changeRating = {changeRating}/>
-                
-            </MainAdmin>
-            {data && "teste" || "nada"}
+            {data && !data.message && 
+                <Fragment>
+                    <Head>
+                        <meta name="description" content={`Codigo11 - ${router.query.fii.toUpperCase()}11 - Perfil e informações gerais relevantes do Fundo imobiliário`} />
+                        <title>{`Codigo11: ${data.cotacao.cod_neg} - Perfil de FII`}</title>
+                        {/* <script data-ad-client="ca-pub-8540652797620487" 
+                            async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
+                        </script> */}
+                    </Head>
+                    <PanelAdmin 
+                        bgcolor={data.segmento.bgcolor}
+                        fiiname={data.razao_social}
+                        fiiticker={data.cotacao.cod_neg}
+                        icon={data.segmento.icon || "building"}
+                        descricao={data.segmento.descricao}
+                    />
+                    <MainAdmin>
+                        <div className={`card ${data.segmento.bgcolor}`}>
+                            <div className="card-header text-white">
+                                <div className={classes.Card_header_profile}>
+                                    <div className={classes.Card_header_profile_title}>
+                                        <h3>Perfil</h3>
+                                    </div>
+                                    <FavoritoButton seguindo={true}/>
+                                </div>
+                            </div>
+                            <div className="card-body">
+                                <ProfileTitleList 
+                                    segmento={data.segmento} 
+                                    codigo={data.cotacao.cod_neg}
+                                    cnpj={data.cnpj}
+                                    site={data.site}
+                                    data_func={data.data_func}
+                                    idade={data.idade}
+                                    tipoGestao={data.tipo_gestao}
+                                    notaUsuario={notaUser}
+                                    notaComunidade={notaCommunity}
+                                    changeRating = {changeRating}/>
+                            </div>
+                        </div>
+                    </MainAdmin>
+                </Fragment>
+                || data && data.message &&
+                <main className="container">
+                    <div className="row">
+                        <div className="col-12">
+                            <div className="alert alert-danger text-center" role="alert">
+                        {data.message}
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                ||
+                <main className="container">
+                    <div className="row">
+                        <div className="col-12">
+                            <div className="alert alert-danger text-center" role="alert">
+                        Ops. Um erro ocorreu.
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            }
         </Fragment>
-        ||
-        <Fragment>{data.message}</Fragment>
     );
 };
 
@@ -108,7 +142,10 @@ export const getServerSideProps = async (context) => {
     }
     else{
         return {
-            props:{}
+            props:{ data: {
+                message: `Este codigo (${context.query.fii}) não é válido. Eles costumam ter 4 letras.`
+                }
+            }
         }
     }
 }

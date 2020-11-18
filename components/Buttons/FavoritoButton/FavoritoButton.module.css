@@ -1,0 +1,14 @@
+.Favorito{
+    font-size: 30px;
+    text-align: center;
+    margin-right: 10px;
+    border: 2px solid white;
+    border-radius: 18px;
+    padding: 5px;
+    cursor: pointer;
+    min-width: 75px;
+}
+
+.Favorito h4{
+    font-size: 12px;
+}
