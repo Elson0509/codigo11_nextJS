@@ -15,6 +15,15 @@ import CardCotacaoDetalhes from '../../../components/Cards/CardCotacaoDetalhes'
 import CardVolume from '../../../components/Cards/CardVolume'
 import CardNegocios from '../../../components/Cards/CardNegocios'
 import CardAdm from '../../../components/Cards/CardAdm'
+import CardLiquidez from '../../../components/Cards/CardLiquidez'
+import SingleCard from '../../../components/Cards/SingleCard'
+import CardProventos from '../../../components/Cards/CardProventos'
+import CardListRelatorios from '../../../components/Cards/CardListRelatorios'
+import {numberWithVirgula, 
+        numberWithPercentual, 
+        numberWithDots, 
+        valueToRes, 
+        numberToMoney} from '../../../util/Utilities'
 import classes from './profile.module.css'
 import { ToastContainer, toast } from 'react-toastify';
 
@@ -33,8 +42,15 @@ const index = ({data}) => {
         draggable: true,
         progress: undefined,
     }
-     
-    console.log(data)
+
+    const dadosAtvLiq = () => {
+        return {
+            disponibilidades: data.disponibilidades,
+            tit_pub: data.tit_pub,
+            tit_priv: data.tit_priv,
+            fundos_rf: data.fundos_rf,
+        }
+    }
 
     useEffect(() => {
         axios.get(`notas/media/${router.query.fii.toUpperCase()}`)
@@ -94,7 +110,6 @@ const index = ({data}) => {
         }
     }
 
-    console.log("data----",data)
     return (
         <Fragment>
             <ToastContainer />
@@ -121,7 +136,7 @@ const index = ({data}) => {
                             <div className="card-header text-white">
                                 <div className={classes.Card_header_profile}>
                                     <div className={classes.Card_header_profile_title}>
-                                        <h3>Perfil</h3>
+                                        <h3 className="h3 ml-2">Perfil do fundo</h3>
                                     </div>
                                     <FavoritoButton seguindo={favorito} onClick={favoritoHandler}/>
                                 </div>
@@ -154,13 +169,189 @@ const index = ({data}) => {
                                 <CardNegocios cotacao={data.cotacao}/>
                             </Col>
                             {data.administrador_fii &&
-                            <Col lg="6" md="6" sm="12">
+                            <Col lg="4" md="6" sm="12">
                                 <CardAdm adm={data.administrador_fii}/>
                             </Col>}
+                            {dadosAtvLiq() &&
+                            <Col lg="4" md="6" sm="12">
+                                <CardLiquidez dados={dadosAtvLiq()}/>
+                            </Col>}
                         </Row>
-                            
+                        <Row>
+                            {data.proventos && data.proventos.length > 0 && 
+                                <Col md="6" xl="4">
+                                    <SingleCard 
+                                        icon="piggy-bank"
+                                        bgIcon="happy-itmeo" 
+                                        title={`Último Rendimento (${data.proventos[0].data_pagamento})`}
+                                        text1={"Rendimento: R$ " + numberWithVirgula(data.proventos[0].valor_rendimento)}
+                                        colorText1="dark"
+                                        text2={"Amortização: R$ " + numberWithVirgula(data.proventos[0].valor_amortizacao)}
+                                        colorText2="dark"
+                                    />
+                                </Col>
+                            }
+                            {data && !isNaN(data.dy_medio) && 
+                                <Col md="6" xl="4">
+                                    <SingleCard 
+                                        icon="chart-line"
+                                        bgIcon="night-sky" 
+                                        title="Yield médio"   
+                                        text1={numberWithPercentual(data.dy_medio)}
+                                        colorText1="success"
+                                        text2="12 meses"
+                                        colorText2="secondary"
+                                    />
+                                </Col>
+                            }
+                            {data && !isNaN(data.cotistas_qtt) && 
+                                <Col md="6" xl="4">
+                                    <SingleCard 
+                                        icon="users"
+                                        bgIcon="love-kiss" 
+                                        title="Quantidade de Cotistas"   
+                                        text1={numberWithDots(data.cotistas_qtt)}
+                                        colorText1="primary"
+                                    />
+                                </Col>
+                            }
+                            {data && !isNaN(data.cotas_emitidas) && 
+                                <Col md="6" xl="4">
+                                    <SingleCard 
+                                        icon="th"
+                                        bgIcon="mean-fruit" 
+                                        title="Cotas emitidas"   
+                                        text1={numberWithDots(data.cotas_emitidas)}
+                                        colorText1="warning"
+                                    />
+                                </Col>
+                            }
+                            {data && !isNaN(data.valor_mercado) && 
+                                <Col md="6" xl="4">
+                                    <SingleCard 
+                                        icon="coins"
+                                        bgIcon="plum-plate" 
+                                        title="Valor de Mercado"   
+                                        text1={"R$" + valueToRes(data.valor_mercado)}
+                                        colorText1="dark"
+                                    />
+                                </Col>
+                            }
+                            {data && !isNaN(data.pat_liq)  && 
+                                <Col md="6" xl="4">
+                                    <SingleCard 
+                                        icon="city"
+                                        bgIcon="asteroid" 
+                                        title="Patrimônio Líquido"   
+                                        text1={"R$ " + valueToRes(data.pat_liq)}
+                                        colorText1="primary"
+                                        text2={"R$" + numberWithDots(data.pat_liq)}
+                                        colorText2="secondary"
+                                    />
+                                </Col>
+                            }
+                            {data && !isNaN(data.pvp)  && 
+                                <Col md="6" xl="4">
+                                    <SingleCard 
+                                        icon="building"
+                                        bgIcon="happy-green" 
+                                        title="P/VP"   
+                                        text1={data.pat_liq_res}
+                                        colorText1="primary"
+                                        text2={numberWithVirgula(data.pvp)}
+                                        colorText2="dark"
+                                    />
+                                </Col>
+                            }
+                            {data && !isNaN(data.valor_tx_adm)  && 
+                                <Col md="6" xl="4">
+                                    <SingleCard 
+                                        icon="percentage"
+                                        bgIcon="malibu-beach" 
+                                        title="Taxa Adm / Patrimônio Líquido"   
+                                        text1={numberWithPercentual(data.tx_adm_pl)}
+                                        colorText1="danger"
+                                        text2={"Último mês: R$" + valueToRes(data.valor_tx_adm)}
+                                        colorText2="secondary"
+                                    />
+                                </Col>
+                            }
+                            {data && !isNaN(data.custo_tx_por_cota_anual) && 
+                                <Col md="6" xl="4">
+                                    <SingleCard 
+                                        icon="wallet"
+                                        bgIcon="warning" 
+                                        title="Custo anual da taxa adm / cota"   
+                                        text1={numberToMoney(data.custo_tx_por_cota_anual)}
+                                        colorText1="danger"
+                                    />
+                                </Col>
+                            }
+                            {data && data.pat_cota && 
+                                <Col md="6" xl="4">
+                                    <SingleCard 
+                                        icon="chart-pie"
+                                        bgIcon="success" 
+                                        title="Valor Patrimonial por Cota"   
+                                        text1={"R$ " + numberWithVirgula(data.pat_cota)}
+                                        colorText1="primary"
+                                    />
+                                </Col>
+                            }
+                            {data &&
+                                <Col md="6" xl="4">
+                                    <SingleCard 
+                                        icon="file-invoice-dollar"
+                                        bgIcon="premium-dark" 
+                                        title="Quantidade de ativos financeiros"
+                                        text1={data.ativos_fin}
+                                        colorText1="danger"
+                                    />
+                                </Col>
+                            }
+                            {data &&
+                                <Col md="6" xl="4">
+                                    <SingleCard 
+                                        icon="cart-plus"
+                                        bgIcon="royal" 
+                                        title="Aquisições do trimestre"   
+                                        text1={data.aquisicoes_trimestre}
+                                        colorText1="dark"
+                                    />
+                                </Col>
+                            }
+                            {data &&
+                                <Col md="6" xl="4">
+                                    <SingleCard 
+                                        icon="cart-arrow-down"
+                                        bgIcon="danger" 
+                                        title="Alienações do trimestre"   
+                                        text1={data.alienacoes_trimestre}
+                                        colorText1="info"
+                                    />
+                                </Col>
+                            }
+                        </Row>
+                        {data.proventos && 
+                            <Row>
+                                <div className="col-12">
+                                    <CardProventos proventos={data.proventos}/>
+                                </div>
+                            </Row>
+                        }
+                        <Row>
+                            {data.relatorios_gerenciais && data.relatorios_gerenciais.length > 0 && 
+                                <div className="col-md-12 col-xl-6 mb-3">
+                                    <CardListRelatorios title="Últimos Relatórios Gerenciais" list={data.relatorios_gerenciais} bgTitleColor="bg-plum-plate"/>
+                                </div>
+                            }
+                            {data.relatorios_trimestrais && data.relatorios_trimestrais.length > 0 && 
+                                <div className="col-md-12 col-xl-6 mb-3">
+                                    <CardListRelatorios title="Últimos Relatórios Trimestrais" list={data.relatorios_trimestrais} bgTitleColor="bg-midnight-bloom"/>
+                                </div>
+                            }
+                        </Row>
                     </MainAdmin>
-                    
                 </Fragment>
                 || data && data.message &&
                 <main className="container">

@@ -17,10 +17,10 @@ const CardAdm = (props) => {
                     <div className={classes.Divider}/>
                     <ListGroup>
                         <ListGroupItem active tag="button" action className="bg-success">Administrador</ListGroupItem>
-                        <ListGroupItem tag="button" action><span className="enfase">Nome: </span>{props.adm.nome}</ListGroupItem>
-                        <ListGroupItem tag="button" action><span className="enfase">Endereço: </span>{props.adm.endereco}</ListGroupItem>
-                        <ListGroupItem tag="button" action><span className="enfase">E-mail: </span>{props.adm.email}</ListGroupItem>
-                        <ListGroupItem tag="button" action><span className="enfase">CNPJ: </span>{props.adm.cnpj}</ListGroupItem>
+                        <ListGroupItem tag="button" action><span className={classes.Enfase}>Nome: </span>{props.adm.nome}</ListGroupItem>
+                        <ListGroupItem tag="button" action><span className={classes.Enfase}>Endereço: </span>{props.adm.endereco}</ListGroupItem>
+                        <ListGroupItem tag="button" action><span className={classes.Enfase}>E-mail: </span>{props.adm.email}</ListGroupItem>
+                        <ListGroupItem tag="button" action><span className={classes.Enfase}>CNPJ: </span>{props.adm.cnpj}</ListGroupItem>
                     </ListGroup>
                 </div>
             </div>
