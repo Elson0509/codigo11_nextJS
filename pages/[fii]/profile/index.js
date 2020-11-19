@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from 'next/head'
 import {useState, useEffect, Fragment} from 'react';
+import {Row, Col} from 'react-bootstrap'
 import { useRouter } from 'next/router'
 import axios from '../../../util/axios-base'
 import PanelAdmin from '../../../layout/PanelAdmin/PanelAdmin'
@@ -9,12 +10,29 @@ import NavbarAdmin from '../../../layout/NavbarAdmin/NavbarAdmin'
 import HeaderAdmin from '../../../layout/HeaderAdmin/HeaderAdmin'
 import ProfileTitleList from '../../../components/Lists/ProfileTitleList'
 import FavoritoButton from '../../../components/Buttons/FavoritoButton/FavoritoButton'
+import CardCotacao from '../../../components/Cards/CardCotacao'
+import CardCotacaoDetalhes from '../../../components/Cards/CardCotacaoDetalhes'
+import CardVolume from '../../../components/Cards/CardVolume'
+import CardNegocios from '../../../components/Cards/CardNegocios'
+import CardAdm from '../../../components/Cards/CardAdm'
 import classes from './profile.module.css'
+import { ToastContainer, toast } from 'react-toastify';
 
 const index = ({data}) => {
     const router = useRouter()
     const [notaCommunity, setNotaCommunity] = useState(0)
     const [notaUser, setNotaUser] = useState(0)
+    const [favorito, setFavorito] = useState(false)
+
+    const configToast = {
+        position: "bottom-center",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+    }
      
     console.log(data)
 
@@ -30,6 +48,10 @@ const index = ({data}) => {
 
     const changeRating = (newRating, name) => {
         setNotaUser(newRating)
+        if(newRating==5)
+                 toast.warn(`Nota ${newRating} registrada. Você gosta mesmo desse fundo!`, configToast);
+             else
+                 toast.warn(`Nota ${newRating} registrada. Obrigado!`, configToast);
         const token = localStorage.userToken
         // if(!!token && !!jwt_decode(token)){
         //     setNotaUser(newRating)
@@ -50,9 +72,32 @@ const index = ({data}) => {
         // }
     }
 
+    const favoritoHandler = () => {
+        const token = localStorage.userToken
+        if(!!token && !!jwt_decode(token)){
+            let newFav = !favorito
+            setFavorito(newFav)
+            if(newFav)
+                toast.info(`Você agora está seguindo ${cotacao.cod_neg} e passará a receber e-mails sempre que houver alguma novidade!`, configToast);
+            else
+                toast.error(`Você não está mais seguindo ${cotacao.cod_neg} :(`, configToast);
+            const decode = jwt_decode(token)
+            axios.post(`/favoritos/update`, {
+                id: decode.uid,
+                fii,
+                favorito: newFav,
+                token
+            })
+        }
+        else{
+            toast.error('Você precisa estar logado para seguir esse FII.');
+        }
+    }
+
     console.log("data----",data)
     return (
         <Fragment>
+            <ToastContainer />
             <NavbarAdmin/>
             <HeaderAdmin/>
             {data && !data.message && 
@@ -78,7 +123,7 @@ const index = ({data}) => {
                                     <div className={classes.Card_header_profile_title}>
                                         <h3>Perfil</h3>
                                     </div>
-                                    <FavoritoButton seguindo={true}/>
+                                    <FavoritoButton seguindo={favorito} onClick={favoritoHandler}/>
                                 </div>
                             </div>
                             <div className="card-body">
@@ -95,7 +140,27 @@ const index = ({data}) => {
                                     changeRating = {changeRating}/>
                             </div>
                         </div>
+                        <Row className="mt-2">
+                            <Col lg="4" md="6" sm="12">
+                                <CardCotacao cotacao={data.cotacao}/>
+                            </Col>
+                            <Col lg="4" md="6" sm="12">
+                                <CardCotacaoDetalhes cotacao={data.cotacao}/>
+                            </Col>
+                            <Col lg="4" md="6" sm="12">
+                                <CardVolume cotacao={data.cotacao}/>
+                            </Col>
+                            <Col lg="4" md="6" sm="12">
+                                <CardNegocios cotacao={data.cotacao}/>
+                            </Col>
+                            {data.administrador_fii &&
+                            <Col lg="6" md="6" sm="12">
+                                <CardAdm adm={data.administrador_fii}/>
+                            </Col>}
+                        </Row>
+                            
                     </MainAdmin>
+                    
                 </Fragment>
                 || data && data.message &&
                 <main className="container">

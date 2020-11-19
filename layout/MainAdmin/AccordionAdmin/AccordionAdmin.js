@@ -1,7 +1,7 @@
 import classes from './AccordionAdmin.module.css';
 import React, { useState } from 'react';
 import { Button, Card, Accordion } from 'react-bootstrap'; 
-import { faMoneyCheck, faCity, faChartLine, faChartPie, faCommentDollar } from '@fortawesome/free-solid-svg-icons'
+import { faMoneyCheck, faCity, faChartArea, faChartPie, faCommentDollar } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const AccordionAdmin = (props) => {
@@ -36,7 +36,7 @@ const AccordionAdmin = (props) => {
         },
         {
             name: "Dados e simulações",
-            icon: faChartLine,
+            icon: faChartArea,
             subItemns:[
                 {
                     name: "Fundamentus",
