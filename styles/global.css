@@ -1,3 +1,7 @@
+body{
+    background: #eee;
+}
+
 .btn-no-box-shadow:focus {
     outline: none !important;
     box-shadow: none !important;
@@ -79,6 +83,36 @@
 box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
-body{
-    background: #eee;
+.popover-bg {
+    border: 0; }
+    .popover-bg .arrow {
+      display: none; }
+    .popover-bg .popover-header {
+      background: rgba(255, 255, 255, 0.1);
+      border-bottom: 0;
+      color: white; }
+      .popover-bg .popover-header::before {
+        display: none; }
+    .popover-bg .popover-body {
+      color: rgba(255, 255, 255, 0.7); }
+    .popover-bg.text-dark .popover-header {
+      color: rgba(0, 0, 0, 0.8); }
+    .popover-bg.text-dark .popover-body {
+      color: rgba(0, 0, 0, 0.7); }
+
+.enfase{
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.font-number{
+    font-size: 1.4rem;
+    line-height: 40px;
+    height: 40px;
+    width: 40px;
+}
+
+.marker:hover {
+    fill: #fff;
+    stroke: #000;
 }

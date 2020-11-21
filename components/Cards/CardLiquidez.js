@@ -20,10 +20,10 @@ const CardLiquidez = (props) => {
                     <div className={classes.Divider}/>
                     <ListGroup>
                         <ListGroupItem active tag="button" action>Ativos de Liquidez</ListGroupItem>
-                        <ListGroupItem tag="button" action><span className={classes.Enfase}>Disponibilidades: </span>{valueToRes(props.dados.disponibilidades)}</ListGroupItem>
-                        <ListGroupItem tag="button" action><span className={classes.Enfase}>Títulos Públicos: </span>{valueToRes(props.dados.tit_pub)}</ListGroupItem>
-                        <ListGroupItem tag="button" action><span className={classes.Enfase}>Títulos Privados: </span>{valueToRes(props.dados.tit_priv)}</ListGroupItem>
-                        <ListGroupItem tag="button" action><span className={classes.Enfase}>Fundos de renda fixa: </span>{valueToRes(props.dados.fundos_rf)}</ListGroupItem>
+                        <ListGroupItem tag="button" action><span className="enfase">Disponibilidades: </span>{valueToRes(props.dados.disponibilidades)}</ListGroupItem>
+                        <ListGroupItem tag="button" action><span className="enfase">Títulos Públicos: </span>{valueToRes(props.dados.tit_pub)}</ListGroupItem>
+                        <ListGroupItem tag="button" action><span className="enfase">Títulos Privados: </span>{valueToRes(props.dados.tit_priv)}</ListGroupItem>
+                        <ListGroupItem tag="button" action><span className="enfase">Fundos de renda fixa: </span>{valueToRes(props.dados.fundos_rf)}</ListGroupItem>
                     </ListGroup>
                 </div>
             </div>

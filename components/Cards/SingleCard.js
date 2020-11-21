@@ -42,7 +42,7 @@ const SingleCard = (props) => {
                     </div>
                     <div>
                         <div className="font-weight-bold">
-                            <small className={`text-black-50 d-block mb-1 text-uppercase ${classes.Enfase_title}`}>
+                            <small className="text-black-50 d-block mb-1 text-uppercase enfase">
                                 {props.title}
                             </small>
                             <span className={styletext1}>{props.text1}</span>

@@ -1,4 +1,3 @@
-import React from 'react';
 import Head from 'next/head'
 import {useState, useEffect, Fragment} from 'react';
 import {Row, Col} from 'react-bootstrap'

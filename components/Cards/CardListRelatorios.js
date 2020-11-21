@@ -2,7 +2,6 @@ import {
     ListGroup, 
     ListGroupItem 
 } from 'react-bootstrap';
-import classes from './Cards.module.css'
 
 const CardListRelatorios = (props) => {
     const getListRela = () => {
@@ -10,7 +9,7 @@ const CardListRelatorios = (props) => {
             return props.list.map((item, ind) => (
                 <a href={`https://fnet.bmfbovespa.com.br/fnet/publico/exibirDocumento?id=${item.documento_nr}&#toolbar=0`} target="_blank" rel="noopener noreferrer" key={`${props.title}${ind}`}>
                     <ListGroupItem tag="button" action>
-                        <span className={`${classes.Enfase} link`}>
+                        <span className="enfase link">
                             {item.data_ref} 
                         </span>
                     </ListGroupItem>
