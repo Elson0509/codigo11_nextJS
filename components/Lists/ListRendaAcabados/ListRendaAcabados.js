@@ -32,7 +32,7 @@ const ListRendaAcabados = (props) => {
                             order="T"
                             >
                                 <ListDetailsRendaAcabTotal imoveis={props.imoveis}/>
-                            </CardAtivo>
+                        </CardAtivo>
                     </Fragment>
             }
         </Fragment>

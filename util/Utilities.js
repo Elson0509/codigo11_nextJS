@@ -1,3 +1,5 @@
+export const sizeCampoFutebol = 7140;
+
 export const numberWithDots = (x) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
@@ -56,7 +58,7 @@ export const getLinkMapFromEndereco = (endereco) => {
 }
 
 export const equivalenciaCamposFutebol = (tamanho) => {
-    const size = (tamanho/sizeCampoFutebol).toFixed(1);
+    const size = (tamanho/sizeCampoFutebol).toFixed(2);
     const plural = size >= 2 ? 'campos' : 'campo';
     return `Equivalente a ${numberWithVirgula(size)} ${plural} de futebol.`
 }
@@ -122,8 +124,6 @@ export const removerAcentos = ( myString ) => {
 
     return string;
 }
-
-export const sizeCampoFutebol = 7140;
 
 export const barCharColors = [
     'rgba(114, 147, 203, 0.7)',

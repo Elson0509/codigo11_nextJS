@@ -1,15 +1,17 @@
-import {useState} from 'react';
-import Icon from '../Icon/Icon'
-import {numberToMetroQuadrado, getLinkMapFromEndereco, numberWithDots, numberWithPercentual} from '../../util/Utilities'
-import {Popover, PopoverHeader, PopoverBody} from 'reactstrap';
-import ProgressBox from '../ProgressBars/ProgressBox';
+import Icon from '../../Icon/Icon'
+import {numberToMetroQuadrado, getLinkMapFromEndereco, numberWithDots, numberWithPercentual} from '../../../util/Utilities'
+import {OverlayTrigger, Popover} from 'react-bootstrap';
+import ProgressBox from '../../ProgressBars/ProgressBox';
 
 const ListImovelRendaAcabado = (props) => {
-    const [popoverOpen, setPopoverOpen] = useState(false)
-
-    const toggle = () => {
-        setPopoverOpen( prevState => !prevState)
-    }
+    const popover = (
+        <Popover className={`popover-bg bg-${props.bgNumber || 'focus'}`} >
+            <Popover.Title className="text-center">Características do terreno {props.order}</Popover.Title>
+            <Popover.Content>
+                {props.imovel.caracteristica}
+            </Popover.Content>
+        </Popover>
+    )
 
     return (
         <ul className="list-group">
@@ -32,7 +34,8 @@ const ListImovelRendaAcabado = (props) => {
             {typeof (props.imovel.vacancia) != "undefined"  && <li className="list-group-item">
                 <ProgressBox 
                     color={props.bgNumber}
-                    comment={`Vacância: ${numberWithPercentual(props.imovel.vacancia)}`}
+                    comment={`Vacância: `}
+                    textValue={numberWithPercentual(props.imovel.vacancia)}
                     value={props.imovel.vacancia}
                 />                
             </li>}
@@ -40,14 +43,11 @@ const ListImovelRendaAcabado = (props) => {
                 <span className="enfase">Inadimplência: </span>
                 {numberWithPercentual(props.imovel.inadimplencia)}
             </li>}
-            {props.imovel.caracteristica && <li className="list-group-item text-center">
-                <button className={`mb-2 mr-2 btn btn-${props.bgNumber}`} id={`${props.tipo}${props.order}`} onClick={toggle}>Caracteríticas</button>
-                <Popover className={`popover-bg bg-${props.bgNumber}`} placement="left" isOpen={popoverOpen} target={`${props.tipo}${props.order}`} toggle={toggle}>
-                    <PopoverHeader>Características do imóvel {props.order}</PopoverHeader>
-                    <PopoverBody>
-                        {props.imovel.caracteristica}
-                    </PopoverBody>
-                </Popover>
+            {props.imovel.caracteristica && 
+            <li className="list-group-item text-center">
+                <OverlayTrigger trigger="click" placement="left" overlay={popover}>
+                    <button className={`mb-2 mr-2 btn btn-${props.bgNumber}`}>Caracteríticas</button>
+                </OverlayTrigger>
             </li>}
         </ul>
     );

@@ -27,8 +27,7 @@ const ListDetailsTerrenoTotal = (props) => {
                 <p>(considerando um tamanho oficial de {numberToMetroQuadrado(sizeCampoFutebol)})</p>
             </Popover.Content>
         </Popover>
-    )
-   
+    )   
 
     return (
         <ul className="list-group">

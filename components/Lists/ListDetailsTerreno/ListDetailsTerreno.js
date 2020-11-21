@@ -4,8 +4,8 @@ import {Popover, OverlayTrigger} from 'react-bootstrap';
 
 const ListDetailsTerreno = (props) => {
     const popover = (
-        <Popover className={`popover-bg bg-focus`} >
-            <Popover.Title>Características do terreno {props.order}</Popover.Title>
+        <Popover className={`popover-bg bg-${props.bgNumber || 'focus'}`} >
+            <Popover.Title className="text-center">Características do terreno {props.order}</Popover.Title>
             <Popover.Content>
                 {props.terreno.caracteristica}
             </Popover.Content>

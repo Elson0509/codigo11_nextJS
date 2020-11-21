@@ -14,14 +14,12 @@ const geoUrl =
 
 const VectorMap = (props) => {
     const markersImoveis = () => {
-        const markers = []
-        props.imoveis.forEach((imv) => {
-            const mark = {}
-            mark.markerOffset = -10
-            mark.coordinates = [imv.longitude, imv.latitude]
-            markers.push(mark)
+        return props.imoveis.map((imv, ind) => {
+            return {
+            markerOffset : -10,
+            coordinates : [imv.longitude, imv.latitude],
+            }
         })
-        return markers
     }
 
     return (
@@ -50,9 +48,9 @@ const VectorMap = (props) => {
                     ))
                 }
             </Geographies>
-            {markersImoveis().map(({ name, coordinates, markerOffset }) => (
+            {markersImoveis().map(({ name, coordinates, markerOffset }, ind) => (
                 <Marker 
-                    key={name} 
+                    key={ind} 
                     coordinates={coordinates}>
                     <circle className="marker" r={10} fill={props.markerColor || "#3f6ad8"} stroke="#fff" strokeWidth={2} />
                     <text
