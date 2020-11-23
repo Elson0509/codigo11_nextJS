@@ -18,15 +18,19 @@ import ListRendaAcabados from '../../../../components/Lists/ListRendaAcabados/Li
 import ListSingle from '../../../../components/Lists/ListSingle/ListSingle'
 import ListCaracContr from '../../../../components/Lists/ListCaracContr/ListCaracContr'
 import {barCharColors, barCharColorsHover, lineCharColors, lineCharHover} from '../../../../util/Utilities'
+import ListaRendaConstrucao from '../../../../components/Lists/ListaRendaConstrucao/ListaRendaConstrucao';
 
 const index = ({data}) => {
     const [toggleTerreno, setToggleTerreno] = useState(false)
     const [toggleRendaAcabado, setToggleRendaAcabado] = useState(false)
+    const [toggleRendaAcabadoConstrucao, setToggleRendaAcabadoConstrucao] = useState(false)
     const router = useRouter()
     const terrenosColor="primary"
     const terrenosMarkerColor="#0275d8"
     const rendaAcabadoColor="success"
     const rendaAcabadoMarkerColor="#5cb85c"
+    const rendaAcabadoConstrucaoColor="warning"
+    const rendaAcabadoConstrucaoMarkerColor="#f0ad4e"
     console.log(data)
     return (
         <Fragment>
@@ -148,7 +152,7 @@ const index = ({data}) => {
                                             }
                                             <Col sm="12">
                                                 <Col>
-                                                    <GeneralCard title="Mapa de Imóveis para renda" titleStyle="text-center" addClasses="slow-shadow">
+                                                    <GeneralCard title="Mapa de Imóveis" titleStyle="text-center" addClasses="slow-shadow">
                                                         <VectorMap imoveis={data.renda_acabado} markerColor={rendaAcabadoMarkerColor}/>
                                                     </GeneralCard>
                                                 </Col>
@@ -210,6 +214,68 @@ const index = ({data}) => {
                                                             icon="house-damage" 
                                                             title="Política de seguro para Imóveis para Renda" 
                                                             description={data.politica_seguro_renda_acabado}
+                                                            addClasses="slow-shadow"
+                                                        />
+                                                    </Col>
+                                                </Col>
+                                            </Row>
+                                        }
+                                    </Fragment>
+                                </Accordion.Collapse>
+                            </div>
+                        </Accordion>
+                        }
+                        {/*Renda em construção hcst*/}
+                        {data.renda_construcao.length > 0 &&
+                        <Accordion>
+                            <div className={`mb-3 card bg-${rendaAcabadoConstrucaoColor}`}>
+                                <Accordion.Toggle 
+                                    as={Button} 
+                                    variant="link" 
+                                    eventKey="rendaAcabadoConstrucaoAccordion" 
+                                    className="btn-no-box-shadow text-left text-uppercase nolink"
+                                    onClick={()=> setToggleRendaAcabadoConstrucao(prev => !prev)}>
+                                    <div className={`card-header bg-${rendaAcabadoConstrucaoColor} text-white`}>
+                                        <h4 className={`card-title`}>
+                                            <Icon icon={toggleRendaAcabadoConstrucao && "minus-square" || "plus-square"}/>
+                                            <span className="ml-2">
+                                                Imóveis para renda (em construção)
+                                            </span>
+                                        </h4>
+                                    </div>
+                                </Accordion.Toggle>
+                                <Accordion.Collapse eventKey="rendaAcabadoConstrucaoAccordion">
+                                    <Fragment>
+                                        <Row className="card-body">
+                                            <ListaRendaConstrucao imoveis={data.renda_construcao}/>
+                                        </Row>
+                                        <div className="card-footer"/>
+                                        <Row>
+                                            <Col sm="12">
+                                                <Col>
+                                                    <GeneralCard title="Imóveis por área" titleStyle="text-center" addClasses="slow-shadow">
+                                                        <ChartImovelArea imoveis={data.renda_construcao} type="Imóvel"/>
+                                                    </GeneralCard>
+                                                </Col>
+                                            </Col>
+                                            <Col sm="12">
+                                                <Col>
+                                                    <GeneralCard title="Mapa de Imóveis" titleStyle="text-center" addClasses="slow-shadow">
+                                                        <VectorMap imoveis={data.renda_construcao} markerColor={rendaAcabadoConstrucaoMarkerColor}/>
+                                                    </GeneralCard>
+                                                </Col>
+                                            </Col>
+                                        </Row>
+                                        <div className="card-footer"/>
+                                        {data.politica_seguro_renda_construcao &&
+                                            <Row>
+                                                <Col sm="12">
+                                                    <Col>
+                                                        <ListSingle 
+                                                            themeColor={rendaAcabadoConstrucaoColor}
+                                                            icon="house-damage" 
+                                                            title="Política de seguro para Imóveis para Renda (em construção)" 
+                                                            description={data.politica_seguro_renda_construcao}
                                                             addClasses="slow-shadow"
                                                         />
                                                     </Col>

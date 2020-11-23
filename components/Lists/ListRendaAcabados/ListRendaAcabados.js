@@ -1,7 +1,7 @@
 import {Fragment} from 'react';
 import CardAtivo from '../../../components/Cards/CardAtivo'
-import ListDetailsImovelRendaAcabado from '../../../components/Lists/ListDetailsImovelRendaAcabado/ListDetailsImovelRendaAcabado'
-import ListDetailsRendaAcabTotal from '../../../components/Lists/ListDetailsRendaAcabTotal/ListDetailsRendaAcabTotal'
+import ListDetailsImovelRendaAcabado from '../ListDetailsImovelRendaAcabado/ListDetailsImovelRendaAcabado'
+import ListDetailsRendaAcabTotal from '../ListDetailsRendaAcabTotal/ListDetailsRendaAcabTotal'
 
 const ListRendaAcabados = (props) => {
     return (
