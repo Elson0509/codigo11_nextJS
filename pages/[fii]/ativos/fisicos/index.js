@@ -7,6 +7,7 @@ import Icon from '../../../../components/Icon/Icon'
 import GeneralCard from '../../../../components/Cards/GeneralCard'
 import ChartImovelArea from '../../../../components/Charts/ChartImovelArea'
 import ChartImovelPercReceita from '../../../../components/Charts/ChartImovelPercReceita'
+import ChartHorizontalLabelsObject from '../../../../components/Charts/ChartHorizontalLabelsObject'
 import VectorMap from '../../../../components/Map/VectorMap'
 import PanelAdmin from '../../../../layout/PanelAdmin/PanelAdmin'
 import MainAdmin from '../../../../layout/MainAdmin/MainAdmin'
@@ -14,7 +15,9 @@ import NavbarAdmin from '../../../../layout/NavbarAdmin/NavbarAdmin'
 import HeaderAdmin from '../../../../layout/HeaderAdmin/HeaderAdmin'
 import ListTerrenos from '../../../../components/Lists/ListTerrenos/ListTerrenos'
 import ListRendaAcabados from '../../../../components/Lists/ListRendaAcabados/ListRendaAcabados'
-
+import ListSingle from '../../../../components/Lists/ListSingle/ListSingle'
+import ListCaracContr from '../../../../components/Lists/ListCaracContr/ListCaracContr'
+import {barCharColors, barCharColorsHover, lineCharColors, lineCharHover} from '../../../../util/Utilities'
 
 const index = ({data}) => {
     const [toggleTerreno, setToggleTerreno] = useState(false)
@@ -73,23 +76,27 @@ const index = ({data}) => {
                                         <div className="card-footer"/>
                                         <Row>
                                             <Col sm="12">
-                                                <GeneralCard title="Terrenos por área" titleStyle="text-center">
-                                                    <ChartImovelArea imoveis={data.terrenos} type="Terreno"/>
-                                                </GeneralCard>
+                                                <Col>
+                                                    <GeneralCard title="Terrenos por área" titleStyle="text-center" addClasses="slow-shadow">
+                                                        <ChartImovelArea imoveis={data.terrenos} type="Terreno"/>
+                                                    </GeneralCard>
+                                                </Col>
                                             </Col>
-                                            {data.terrenos.reduce((acc, curr)=> {
-                                                return acc + curr.porc_rec_fii
-                                            }, 0) !=0 &&
+                                            { data.terrenos.some(el => el.porc_rec_fii != 0) &&
                                             <Col sm="12">
-                                                <GeneralCard title="Terrenos por % Receita" titleStyle="text-center">
-                                                    <ChartImovelPercReceita imoveis={data.terrenos} type="Terreno"/>
-                                                </GeneralCard>
+                                                <Col>
+                                                    <GeneralCard title="Terrenos por % Receita" titleStyle="text-center" addClasses="slow-shadow">
+                                                        <ChartImovelPercReceita imoveis={data.terrenos} type="Terreno"/>
+                                                    </GeneralCard>
+                                                </Col>
                                             </Col>
                                             }
                                             <Col sm="12">
-                                                <GeneralCard title="Mapa de Terrenos" titleStyle="text-center">
-                                                    <VectorMap imoveis={data.terrenos} markerColor={terrenosMarkerColor}/>
-                                                </GeneralCard>
+                                                <Col>
+                                                    <GeneralCard title="Mapa de Terrenos" titleStyle="text-center" addClasses="slow-shadow">
+                                                        <VectorMap imoveis={data.terrenos} markerColor={terrenosMarkerColor}/>
+                                                    </GeneralCard>
+                                                </Col>
                                             </Col>
                                         </Row>
                                     </Fragment>
@@ -122,27 +129,93 @@ const index = ({data}) => {
                                             <ListRendaAcabados imoveis={data.renda_acabado}/>
                                         </Row>
                                         <div className="card-footer"/>
-                                        {/* <Row>
+                                        <Row>
                                             <Col sm="12">
-                                                <GeneralCard title="Terrenos por área" titleStyle="text-center">
-                                                    <ChartImovelArea imoveis={data.terrenos} type="Terreno"/>
-                                                </GeneralCard>
+                                                <Col>
+                                                    <GeneralCard title="Imóveis por área" titleStyle="text-center" addClasses="slow-shadow">
+                                                        <ChartImovelArea imoveis={data.renda_acabado} type="Imóvel"/>
+                                                    </GeneralCard>
+                                                </Col>
                                             </Col>
-                                            {data.terrenos.reduce((acc, curr)=> {
-                                                return acc + curr.porc_rec_fii
-                                            }, 0) !=0 &&
+                                            { data.renda_acabado.some(el => el.porc_rec_fii != 0) &&
                                             <Col sm="12">
-                                                <GeneralCard title="Terrenos por % Receita" titleStyle="text-center">
-                                                    <ChartImovelPercReceita imoveis={data.terrenos} type="Terreno"/>
-                                                </GeneralCard>
+                                                <Col>
+                                                    <GeneralCard title="Imóveis por % Receita" titleStyle="text-center" addClasses="slow-shadow">
+                                                        <ChartImovelPercReceita imoveis={data.renda_acabado} type="Imóvel"/>
+                                                    </GeneralCard>
+                                                </Col>
                                             </Col>
                                             }
                                             <Col sm="12">
-                                                <GeneralCard title="Mapa de Terrenos" titleStyle="text-center">
-                                                    <VectorMap imoveis={data.terrenos} markerColor={terrenosMarkerColor}/>
-                                                </GeneralCard>
+                                                <Col>
+                                                    <GeneralCard title="Mapa de Imóveis para renda" titleStyle="text-center" addClasses="slow-shadow">
+                                                        <VectorMap imoveis={data.renda_acabado} markerColor={rendaAcabadoMarkerColor}/>
+                                                    </GeneralCard>
+                                                </Col>
                                             </Col>
-                                        </Row> */}
+                                        </Row>
+                                        <Row>
+                                           {data.contrato_locacao_renda_acabado &&
+                                                Object.entries(data.contrato_locacao_renda_acabado).some(el => el[1] != 0) &&
+                                                    <Col sm="12">
+                                                        <Col>
+                                                            <GeneralCard title="Prazos dos contratos" titleStyle="text-center" addClasses="slow-shadow">
+                                                                <ChartHorizontalLabelsObject 
+                                                                    label="%"
+                                                                    object={data.contrato_locacao_renda_acabado}
+                                                                    backgroundColor={barCharColors[0]}
+                                                                    hoverBackgroundColor={barCharColorsHover[0]}
+                                                                    borderColor={lineCharColors[0]}
+                                                                    hoverBorderColor={lineCharHover[0]}
+                                                                    />
+                                                            </GeneralCard>
+                                                        </Col>
+                                                    </Col>
+                                            }
+                                            {data.contrato_indexadores &&
+                                                Object.entries(data.contrato_indexadores).length > 0 &&
+                                                    <Col sm="12">
+                                                        <Col>
+                                                            <GeneralCard title="Índices dos contatos" titleStyle="text-center" addClasses="slow-shadow">
+                                                                <ChartHorizontalLabelsObject 
+                                                                    label="%"
+                                                                    object={data.contrato_indexadores}
+                                                                    backgroundColor={barCharColors[1]}
+                                                                    hoverBackgroundColor={barCharColorsHover[1]}
+                                                                    borderColor={lineCharColors[1]}
+                                                                    hoverBorderColor={lineCharHover[1]}
+                                                                    />
+                                                            </GeneralCard>
+                                                        </Col>
+                                                    </Col>
+                                            }
+                                        </Row>
+                                        <div className="card-footer"/>
+                                        <Row>
+                                            <Col sm="12">
+                                                <Col>
+                                                    <ListCaracContr 
+                                                        caracteristicas={data.características_contratuais_renda_acabado} 
+                                                        themeColor={rendaAcabadoColor}
+                                                        addClasses="slow-shadow"/>
+                                                </Col>
+                                            </Col>
+                                        </Row>
+                                        {data.politica_seguro_renda_acabado &&
+                                            <Row>
+                                                <Col sm="12">
+                                                    <Col>
+                                                        <ListSingle 
+                                                            themeColor={rendaAcabadoColor}
+                                                            icon="house-damage" 
+                                                            title="Política de seguro para Imóveis para Renda" 
+                                                            description={data.politica_seguro_renda_acabado}
+                                                            addClasses="slow-shadow"
+                                                        />
+                                                    </Col>
+                                                </Col>
+                                            </Row>
+                                        }
                                     </Fragment>
                                 </Accordion.Collapse>
                             </div>
