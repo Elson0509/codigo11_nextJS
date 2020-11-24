@@ -3,7 +3,7 @@ import {numberToMetroQuadrado, getLinkMapFromEndereco, numberWithDots, numberWit
 import {OverlayTrigger, Popover} from 'react-bootstrap';
 import ProgressBox from '../../ProgressBars/ProgressBox';
 
-const ListImovelRendaAcabado = (props) => {
+const ListImovelVendaAcabado = (props) => {
     const ObraSituation = () => {
         return props.imovel.porc_obra_realizado >= props.imovel.porc_obra_previsto ? <p className="font-weight-bold">Obra EM DIA.</p> : <p className="font-weight-bold">Obra ATRASADA.</p>
     }   
@@ -40,6 +40,10 @@ const ListImovelRendaAcabado = (props) => {
             {typeof (props.imovel.unidades) != "undefined"  && <li className="list-group-item">
                 <span className="enfase">Unidades: </span>
                 {numberWithDots(props.imovel.unidades)}
+            </li>}
+            {typeof (props.imovel.porc_locado_ou_vendido) != "undefined"  && <li className="list-group-item">
+                <span className="enfase">% vendido: </span>
+                {numberWithPercentual(props.imovel.porc_locado_ou_vendido)}
             </li>}
             <li className="list-group-item">
                 <span className="enfase">Custo de obra realizada: </span>
@@ -83,4 +87,4 @@ const ListImovelRendaAcabado = (props) => {
     );
 };
 
-export default ListImovelRendaAcabado;
+export default ListImovelVendaAcabado;

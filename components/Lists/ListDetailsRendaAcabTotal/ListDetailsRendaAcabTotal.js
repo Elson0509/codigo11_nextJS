@@ -48,21 +48,24 @@ const ListDetailsImovelRendaAcabTotal = (props) => {
             <li className="list-group-item">
                 <ProgressBox 
                     color="focus"
-                    comment={`Vacância por m²: ${numberWithPercentual(vacanciaMedia)}`}
+                    comment={`Vacância por m²: `}
+                    textValue={numberWithPercentual(vacanciaMedia)}
                     value={vacanciaMedia}
                 />                
             </li>
             <li className="list-group-item">
                 <ProgressBox 
                     color="focus"
-                    comment={`Vacância Financeira: ${percentNumberBrazilian(vacanciaFinanceira, 2)}`}
+                    comment={`Vacância Financeira: `}
+                    textValue={percentNumberBrazilian(vacanciaFinanceira, 2)}
                     value={vacanciaFinanceira}
                 />                
             </li>
             <li className="list-group-item">
                 <ProgressBox 
                     color="focus"
-                    comment={`Inadimplência por m²: ${numberWithPercentual(inadimplenciaMedia)}`}
+                    comment={`Inadimplência por m²: `}
+                    textValue={numberWithPercentual(inadimplenciaMedia)}
                     value={inadimplenciaMedia}
                 />                
             </li>

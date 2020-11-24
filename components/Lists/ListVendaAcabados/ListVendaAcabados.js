@@ -18,7 +18,6 @@ const ListVendaAcabados = (props) => {
                                 key={`lva${ind}`}
                                 >
                                     <ListDetailsVendaAcabado
-                                        tipo="iva"
                                         imovel={imovel}
                                         order={ind+1}
                                         bgNumber={props.theme}

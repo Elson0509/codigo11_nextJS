@@ -16,6 +16,7 @@ import HeaderAdmin from '../../../../layout/HeaderAdmin/HeaderAdmin'
 import ListTerrenos from '../../../../components/Lists/ListTerrenos/ListTerrenos'
 import ListRendaAcabados from '../../../../components/Lists/ListRendaAcabados/ListRendaAcabados'
 import ListVendaAcabados from '../../../../components/Lists/ListVendaAcabados/ListVendaAcabados'
+import ListVendaConstrucao from '../../../../components/Lists/ListVendaConstrucao/ListVendaConstrucao'
 import ListSingle from '../../../../components/Lists/ListSingle/ListSingle'
 import ListCaracContr from '../../../../components/Lists/ListCaracContr/ListCaracContr'
 import {barCharColors, barCharColorsHover, lineCharColors, lineCharHover} from '../../../../util/Utilities'
@@ -24,17 +25,20 @@ import ListaRendaConstrucao from '../../../../components/Lists/ListaRendaConstru
 const index = ({data}) => {
     const [toggleTerreno, setToggleTerreno] = useState(false)
     const [toggleRendaAcabado, setToggleRendaAcabado] = useState(false)
-    const [toggleRendaAcabadoConstrucao, setToggleRendaAcabadoConstrucao] = useState(false)
+    const [toggleRendaConstrucao, setToggleRendaConstrucao] = useState(false)
     const [toggleVendaAcabado, setToggleVendaAcabado] = useState(false)
+    const [toggleVendaConstrucao, setToggleVendaConstrucao] = useState(false)
     const router = useRouter()
     const terrenosColor="primary"
     const terrenosMarkerColor="#0275d8"
     const rendaAcabadoColor="success"
     const rendaAcabadoMarkerColor="#5cb85c"
-    const rendaAcabadoConstrucaoColor="warning"
-    const rendaAcabadoConstrucaoMarkerColor="#f0ad4e"
+    const rendaConstrucaoColor="warning"
+    const rendaConstrucaoMarkerColor="#f0ad4e"
     const vendaAcabadoColor="danger"
     const vendaAcabadoMarkerColor="#d9534f"
+    const vendaConstrucaoColor="dark"
+    const vendaConstrucaoMarkerColor="#292b2c"
 
     console.log(data)
     return (
@@ -233,16 +237,16 @@ const index = ({data}) => {
                         {/*Renda em construção hcst*/}
                         {data.renda_construcao.length > 0 &&
                         <Accordion>
-                            <div className={`mb-3 card bg-${rendaAcabadoConstrucaoColor}`}>
+                            <div className={`mb-3 card bg-${rendaConstrucaoColor}`}>
                                 <Accordion.Toggle 
                                     as={Button} 
                                     variant="link" 
                                     eventKey="rendaAcabadoConstrucaoAccordion" 
                                     className="btn-no-box-shadow text-left text-uppercase nolink"
-                                    onClick={()=> setToggleRendaAcabadoConstrucao(prev => !prev)}>
-                                    <div className={`card-header bg-${rendaAcabadoConstrucaoColor} text-white`}>
+                                    onClick={()=> setToggleRendaConstrucao(prev => !prev)}>
+                                    <div className={`card-header bg-${rendaConstrucaoColor} text-white`}>
                                         <h4 className={`card-title`}>
-                                            <Icon icon={toggleRendaAcabadoConstrucao && "minus-square" || "plus-square"}/>
+                                            <Icon icon={toggleRendaConstrucao && "minus-square" || "plus-square"}/>
                                             <span className="ml-2">
                                                 Imóveis para renda (em construção)
                                             </span>
@@ -266,7 +270,7 @@ const index = ({data}) => {
                                             <Col sm="12">
                                                 <Col>
                                                     <GeneralCard title="Mapa de Imóveis" titleStyle="text-center" addClasses="slow-shadow">
-                                                        <VectorMap imoveis={data.renda_construcao} markerColor={rendaAcabadoConstrucaoMarkerColor}/>
+                                                        <VectorMap imoveis={data.renda_construcao} markerColor={rendaConstrucaoMarkerColor}/>
                                                     </GeneralCard>
                                                 </Col>
                                             </Col>
@@ -277,7 +281,7 @@ const index = ({data}) => {
                                                 <Col sm="12">
                                                     <Col>
                                                         <ListSingle 
-                                                            themeColor={rendaAcabadoConstrucaoColor}
+                                                            themeColor={rendaConstrucaoColor}
                                                             icon="house-damage" 
                                                             title="Política de seguro para Imóveis para Renda (em construção)" 
                                                             description={data.politica_seguro_renda_construcao}
@@ -343,6 +347,68 @@ const index = ({data}) => {
                                                             icon="house-damage" 
                                                             title="Política de seguro para Imóveis para Venda" 
                                                             description={data.politica_seguro_venda_acabados}
+                                                            addClasses="slow-shadow"
+                                                        />
+                                                    </Col>
+                                                </Col>
+                                            </Row>
+                                        }
+                                    </Fragment>
+                                </Accordion.Collapse>
+                            </div>
+                        </Accordion>
+                        }
+                        {/*Venda em construção ftce*/}
+                        {data.venda_construcao.length > 0 &&
+                        <Accordion>
+                            <div className={`mb-3 card bg-${vendaConstrucaoColor}`}>
+                                <Accordion.Toggle 
+                                    as={Button} 
+                                    variant="link" 
+                                    eventKey="vendaConstrucaoAccordion" 
+                                    className="btn-no-box-shadow text-left text-uppercase nolink"
+                                    onClick={()=> setToggleVendaConstrucao(prev => !prev)}>
+                                    <div className={`card-header bg-${vendaConstrucaoColor} text-white`}>
+                                        <h4 className={`card-title`}>
+                                            <Icon icon={toggleVendaConstrucao && "minus-square" || "plus-square"}/>
+                                            <span className="ml-2">
+                                                Imóveis para venda (em construção)
+                                            </span>
+                                        </h4>
+                                    </div>
+                                </Accordion.Toggle>
+                                <Accordion.Collapse eventKey="vendaConstrucaoAccordion">
+                                    <Fragment>
+                                        <Row className="card-body">
+                                            <ListVendaConstrucao imoveis={data.venda_construcao} theme={vendaConstrucaoColor}/>
+                                        </Row>
+                                        <div className="card-footer"/>
+                                        <Row>
+                                            <Col sm="12">
+                                                <Col>
+                                                    <GeneralCard title="Imóveis por área" titleStyle="text-center" addClasses="slow-shadow">
+                                                        <ChartImovelArea imoveis={data.venda_construcao} type="Imóvel"/>
+                                                    </GeneralCard>
+                                                </Col>
+                                            </Col>
+                                            <Col sm="12">
+                                                <Col>
+                                                    <GeneralCard title="Mapa de Imóveis" titleStyle="text-center" addClasses="slow-shadow">
+                                                        <VectorMap imoveis={data.venda_construcao} markerColor={vendaConstrucaoMarkerColor}/>
+                                                    </GeneralCard>
+                                                </Col>
+                                            </Col>
+                                        </Row>
+                                        <div className="card-footer"/>
+                                        {data.politica_seguro_venda_construcao &&
+                                            <Row>
+                                                <Col sm="12">
+                                                    <Col>
+                                                        <ListSingle 
+                                                            themeColor={vendaConstrucaoColor}
+                                                            icon="house-damage" 
+                                                            title="Política de seguro para Imóveis para Venda (em construção)" 
+                                                            description={data.politica_seguro_venda_construcao}
                                                             addClasses="slow-shadow"
                                                         />
                                                     </Col>
