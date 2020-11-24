@@ -15,6 +15,7 @@ import NavbarAdmin from '../../../../layout/NavbarAdmin/NavbarAdmin'
 import HeaderAdmin from '../../../../layout/HeaderAdmin/HeaderAdmin'
 import ListTerrenos from '../../../../components/Lists/ListTerrenos/ListTerrenos'
 import ListRendaAcabados from '../../../../components/Lists/ListRendaAcabados/ListRendaAcabados'
+import ListVendaAcabados from '../../../../components/Lists/ListVendaAcabados/ListVendaAcabados'
 import ListSingle from '../../../../components/Lists/ListSingle/ListSingle'
 import ListCaracContr from '../../../../components/Lists/ListCaracContr/ListCaracContr'
 import {barCharColors, barCharColorsHover, lineCharColors, lineCharHover} from '../../../../util/Utilities'
@@ -24,6 +25,7 @@ const index = ({data}) => {
     const [toggleTerreno, setToggleTerreno] = useState(false)
     const [toggleRendaAcabado, setToggleRendaAcabado] = useState(false)
     const [toggleRendaAcabadoConstrucao, setToggleRendaAcabadoConstrucao] = useState(false)
+    const [toggleVendaAcabado, setToggleVendaAcabado] = useState(false)
     const router = useRouter()
     const terrenosColor="primary"
     const terrenosMarkerColor="#0275d8"
@@ -31,6 +33,9 @@ const index = ({data}) => {
     const rendaAcabadoMarkerColor="#5cb85c"
     const rendaAcabadoConstrucaoColor="warning"
     const rendaAcabadoConstrucaoMarkerColor="#f0ad4e"
+    const vendaAcabadoColor="danger"
+    const vendaAcabadoMarkerColor="#d9534f"
+
     console.log(data)
     return (
         <Fragment>
@@ -130,7 +135,7 @@ const index = ({data}) => {
                                 <Accordion.Collapse eventKey="rendaAcabadoAccordion">
                                     <Fragment>
                                         <Row className="card-body">
-                                            <ListRendaAcabados imoveis={data.renda_acabado}/>
+                                            <ListRendaAcabados imoveis={data.renda_acabado} theme={rendaAcabadoColor}/>
                                         </Row>
                                         <div className="card-footer"/>
                                         <Row>
@@ -276,6 +281,68 @@ const index = ({data}) => {
                                                             icon="house-damage" 
                                                             title="Política de seguro para Imóveis para Renda (em construção)" 
                                                             description={data.politica_seguro_renda_construcao}
+                                                            addClasses="slow-shadow"
+                                                        />
+                                                    </Col>
+                                                </Col>
+                                            </Row>
+                                        }
+                                    </Fragment>
+                                </Accordion.Collapse>
+                            </div>
+                        </Accordion>
+                        }
+                        {/*Venda-Acabado loft*/}
+                        {data.venda_acabado.length > 0 &&
+                        <Accordion>
+                            <div className={`mb-3 card bg-${vendaAcabadoColor}`}>
+                                <Accordion.Toggle 
+                                    as={Button} 
+                                    variant="link" 
+                                    eventKey="vendaAcabadosAccordion" 
+                                    className="btn-no-box-shadow text-left text-uppercase nolink"
+                                    onClick={()=> setToggleVendaAcabado(prev => !prev)}>
+                                    <div className={`card-header bg-${vendaAcabadoColor} text-white`}>
+                                        <h4 className={`card-title`}>
+                                            <Icon icon={toggleVendaAcabado && "minus-square" || "plus-square"}/>
+                                            <span className="ml-2">
+                                                Imóveis para venda
+                                            </span>
+                                        </h4>
+                                    </div>
+                                </Accordion.Toggle>
+                                <Accordion.Collapse eventKey="vendaAcabadosAccordion">
+                                    <Fragment>
+                                        <Row className="card-body">
+                                            <ListVendaAcabados imoveis={data.venda_acabado} theme={vendaAcabadoColor}/>
+                                        </Row>
+                                        <div className="card-footer"/>
+                                        <Row>
+                                            <Col sm="12">
+                                                <Col>
+                                                    <GeneralCard title="Terrenos por área" titleStyle="text-center" addClasses="slow-shadow">
+                                                        <ChartImovelArea imoveis={data.venda_acabado} type="Imóvel"/>
+                                                    </GeneralCard>
+                                                </Col>
+                                            </Col>
+                                            <Col sm="12">
+                                                <Col>
+                                                    <GeneralCard title="Mapa de Imóveis" titleStyle="text-center" addClasses="slow-shadow">
+                                                        <VectorMap imoveis={data.venda_acabado} markerColor={vendaAcabadoMarkerColor}/>
+                                                    </GeneralCard>
+                                                </Col>
+                                            </Col>
+                                        </Row>
+                                        <div className="card-footer"/>
+                                        {data.politica_seguro_venda_acabados &&
+                                            <Row>
+                                                <Col sm="12">
+                                                    <Col>
+                                                        <ListSingle 
+                                                            themeColor={vendaAcabadoColor}
+                                                            icon="house-damage" 
+                                                            title="Política de seguro para Imóveis para Venda" 
+                                                            description={data.politica_seguro_venda_acabados}
                                                             addClasses="slow-shadow"
                                                         />
                                                     </Col>

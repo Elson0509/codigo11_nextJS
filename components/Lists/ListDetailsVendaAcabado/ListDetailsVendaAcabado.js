@@ -1,14 +1,13 @@
 import Icon from '../../Icon/Icon'
 import {numberToMetroQuadrado, getLinkMapFromEndereco, numberWithDots, numberWithPercentual} from '../../../util/Utilities'
 import {OverlayTrigger, Popover} from 'react-bootstrap';
-import ProgressBox from '../../ProgressBars/ProgressBox';
 
 const ListImovelRendaAcabado = (props) => {
     const popover = (
         <Popover className={`popover-bg bg-${props.bgNumber || 'focus'}`} >
             <Popover.Title className="text-center">Características do imóvel {props.order}</Popover.Title>
             <Popover.Content>
-                {props.imovel.caracteristica}
+                <p className="font-weight-bold">{props.imovel.caracteristica}</p>
             </Popover.Content>
         </Popover>
     )
@@ -30,22 +29,6 @@ const ListImovelRendaAcabado = (props) => {
             {typeof (props.imovel.unidades) != "undefined"  && <li className="list-group-item">
                 <span className="enfase">Unidades: </span>
                 {numberWithDots(props.imovel.unidades)}
-            </li>}
-            {typeof (props.imovel.porc_rec_fii) != "undefined"  && <li className="list-group-item">
-                <span className="enfase">% Receita no FII: </span>
-                {numberWithPercentual(props.imovel.porc_rec_fii)}
-            </li>}
-            {typeof (props.imovel.vacancia) != "undefined"  && <li className="list-group-item">
-                <ProgressBox 
-                    color={props.bgNumber}
-                    comment={`Vacância: `}
-                    textValue={numberWithPercentual(props.imovel.vacancia)}
-                    value={props.imovel.vacancia}
-                />                
-            </li>}
-            {typeof (props.imovel.inadimplencia) != "undefined" && <li className="list-group-item">
-                <span className="enfase">Inadimplência: </span>
-                {numberWithPercentual(props.imovel.inadimplencia)}
             </li>}
             {props.imovel.caracteristica && 
             <li className="list-group-item text-center">

@@ -1,9 +1,9 @@
-import {Fragment} from 'react';
-import CardAtivo from '../../../components/Cards/CardAtivo'
-import ListDetailsImovelRendaAcabado from '../ListDetailsImovelRendaAcabado/ListDetailsImovelRendaAcabado'
-import ListDetailsRendaAcabTotal from '../ListDetailsRendaAcabTotal/ListDetailsRendaAcabTotal'
+import {Fragment, memo} from 'react';
+import CardAtivo from '../../Cards/CardAtivo'
+import ListDetailsVendaAcabado from '../ListDetailsVendaAcabado/ListDetailsVendaAcabado'
+import ListDetailsVendaAcabTotal from '../ListDetailsVendaAcabTotal/ListDetailsVendaAcabTotal'
 
-const ListRendaAcabados = (props) => {
+const ListVendaAcabados = (props) => {
     return (
         <Fragment>
             {props.imoveis &&
@@ -13,13 +13,12 @@ const ListRendaAcabados = (props) => {
                     <Fragment>
                         {props.imoveis.map((imovel, ind) => (
                             <CardAtivo
-                                bgCard={props.theme}
                                 bgNumber={props.theme}
                                 order={ind+1}
-                                key={`lra${ind}`}
+                                key={`lva${ind}`}
                                 >
-                                    <ListDetailsImovelRendaAcabado
-                                        tipo="ira"
+                                    <ListDetailsVendaAcabado
+                                        tipo="iva"
                                         imovel={imovel}
                                         order={ind+1}
                                         bgNumber={props.theme}
@@ -27,11 +26,10 @@ const ListRendaAcabados = (props) => {
                             </CardAtivo>
                         ))}
                         <CardAtivo
-                            bgCard={props.theme}
                             bgNumber="focus"
                             order="T"
                             >
-                                <ListDetailsRendaAcabTotal imoveis={props.imoveis}/>
+                                <ListDetailsVendaAcabTotal theme={props.theme} imoveis={props.imoveis}/>
                         </CardAtivo>
                     </Fragment>
             }
@@ -39,4 +37,4 @@ const ListRendaAcabados = (props) => {
     );
 };
 
-export default ListRendaAcabados;
+export default memo(ListVendaAcabados);
