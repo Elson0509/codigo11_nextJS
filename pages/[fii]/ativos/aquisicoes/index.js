@@ -3,10 +3,10 @@ import {useState, useEffect, Fragment} from 'react';
 import {Row, Col} from 'react-bootstrap'
 import { useRouter } from 'next/router'
 import axios from '../../../../util/axios-base'
-import PanelAdmin from '../../../../layout/PanelAdmin/PanelAdmin'
 import MainAdmin from '../../../../layout/MainAdmin/MainAdmin'
 import NavbarAdmin from '../../../../layout/NavbarAdmin/NavbarAdmin'
 import HeaderAdmin from '../../../../layout/HeaderAdmin/HeaderAdmin'
+import TimelineOperations from '../../../../components/Timelines/TimelineOperations'
 
 const index = ({data}) => {
     const router = useRouter()
@@ -24,15 +24,18 @@ const index = ({data}) => {
                             async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
                         </script> */}
                     </Head>
-                    <PanelAdmin 
+                    <MainAdmin
                         bgcolor={data.segmento.bgcolor}
                         fiiname={data.razao_social}
                         fiiticker={`${router.query.fii.toUpperCase()}11`}
                         icon={data.segmento.icon || "building"}
                         descricao={data.segmento.descricao}
-                    />
-                    <MainAdmin>
-                        main
+                        title="Timeline de Aquisicões e Alienações">
+                        {data.operacoes.length > 0 ?
+                            <TimelineOperations operacoes={data.operacoes}/>
+                            :
+                            <h4>Este FII não apresentou operações de aquisição / alienação de imóveis.</h4>
+                        }
                     </MainAdmin>
                 </Fragment>
                 || data && data.message &&
@@ -65,7 +68,7 @@ export const getServerSideProps = async (context) => {
     if(fii && fii.length==4){
         try{
             const response = await axios.get(
-                `/ativos/fin/${fii}`
+                `/ativos/aquiali/${fii}`
             )
             return {
                 props: {

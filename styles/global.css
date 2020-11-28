@@ -151,3 +151,8 @@ box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     -webkit-animation: fadeIn 2s;
     animation: fadeIn 2s;
 }
+
+.vertical-timeline-element-date{
+    margin-left: 10px;
+    margin-right: 10px;
+}
