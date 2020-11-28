@@ -57,7 +57,7 @@ const index = ({data}) => {
             {data && !data.message && 
                 <Fragment>
                     <Head>
-                        <meta name="description" content={`Codigo11 - ${router.query.fii.toUpperCase()}11 - Informações de ativos físicos do FII`} />
+                        <meta name="description" content={`Codigo11 - ${router.query.fii.toUpperCase()}11 - Informações de ativos financeiros do FII`} />
                         <title>{`Codigo11: ${router.query.fii.toUpperCase()}11 - Ativos financeiros do FII`}</title>
                         {/* <script data-ad-client="ca-pub-8540652797620487" 
                             async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">

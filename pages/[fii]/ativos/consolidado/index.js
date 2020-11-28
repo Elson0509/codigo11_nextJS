@@ -3,10 +3,11 @@ import {useState, useEffect, Fragment} from 'react';
 import {Row, Col} from 'react-bootstrap'
 import { useRouter } from 'next/router'
 import axios from '../../../../util/axios-base'
-import PanelAdmin from '../../../../layout/PanelAdmin/PanelAdmin'
 import MainAdmin from '../../../../layout/MainAdmin/MainAdmin'
 import NavbarAdmin from '../../../../layout/NavbarAdmin/NavbarAdmin'
 import HeaderAdmin from '../../../../layout/HeaderAdmin/HeaderAdmin'
+import Icon from '../../../../components/Icon/Icon'
+import AtvFisConsTable from '../../../../components/Tables/AtvFisConsTable'
 
 const index = ({data}) => {
     const router = useRouter()
@@ -18,21 +19,44 @@ const index = ({data}) => {
             {data && !data.message && 
                 <Fragment>
                     <Head>
-                        <meta name="description" content={`Codigo11 - ${router.query.fii.toUpperCase()}11 - Informações de ativos físicos do FII`} />
-                        <title>{`Codigo11: ${router.query.fii.toUpperCase()}11 - Ativos físicos do FII`}</title>
+                        <meta name="description" content={`Codigo11 - ${router.query.fii.toUpperCase()}11 - Informações de ativos consolidados do FII`} />
+                        <title>{`Codigo11: ${router.query.fii.toUpperCase()}11 - Ativos consolidados do FII`}</title>
                         {/* <script data-ad-client="ca-pub-8540652797620487" 
                             async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
                         </script> */}
                     </Head>
-                    <PanelAdmin 
+                    <MainAdmin
                         bgcolor={data.segmento.bgcolor}
                         fiiname={data.razao_social}
                         fiiticker={`${router.query.fii.toUpperCase()}11`}
                         icon={data.segmento.icon || "building"}
                         descricao={data.segmento.descricao}
-                    />
-                    <MainAdmin>
-                        main
+                        title="Ativos consolidados">
+                        <Fragment>
+                            <div className={`mb-3 card card-body`}>
+                                <div className="card-header bg-vicious-stance text-white">
+                                    <h4 className={`text-white text-uppercase`}>
+                                        <span className="font-number pr-2 mb-2">
+                                            <Icon icon="building"/>
+                                        </span>
+                                        Ativos físicos
+                                    </h4>
+                                </div>
+                                {data.AtvFis && data.AtvFis.length > 0 ?
+                                (
+                                    <Fragment>
+                                        <div className="card-body over">
+                                            <AtvFisConsTable ativos={data.AtvFis}/>
+                                        </div>
+                                    </Fragment>
+                                )
+                                : 
+                                <h4 className='text-center m-4'>
+                                    Este fundo não apresentou ativos físicos em seu último trimestre.
+                                </h4>
+                                }    
+                            </div>
+                        </Fragment>
                     </MainAdmin>
                 </Fragment>
                 || data && data.message &&
@@ -65,7 +89,7 @@ export const getServerSideProps = async (context) => {
     if(fii && fii.length==4){
         try{
             const response = await axios.get(
-                `/ativos/fin/${fii}`
+                `/ativos/con/${fii}`
             )
             return {
                 props: {
