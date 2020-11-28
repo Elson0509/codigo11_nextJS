@@ -2,3 +2,8 @@
     font-family: Verdana, Geneva, sans-serif;
     letter-spacing: 1px;
 }
+
+.Hr{
+    border-top: 10px solid white;
+    border-radius: 50%;
+}

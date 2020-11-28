@@ -1,11 +1,10 @@
 import classes from './AccordionAdmin.module.css';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Button, Card, Accordion } from 'react-bootstrap'; 
 import { faMoneyCheck, faCity, faChartArea, faChartPie, faCommentDollar } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const AccordionAdmin = (props) => {
-
     const MenuItems = [
         {
             name: "Perfil",
@@ -82,7 +81,7 @@ const AccordionAdmin = (props) => {
     ]
 
     return (
-        <div className={["col-md-3 mb-4", classes.Accordion].join(" ")}>
+        <div className={`col-md-3 mb-4 ${classes.Accordion}`}>
             <Accordion>
                 {
                     MenuItems.map((item, ind) => {

@@ -3,14 +3,53 @@ import {useState, useEffect, Fragment} from 'react';
 import {Row, Col} from 'react-bootstrap'
 import { useRouter } from 'next/router'
 import axios from '../../../../util/axios-base'
-import PanelAdmin from '../../../../layout/PanelAdmin/PanelAdmin'
 import MainAdmin from '../../../../layout/MainAdmin/MainAdmin'
 import NavbarAdmin from '../../../../layout/NavbarAdmin/NavbarAdmin'
 import HeaderAdmin from '../../../../layout/HeaderAdmin/HeaderAdmin'
+import DashedCard from '../../../../components/Cards/DashedCard'
+import GeneralCard from '../../../../components/Cards/GeneralCard'
+import AtvFinTable from '../../../../components/Tables/AtvFinTable'
+import ChartPieAtvFin from '../../../../components/Charts/ChartPieAtvFin'
 
 const index = ({data}) => {
     const router = useRouter()
     console.log(data)
+
+    const allEmpty = () => {
+        let find = true;
+        data.atvFin.forEach(element => {
+            if(element.ativos.length>0)
+                find = false;
+        });
+        return find;
+    }
+
+    const content = () => {
+        let count = 1;
+        return (
+            <Fragment>
+                {data.atvFin.map((atv, ind) => {
+                    return atv.ativos.length > 0 ?
+                    <div className={`mb-3 card card-body`} key={`atfin${ind}`}>
+                        <div className="card-header">
+                            <h4 className={`cart-title text-dark`}>{`${count++}. ${atv.descricao}`}</h4>
+                        </div>
+                        <div className="card-body over">
+                            <AtvFinTable ativos={atv.ativos}/>
+                            <GeneralCard title={`% - ${atv.descricao}`} titleStyle="text-center">
+                                <ChartPieAtvFin ativos={atv.ativos}/>
+                            </GeneralCard>
+                        </div>
+                        
+                    </div>
+                    :
+                    null
+                })}
+            </Fragment>
+        )
+    }
+
+
     return (
         <Fragment>
             <NavbarAdmin/>
@@ -19,20 +58,25 @@ const index = ({data}) => {
                 <Fragment>
                     <Head>
                         <meta name="description" content={`Codigo11 - ${router.query.fii.toUpperCase()}11 - Informações de ativos físicos do FII`} />
-                        <title>{`Codigo11: ${router.query.fii.toUpperCase()}11 - Ativos físicos do FII`}</title>
+                        <title>{`Codigo11: ${router.query.fii.toUpperCase()}11 - Ativos financeiros do FII`}</title>
                         {/* <script data-ad-client="ca-pub-8540652797620487" 
                             async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
                         </script> */}
                     </Head>
-                    <PanelAdmin 
+                    <MainAdmin
                         bgcolor={data.segmento.bgcolor}
                         fiiname={data.razao_social}
                         fiiticker={`${router.query.fii.toUpperCase()}11`}
                         icon={data.segmento.icon || "building"}
                         descricao={data.segmento.descricao}
-                    />
-                    <MainAdmin>
-                        main
+                        title="Ativos financeiros">
+                        {!allEmpty() &&
+                            <Fragment>
+                                {content()}
+                            </Fragment>
+                            ||
+                            <DashedCard icon="money-check-alt" message="Este fundo não possui ativos financeiros."/>
+                        }
                     </MainAdmin>
                 </Fragment>
                 || data && data.message &&

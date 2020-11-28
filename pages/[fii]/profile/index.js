@@ -3,7 +3,6 @@ import {useState, useEffect, Fragment} from 'react';
 import {Row, Col} from 'react-bootstrap'
 import { useRouter } from 'next/router'
 import axios from '../../../util/axios-base'
-import PanelAdmin from '../../../layout/PanelAdmin/PanelAdmin'
 import MainAdmin from '../../../layout/MainAdmin/MainAdmin'
 import NavbarAdmin from '../../../layout/NavbarAdmin/NavbarAdmin'
 import HeaderAdmin from '../../../layout/HeaderAdmin/HeaderAdmin'
@@ -12,7 +11,7 @@ import FavoritoButton from '../../../components/Buttons/FavoritoButton/FavoritoB
 import CardCotacao from '../../../components/Cards/CardCotacao'
 import CardCotacaoDetalhes from '../../../components/Cards/CardCotacaoDetalhes'
 import CardVolume from '../../../components/Cards/CardVolume'
-import CardNegocios from '../../../components/Cards/CardNegocios'
+//import CardNegocios from '../../../components/Cards/CardNegocios'
 import CardAdm from '../../../components/Cards/CardAdm'
 import CardLiquidez from '../../../components/Cards/CardLiquidez'
 import SingleCard from '../../../components/Cards/SingleCard'
@@ -123,15 +122,13 @@ const index = ({data}) => {
                             async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
                         </script> */}
                     </Head>
-                    <PanelAdmin 
+                    <MainAdmin
                         bgcolor={data.segmento.bgcolor}
                         fiiname={data.razao_social}
                         fiiticker={data.cotacao.cod_neg}
                         icon={data.segmento.icon || "building"}
-                        descricao={data.segmento.descricao}
-                    />
-                    <MainAdmin>
-                        <div className={`card ${data.segmento.bgcolor}`}>
+                        descricao={data.segmento.descricao}>
+                        <div className={`card slow-shadow ${data.segmento.bgcolor}`}>
                             <div className="card-header text-white">
                                 <div className={classes.Card_header_profile}>
                                     <div className={classes.Card_header_profile_title}>
@@ -164,15 +161,15 @@ const index = ({data}) => {
                             <Col lg="4" md="6" sm="12">
                                 <CardVolume cotacao={data.cotacao}/>
                             </Col>
-                            <Col lg="4" md="6" sm="12">
+                            {/* <Col lg="4" md="6" sm="12">
                                 <CardNegocios cotacao={data.cotacao}/>
-                            </Col>
+                            </Col> */}
                             {data.administrador_fii &&
-                            <Col lg="4" md="6" sm="12">
+                            <Col lg="6" md="12" sm="12">
                                 <CardAdm adm={data.administrador_fii}/>
                             </Col>}
                             {dadosAtvLiq() &&
-                            <Col lg="4" md="6" sm="12">
+                            <Col lg="6" md="12" sm="12">
                                 <CardLiquidez dados={dadosAtvLiq()}/>
                             </Col>}
                         </Row>
@@ -190,6 +187,19 @@ const index = ({data}) => {
                                     />
                                 </Col>
                             }
+                            {data && !isNaN(data.valor_tx_adm)  && 
+                                <Col md="6" xl="4">
+                                    <SingleCard 
+                                        icon="percentage"
+                                        bgIcon="malibu-beach" 
+                                        title="Taxa Adm / Patrimônio Líquido"   
+                                        text1={numberWithPercentual(data.tx_adm_pl)}
+                                        colorText1="danger"
+                                        text2={"Último mês: R$" + valueToRes(data.valor_tx_adm)}
+                                        colorText2="secondary"
+                                    />
+                                </Col>
+                            }
                             {data && !isNaN(data.dy_medio) && 
                                 <Col md="6" xl="4">
                                     <SingleCard 
@@ -200,6 +210,17 @@ const index = ({data}) => {
                                         colorText1="success"
                                         text2="12 meses"
                                         colorText2="secondary"
+                                    />
+                                </Col>
+                            }
+                            {data && !isNaN(data.cotistas_qtt) && 
+                                <Col md="6" xl="4">
+                                    <SingleCard 
+                                        icon="handshake"
+                                        bgIcon="primary" 
+                                        title="Quantidade de Negócios"   
+                                        text1={numberWithDots(data.cotacao.numero_negocios)}
+                                        colorText1="success"
                                     />
                                 </Col>
                             }
@@ -262,19 +283,7 @@ const index = ({data}) => {
                                     />
                                 </Col>
                             }
-                            {data && !isNaN(data.valor_tx_adm)  && 
-                                <Col md="6" xl="4">
-                                    <SingleCard 
-                                        icon="percentage"
-                                        bgIcon="malibu-beach" 
-                                        title="Taxa Adm / Patrimônio Líquido"   
-                                        text1={numberWithPercentual(data.tx_adm_pl)}
-                                        colorText1="danger"
-                                        text2={"Último mês: R$" + valueToRes(data.valor_tx_adm)}
-                                        colorText2="secondary"
-                                    />
-                                </Col>
-                            }
+                            
                             {data && !isNaN(data.custo_tx_por_cota_anual) && 
                                 <Col md="6" xl="4">
                                     <SingleCard 

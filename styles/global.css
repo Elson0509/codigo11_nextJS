@@ -116,3 +116,38 @@ box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     fill: #fff;
     stroke: #000;
 }
+
+.col-lg-1 {
+    flex-grow: 1;
+    transition: all 400ms ease;
+}
+  
+.col-lg-3 {
+    width: 0; 
+    flex-shrink: 1;
+    transition: all 400ms ease;
+}
+.col-lg-9 {
+    flex-grow: 1;
+    transition: all 400ms ease;
+}
+  
+.col-lg-12 {
+    width: 0; 
+    flex-shrink: 1;
+    transition: all 400ms ease;
+}
+
+@-webkit-keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+
+.panel-fade {
+    -webkit-animation: fadeIn 2s;
+    animation: fadeIn 2s;
+}
