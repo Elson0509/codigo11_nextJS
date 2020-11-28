@@ -8,6 +8,11 @@ import NavbarAdmin from '../../../../layout/NavbarAdmin/NavbarAdmin'
 import HeaderAdmin from '../../../../layout/HeaderAdmin/HeaderAdmin'
 import Icon from '../../../../components/Icon/Icon'
 import AtvFisConsTable from '../../../../components/Tables/AtvFisConsTable'
+import AtvFinConsTable from '../../../../components/Tables/AtvFinConsTable'
+import ChartDoughImovelConsArea from '../../../../components/Charts/ChartDoughImovelConsArea'
+import ChartDoughAtvFinCons from '../../../../components/Charts/ChartDoughAtvFinCons'
+import ChartPieImovelConsReceita from '../../../../components/Charts/ChartPieImovelConsReceita'
+import GeneralCard from '../../../../components/Cards/GeneralCard'
 
 const index = ({data}) => {
     const router = useRouter()
@@ -33,6 +38,7 @@ const index = ({data}) => {
                         descricao={data.segmento.descricao}
                         title="Ativos consolidados">
                         <Fragment>
+                            {/*Ativos Físicos*/}
                             <div className={`mb-3 card card-body`}>
                                 <div className="card-header bg-vicious-stance text-white">
                                     <h4 className={`text-white text-uppercase`}>
@@ -48,6 +54,18 @@ const index = ({data}) => {
                                         <div className="card-body over">
                                             <AtvFisConsTable ativos={data.AtvFis}/>
                                         </div>
+                                        <div className="row">
+                                            <div className="col-md-12 col-lg-6">
+                                                <GeneralCard title={`% - Área de Ativos físicos`} titleStyle="text-center">
+                                                    <ChartDoughImovelConsArea ativos={data.AtvFis}/>
+                                                </GeneralCard>
+                                            </div>
+                                            <div className="col-md-12 col-lg-6">
+                                                <GeneralCard title={`% - Receita de Ativos físicos`} titleStyle="text-center">
+                                                    <ChartPieImovelConsReceita ativos={data.AtvFis}/>
+                                                </GeneralCard>
+                                            </div>
+                                        </div>
                                     </Fragment>
                                 )
                                 : 
@@ -55,6 +73,39 @@ const index = ({data}) => {
                                     Este fundo não apresentou ativos físicos em seu último trimestre.
                                 </h4>
                                 }    
+                            </div>
+                            {/*Ativos Financeiros*/}
+                            <div className={`mb-3 card card-body`}>
+                                <div className="card-header bg-vicious-stance text-white">
+                                    <h4 className={`text-white text-uppercase`}>
+                                        <span className="font-number pr-2 mb-2">
+                                            <Icon icon="file-invoice-dollar"/>
+                                        </span>
+                                        Ativos financeiros
+                                    </h4>
+                                </div>
+                                {data.AtvFin && data.AtvFin.length > 0 ?
+                                    (
+                                        <Fragment>
+                                            <div className="card-body over">
+                                                <AtvFinConsTable ativos={data.AtvFin}/>
+                                            </div>
+                                            <div className="card-footer"/>
+                                                <div className="row">
+                                                    <div className="col-sm-12 col-lg-12">
+                                                        <GeneralCard title={`% - Valor de Ativos financeiros`} titleStyle="text-center">
+                                                            <ChartDoughAtvFinCons ativos={data.AtvFin}/>
+                                                        </GeneralCard>
+                                                    </div>
+                                                </div>
+                                            
+                                        </Fragment>   
+                                    )
+                                    : 
+                                    <h4 className='text-center m-4'>
+                                        Este fundo não apresentou ativos financeiros em seu último trimestre.
+                                    </h4>                                
+                                }
                             </div>
                         </Fragment>
                     </MainAdmin>

@@ -3,6 +3,7 @@ import {IntegerNumberBrazilian, IntegerAreaBrazilian, percentNumberBrazilian, eq
 import { Fragment } from 'react';
 import Icon from '../Icon/Icon'
 import {OverlayTrigger, Popover} from 'react-bootstrap';
+import classes from './Tables.module.css'
 
 const AtvFisConsTable = (props) => {
     const areaTotal = props.ativos.reduce((acc, curr)=> {
@@ -28,7 +29,7 @@ const AtvFisConsTable = (props) => {
     }
 
     const popoverObs = (
-        <Popover className={`popover-bg bg-warning`} >
+        <Popover className={`popover-bg bg-danger`} >
             <Popover.Title className="text-center">Observação</Popover.Title>
             <Popover.Content>
                 <p>Apesar do total ser maior que 100%, este é o valor reportado pelo FII em seus relatórios, cabendo aqui apenas sua reprodução.</p>
@@ -65,22 +66,22 @@ const AtvFisConsTable = (props) => {
                             <tr>
                                 <th scope="row" colSpan="3">Total</th>
                                 <td><OverlayTrigger trigger="click" placement="left" overlay={popover}>
-                                    <button className={`btn btn-link btn-no-outline`}>
+                                    <button className={`btn btn-link btn-no-outline ${classes.Icon_table}`}>
                                     <Icon icon="th-large"/>
                                     </button>
                                 </OverlayTrigger> {IntegerAreaBrazilian(areaTotal)}</td>
                                 <td>
-                                    {`${percentNumberBrazilian(recTotal, 2)} `}
                                     {
                                         recTotal > 100 &&
                                         <Fragment>
                                             <OverlayTrigger trigger="click" placement="left" overlay={popoverObs}>
-                                                <button className={`btn btn-link btn-no-outline`}>
+                                                <button className={`btn btn-link btn-no-outline ${classes.Icon_table}`}>
                                                 <Icon icon="question-circle"/>
                                                 </button>
                                             </OverlayTrigger>
                                         </Fragment>
                                     }
+                                    {`${percentNumberBrazilian(recTotal, 2)} `}
                                 </td>
                             </tr>                            
                         </Fragment>
