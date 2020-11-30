@@ -156,3 +156,7 @@ box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     margin-left: 10px;
     margin-right: 10px;
 }
+
+.width-99{
+    max-width: 99% !important;
+}

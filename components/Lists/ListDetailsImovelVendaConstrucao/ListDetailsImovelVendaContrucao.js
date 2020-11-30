@@ -79,7 +79,7 @@ const ListImovelVendaAcabado = (props) => {
             </li>
             {props.imovel.caracteristica && 
             <li className="list-group-item text-center">
-                <OverlayTrigger trigger="click" placement="left" overlay={popover}>
+                <OverlayTrigger trigger="click" placement="top" overlay={popover}>
                     <button className={`mb-2 mr-2 btn btn-${props.bgNumber}`}>Caracteríticas</button>
                 </OverlayTrigger>
             </li>}

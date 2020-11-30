@@ -3,7 +3,7 @@ import Icon from '../../components/Icon/Icon'
 import {Fragment} from 'react'
 const PanelAdmin = (props) => {
     return (
-        <section className={`container pt-2 my-2 slow-shadow ${props.bgcolor} panel-fade`}>
+        <section className={`container pt-2 my-2 slow-shadow ${props.bgcolor} panel-fade width-99`}>
             <h1 className={["h2 text-white text-center", classes.Panel_font].join(" ")}>
                 {props.fiiname}
             </h1>

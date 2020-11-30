@@ -76,9 +76,9 @@ const NavbarAdmin = () => {
                                 aria-label="Search"/>
                             <FontAwesomeIcon className="text-white search-icon-collapsed-menu" size="2x" icon={faSearch}/>
                         </div>
-                        <Dropdown isopen={dropdownOpen.toString()} toggle={() => setDropdownOpen(prev => !prev)}>
+                        <Dropdown drop='none' isopen={dropdownOpen.toString()} toggle={() => setDropdownOpen(prev => !prev)}>
                             <Dropdown.Toggle variant="" className="text-white btn-no-box-shadow" caret="true">
-                            <img className="rounded-circle" src="https://codigo11-com-br.umbler.net/profiles/user6.jpg" alt="img-user" width="40" height="40"/>
+                                <img className="rounded-circle" src="https://codigo11-com-br.umbler.net/profiles/user6.jpg" alt="img-user" width="40" height="40"/>
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
                                 <Dropdown.Item>Configuracões</Dropdown.Item>

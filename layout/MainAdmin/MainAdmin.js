@@ -8,7 +8,7 @@ const MainAdmin = (props) => {
     const [toggleMenu, setToggleMenu] = useState(false)
 
     return (
-        <main className="container">
+        <main className="container width-99">
             <div className="row">
                 <PanelAdmin 
                     bgcolor={props.bgcolor}

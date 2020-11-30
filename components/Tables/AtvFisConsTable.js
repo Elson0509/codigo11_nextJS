@@ -65,7 +65,7 @@ const AtvFisConsTable = (props) => {
                             {tableRows()}
                             <tr>
                                 <th scope="row" colSpan="3">Total</th>
-                                <td><OverlayTrigger trigger="click" placement="left" overlay={popover}>
+                                <td><OverlayTrigger trigger="click" placement="top" overlay={popover}>
                                     <button className={`btn btn-link btn-no-outline ${classes.Icon_table}`}>
                                     <Icon icon="th-large"/>
                                     </button>
@@ -74,7 +74,7 @@ const AtvFisConsTable = (props) => {
                                     {
                                         recTotal > 100 &&
                                         <Fragment>
-                                            <OverlayTrigger trigger="click" placement="left" overlay={popoverObs}>
+                                            <OverlayTrigger trigger="click" placement="top" overlay={popoverObs}>
                                                 <button className={`btn btn-link btn-no-outline ${classes.Icon_table}`}>
                                                 <Icon icon="question-circle"/>
                                                 </button>

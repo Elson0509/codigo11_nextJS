@@ -27,7 +27,7 @@ const ListDetailsImovelRendaAcabTotal = (props) => {
             <li className="list-group-item">
                 <span className="enfase">
                     Área Total: 
-                    <OverlayTrigger trigger="click" placement="left" overlay={popover}>
+                    <OverlayTrigger trigger="click" placement="top" overlay={popover}>
                     <button className={`btn btn-link btn-no-outline`}>
                         <Icon icon="th-large"/>
                         </button>
