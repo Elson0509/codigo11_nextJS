@@ -112,6 +112,12 @@ box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     width: 40px;
 }
 
+.enfase-title{
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
 .marker:hover {
     fill: #fff;
     stroke: #000;
@@ -160,3 +166,4 @@ box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 .width-99{
     max-width: 99% !important;
 }
+

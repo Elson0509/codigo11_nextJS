@@ -173,3 +173,12 @@ z-index: 12; }
     text-align: center;
     margin: 0 auto;
 }
+
+.Icon_card_segmento{
+    font-size: 6rem;
+    border: 3px solid white;
+    border-radius: 35px;
+    text-align: center;
+    margin: 45px 0;
+    padding: 16px;
+}
