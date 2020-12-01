@@ -6,12 +6,9 @@ import axios from '../../../../util/axios-base'
 import MainAdmin from '../../../../layout/MainAdmin/MainAdmin'
 import NavbarAdmin from '../../../../layout/NavbarAdmin/NavbarAdmin'
 import HeaderAdmin from '../../../../layout/HeaderAdmin/HeaderAdmin'
-import CardApresentacaoFii from '../../../../components/Cards/CardApresentacaoFii'
-import CardSegmento from '../../../../components/Cards/CardSegmento'
-import CardCotacaoFundamentos from '../../../../components/Cards/CardCotacaoFundamentos'
-import CardAtvFin from '../../../../components/Cards/CardAtvFin'
-import CardImoveis from '../../../../components/Cards/CardImoveis'
-import CardIndicadores from '../../../../components/Cards/CardIndicadores'
+import ChartProventos from '../../../../components/Charts/ChartProventos'
+import ChartDY from '../../../../components/Charts/ChartDY'
+import CardProventosExtended from '../../../../components/Cards/CardProventosExtended'
 
 const index = ({data}) => {
     const router = useRouter()
@@ -23,8 +20,8 @@ const index = ({data}) => {
             {data && !data.message && 
                 <Fragment>
                     <Head>
-                        <meta name="description" content={`Codigo11 - ${router.query.fii.toUpperCase()}11 - Tabela de informações com fundamentos do FII`} />
-                        <title>{`Codigo11: ${router.query.fii.toUpperCase()}11 - Tabelas de Fundamentos do FII`}</title>
+                        <meta name="description" content={`Codigo11 - ${router.query.fii.toUpperCase()}11 - Dados históricos de aluguéis e amortizações do FII`} />
+                        <title>{`Codigo11: ${router.query.fii.toUpperCase()}11 -  Aluguéis históricos do FII`}</title>
                         {/* <script data-ad-client="ca-pub-8540652797620487" 
                             async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
                         </script> */}
@@ -35,15 +32,25 @@ const index = ({data}) => {
                         fiiticker={`${router.query.fii.toUpperCase()}11`}
                         icon={data.segmento.icon || "building"}
                         descricao={data.segmento.descricao}
-                        title="Fundamentos">
-                        <Row>
-                            <CardApresentacaoFii apresentacao={data.apresentacao} bgcolor={data.segmento.color}/>
-                            <CardSegmento segmento={data.segmento}/>
-                            {data.cotacao.codneg && <CardCotacaoFundamentos cotacao={data.cotacao}  bgcolor={data.segmento.color}/>}
-                            <CardAtvFin atv_fin={data.atv_fin} bgcolor={data.segmento.color}/>
-                            <CardImoveis imoveis={data.imoveis}  bgcolor={data.segmento.color}/>
-                            <CardIndicadores indicadores={data.indicadores} bgcolor={data.segmento.color}/>
-                        </Row>
+                        title="Histórico de Aluguéis">
+                            {data.proventos.length===0 ? (
+                                    <div className="alert alert-info" role="alert">
+                                        Este FII ainda não possui informações suficientes para serem mostradas.
+                                    </div>)
+                                    :(
+                                    <Fragment>
+                                        <div className="mt-4">
+                                            <ChartProventos proventos={data.proventos} label="Aluguéis - R$"/>
+                                        </div>
+                                        <div className="mt-4">
+                                            <ChartDY proventos={data.proventos} label="DY - Histórico"/>
+                                        </div>
+                                        <div className="mt-4">
+                                            <CardProventosExtended proventos={data.proventos}/>
+                                        </div>
+                                    </Fragment>
+                                )
+                            }
                     </MainAdmin>
                 </Fragment>
                 || data && data.message &&
@@ -76,7 +83,7 @@ export const getServerSideProps = async (context) => {
     if(fii && fii.length==4){
         try{
             const response = await axios.get(
-                `/dados/fundamentos/${fii}`
+                `/dados/alugueis/${fii}`
             )
             return {
                 props: {

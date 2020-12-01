@@ -182,3 +182,9 @@ z-index: 12; }
     margin: 45px 0;
     padding: 16px;
 }
+
+.Card_header_proventos{
+    margin: 0 auto;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+}
