@@ -1,15 +1,20 @@
 import classes from './AccordionAdmin.module.css';
-import { useState } from 'react';
 import { Button, Card, Accordion } from 'react-bootstrap'; 
 import { faMoneyCheck, faCity, faChartArea, faChartPie, faCommentDollar } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 
-const AccordionAdmin = (props) => {
+const AccordionAdmin = () => {
+    const router = useRouter()
+    const fii = router.query.fii.toUpperCase()
+
     const MenuItems = [
         {
             name: "Perfil",
             icon: faMoneyCheck,
-            subItemns:[]
+            subItemns:[],
+            link: `${fii}/profile`
         },
         {
             name: "Ativos",
@@ -17,19 +22,19 @@ const AccordionAdmin = (props) => {
             subItemns:[
                 {
                     name: "Físicos",
-                    link: ""
+                    link: `${fii}/ativos/fisicos`
                 },
                 {
                     name: "Financeiros",
-                    link: ""
+                    link: `${fii}/ativos/financeiros`
                 },
                 {
                     name: "Consolidado",
-                    link: ""
+                    link: `${fii}/ativos/consolidado`
                 },
                 {
                     name: "Aquisições/Alienações",
-                    link: ""
+                    link: `${fii}/ativos/aquisicoes`
                 },
             ]
         },
@@ -38,20 +43,20 @@ const AccordionAdmin = (props) => {
             icon: faChartArea,
             subItemns:[
                 {
-                    name: "Fundamentus",
-                    link: ""
+                    name: "Fundamentos",
+                    link: `${fii}/dados/fundamentos`
                 },
                 {
                     name: "Aluguéis",
-                    link: ""
+                    link: `${fii}/dados/alugueis`
                 },
                 {
                     name: "Simulação de investimento",
-                    link: ""
+                    link: `${fii}/dados/simulacao`
                 },
                 {
                     name: "Cotações",
-                    link: ""
+                    link: `${fii}/dados/cotacoes`
                 },
             ]
         },
@@ -61,22 +66,23 @@ const AccordionAdmin = (props) => {
             subItemns:[
                 {
                     name: "Mensal",
-                    link: ""
+                    link: `${fii}/relatorios/mensal`
                 },
                 {
                     name: "Trimestral",
-                    link: ""
+                    link: `${fii}/relatorios/trimestral`
                 },
                 {
                     name: "Gerencial",
-                    link: ""
+                    link: `${fii}/relatorios/gerencial`
                 }
             ]
         },
         {
             name: "Discussão",
             icon: faCommentDollar,
-            subItemns:[]
+            subItemns:[],
+            link: `${fii}/discussao`
         },
     ]
 
@@ -88,10 +94,20 @@ const AccordionAdmin = (props) => {
                         return (
                         <Card key={ind}>
                             <Card.Header>
-                                <Accordion.Toggle as={Button} variant="link" eventKey={ind} className={["text-left btn-no-box-shadow no_text_decoration", classes.Item_Text].join(" ")}>
-                                    <FontAwesomeIcon size="lg" className="mr-2" icon={item.icon}/>
-                                        {item.name}
-                                </Accordion.Toggle>
+                                {
+                                    item.link &&
+                                    <Link href={`/${item.link}`}>
+                                        <a className={`text-left btn-no-box-shadow no_text_decoration ${classes.Item_Text} ${classes.Margin_padding}`}>
+                                            <FontAwesomeIcon size="lg" className="mr-2" icon={item.icon}/>
+                                            {item.name}
+                                        </a>
+                                    </Link>
+                                    ||
+                                    <Accordion.Toggle as={Button} variant="link" eventKey={ind} className={`text-left btn-no-box-shadow no_text_decoration ${classes.Item_Text} ${classes.Margin_padding}`}>
+                                        <FontAwesomeIcon size="lg" className="mr-2" icon={item.icon}/>
+                                            {item.name}
+                                    </Accordion.Toggle>
+                                }
                             </Card.Header>
                             <div className={classes.Submenu}>
                                 {item.subItemns.map((subItem, subind) => {
@@ -99,9 +115,9 @@ const AccordionAdmin = (props) => {
                                         <Accordion.Collapse eventKey={ind} key={`${ind}-${subind}`}>
                                             <div className={subind !== item.subItemns.length-1 && classes.Submenu_item_border_bottom || ""}>
                                                 <Card.Body>
-                                                    <Button variant="link" className="text-left btn-no-box-shadow no_text_decoration">
-                                                        {subItem.name}
-                                                    </Button>
+                                                    <Link href={subItem.link? `/${subItem.link}` : '#'}>
+                                                        <a className={`no_text_decoration`}>{subItem.name}</a>
+                                                    </Link>
                                                 </Card.Body>
                                             </div>
                                         </Accordion.Collapse>

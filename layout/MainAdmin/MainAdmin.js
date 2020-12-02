@@ -20,7 +20,7 @@ const MainAdmin = (props) => {
                     title={props.title}
                     toggle={() => {setToggleMenu(prev => !prev)}}
                 />
-                <AccordionAdmin toggleMenu={toggleMenu} setToggleMenu={() => setToggleMenu(prev=>!prev)}/>
+                <AccordionAdmin fii={props.fii} toggleMenu={toggleMenu} setToggleMenu={() => setToggleMenu(prev=>!prev)}/>
                 <MainPageAdmin toggleMenu={toggleMenu}>
                     {props.children}
                 </MainPageAdmin>
