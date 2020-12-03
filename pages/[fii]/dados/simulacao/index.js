@@ -277,22 +277,22 @@ const index = ({data}) => {
                                                 <ListSimulacaoPatrimonio simulacao={simulacao}/>
                                             </GeneralCard>
                                         </div>
-                                        <div className="col-12 mt-4">
+                                        <div className="col-12 my-2 py-2 bg-light">
                                             <ChartVerticalAportes aportes={simulacao.aportes_data} label='Aportes'/>
                                         </div>
-                                        <div className="col-12 mt-4">
+                                        <div className="col-12 my-2 py-2 bg-light">
                                             <ChartVerticalCotas eventos={simulacao.eventos} label='Quantidade de cotas'/>
                                         </div>
-                                        <div className="col-12 mt-4">
+                                        <div className="col-12 my-2 py-2 bg-light">
                                             <ChartLinePatrimonio eventos={simulacao.eventos} label='Evolução patrimonial'/>
                                         </div>
-                                        <div className="col-12 mt-4">
+                                        <div className="col-12 my-2 py-2 bg-light">
                                             <ChartLineBarProventos eventos={simulacao.eventos} label='Proventos Recebidos'/>
                                         </div>
-                                        <div className="col-12 mt-4">
+                                        <div className="col-12 my-2 py-2 bg-light">
                                             <ChartLinePrecoPrecoMedio eventos={simulacao.eventos} label='Preço x Preço Médio'/>
                                         </div>
-                                        <div className="col-12 mt-4">
+                                        <div className="col-12 my-2 py-2">
                                             <EventosTable eventos={simulacao.eventos}/>
                                         </div>
                                     </div>

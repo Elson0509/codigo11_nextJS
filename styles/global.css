@@ -167,3 +167,20 @@ box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     max-width: 99% !important;
 }
 
+.cottip{
+    padding: 15px;
+    color: white;
+}
+
+.cottip hr{
+    border: 2px solid white
+}
+
+.cothigh{
+    background-color: rgb(12, 151, 66);
+}
+
+.cotlow{
+    background-color: rgb(173, 39, 39);
+}
+
