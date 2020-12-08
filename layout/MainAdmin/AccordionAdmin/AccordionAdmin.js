@@ -87,7 +87,7 @@ const AccordionAdmin = () => {
     ]
 
     return (
-        <div className={`col-md-3 mb-4 ${classes.Accordion}`}>
+        <div className={`col-md-3 mb-4 col-xl-2 ${classes.Accordion}`}>
             <Accordion>
                 {
                     MenuItems.map((item, ind) => {
