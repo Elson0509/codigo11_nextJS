@@ -1,10 +1,27 @@
-import React from 'react';
-import { Dropdown } from 'react-bootstrap'; 
-import { useState, Fragment } from 'react';
+import { memo } from 'react';
 import classes from './HeaderAdmin.module.css'
+import Link from 'next/link'
 
 const HeaderAdmin = () => {
-    const [dropdownOpen, setDropdownOpen] = useState(false);
+
+    const menuItems = [
+        {
+            name: 'Dashboard',
+            link: '/dashboard'
+        },
+        {
+            name: 'Pesquisar',
+            link: '/pesquisar'
+        },
+        {
+            name: 'Lista de FIIs',
+            link: '/lista'
+        },
+        {
+            name: 'Eventos',
+            link: '/eventos'
+        },
+    ]
 
     return (
         <header className="bg-premium-dark p-2">
@@ -12,32 +29,27 @@ const HeaderAdmin = () => {
                 <div className="row">
                     <div className="col-12 hide-md">
                         <ul className="nav zero_auto">
-                            <li className="nav-item active">
-                                <a className={["nav-link m-2", classes.Header_item].join(" ")} href="index.html">Dashboard<span className="sr-only">(current)</span></a>
-                            </li>
-                            <li className="nav-item">
-                                <a className={["nav-link m-2", classes.Header_item].join(" ")} href="#">Pesquisar</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className={["nav-link m-2", classes.Header_item].join(" ")} href="#">Lista de FIIs</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className={["nav-link m-2", classes.Header_item].join(" ")} href="#">Eventos</a>
-                            </li>
+                            {
+                                menuItems.map((el, ind)=>(
+                                    <li className="nav-item active" key={ind}>
+                                        <Link href={el.link}>
+                                            <a className={["nav-link m-2", classes.Header_item].join(" ")}>{el.name}</a>
+                                        </Link>
+                                    </li>
+                                ))
+                            }
                         </ul>
                     </div>
-                    <div className="col-12 show-md">
-                        <Dropdown isopen={dropdownOpen.toString()} toggle={() => setDropdownOpen(prev => !prev)}>
-                            <Dropdown.Toggle variant="secondary" className="text-white btn-no-box-shadow" caret="true">
-                                Menu
-                            </Dropdown.Toggle>
-                            <Dropdown.Menu>
-                                <Dropdown.Item>Dashboard</Dropdown.Item>
-                                <Dropdown.Item>Pesquisar</Dropdown.Item>
-                                <Dropdown.Item>Lista de FIIs</Dropdown.Item>
-                                <Dropdown.Item>Eventos</Dropdown.Item>
-                            </Dropdown.Menu>
-                        </Dropdown>
+                    <div className="nav flex-column col-12 show-md">
+                        {
+                            menuItems.map((el, ind)=>(
+                                <li className="nav-item active" key={ind}>
+                                    <Link href={el.link}>
+                                        <a className={["nav-link m-2 text-center", classes.Header_item].join(" ")}>{el.name}</a>
+                                    </Link>
+                                </li>
+                            ))
+                        }
                     </div>
                 </div>
             </div>
@@ -45,4 +57,4 @@ const HeaderAdmin = () => {
     );
 };
 
-export default HeaderAdmin;
+export default memo(HeaderAdmin);
