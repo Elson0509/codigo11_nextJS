@@ -39,13 +39,15 @@ const index = ({data}) => {
                                     </div>)
                                     :(
                                     <Fragment>
-                                        <div className="mt-4">
+                                        <div className="my-2 py-4 bg-light">
+                                            <h3 className='h5 text-center'>Histórico de Aluguéis</h3>
                                             <ChartProventos proventos={data.proventos} label="Aluguéis - R$"/>
                                         </div>
-                                        <div className="mt-4">
-                                            <ChartDY proventos={data.proventos} label="DY - Histórico"/>
+                                        <div className="my-2 py-4 bg-light">
+                                            <h3 className='h5 text-center'>Yield Histórico</h3>
+                                            <ChartDY proventos={data.proventos} label="Yield Histórico"/>
                                         </div>
-                                        <div className="mt-4">
+                                        <div className="my-2">
                                             <CardProventosExtended proventos={data.proventos}/>
                                         </div>
                                     </Fragment>

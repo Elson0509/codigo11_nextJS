@@ -49,7 +49,7 @@ const ChartProventos = (props) => {
                     data: []
                 },
                 {
-                    label: "DY médio (móvel)",
+                    label: "Yield médio (móvel)",
                     backgroundColor:'rgba(40,148,250,0.9)',
                     borderColor:'rgba(40,148,250,0.9)',
                     data: [],

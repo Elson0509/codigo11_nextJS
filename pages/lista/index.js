@@ -1,6 +1,5 @@
 import Head from 'next/head'
-import {useState, useEffect, Fragment} from 'react';
-import {Row, Col} from 'react-bootstrap'
+import {Fragment} from 'react';
 import { useRouter } from 'next/router'
 import axios from '../../util/axios-base'
 import NavbarAdmin from '../../layout/NavbarAdmin/NavbarAdmin'
@@ -25,7 +24,7 @@ const index = ({data}) => {
                         </script> */}
                     </Head>
                     <div className="col-12 over">
-                        <GeneralCard title="Lista de Fundos Imobiliarios (FII)" titleStyle="text-center">
+                        <GeneralCard title="Lista de Fundos Imobiliários (FII)" titleStyle="text-center">
                             <SearchTable fiis={data}/>
                         </GeneralCard>
                     </div>
