@@ -1,0 +1,28 @@
+.LoginPanel{
+    background: white;
+    margin: 0 auto;
+    border-radius: 20px;
+    padding: 40px;
+}
+
+.LoginBack{
+    background: linear-gradient(135deg,#499bea,#0d3663);
+    background-size: cover;
+    height: 100vh;
+    padding-top: 15px;
+}
+
+@media only screen and (min-width: 600px) {
+    .LoginPanel{
+        width: 600px;
+    }
+}
+
+.Logo_login{
+    display: block;
+    margin-bottom: 20px;
+    width: 260px;
+    height: 80px;
+    background: url("/img/logo-preto.png");
+    background-size: 260px 80px;
+}
