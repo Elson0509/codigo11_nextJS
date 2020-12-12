@@ -46,7 +46,10 @@ import {
     faMeh, /*meh*/  
     faSort, /*sort*/
     faSortUp, /*sort-up*/ 
-    faSortDown, /*sort-down*/    
+    faSortDown, /*sort-down*/
+    faMugHot,/*mug-hot*/
+    faSun,/*sun*/
+    faMoon,/*moon*/
 } from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
@@ -95,8 +98,10 @@ library.add(
     faSort, 
     faSortUp, 
     faSortDown, 
+    faMugHot,
+    faSun,
+    faMoon,
 );
-
 
 const Icon = (props) => {
     return (

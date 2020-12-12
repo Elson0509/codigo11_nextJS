@@ -98,6 +98,27 @@ export const saudacaoHorario = () => {
 	return 'Bom Dia'
 }
 
+export const IconHorario = () => {
+ 	const stamp = new Date();
+     const hours = stamp.getHours();
+     if (hours>=0 && hours<6) {
+        return "moon";
+    }
+    
+    if (hours>=6 && hours<12) {
+        return "mug-hot";
+    }
+
+    if (hours>=12 && hours<18) {
+        return "sun";
+    }
+
+ 	if (hours>=18 && hours<24) {
+ 		return "moon";
+ 	}     
+	return 'sun'
+}
+
 export const removerAcentos = ( myString ) => {
     let string = myString;
     const mapaAcentosHex 	= {
