@@ -1,13 +1,49 @@
 import { faSearch, } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useState, Fragment } from 'react';
+import { useState, Fragment, useEffect } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { Dropdown } from 'react-bootstrap'; 
 import AnimatedEllipsisButton from '../../components/Buttons/AnimatedEllipsisButton/AnimatedEllipsisButton'
+import Link from 'next/link'
+import {userId, imgUrl, getUser} from '../../util/UserFunctions'
+import jwt_decode from 'jwt-decode'
 
 const NavbarAdmin = () => {
     const [dropdownEllipsis, setDropdownEllipsis] = useState(false);
+    const [idUser, setIdUser] = useState(0);
+    const [user, setUser] = useState({});
 
+    function imageExists(image_url){
+        var http = new XMLHttpRequest();
+        http.open('HEAD', image_url, false);
+        http.send();
+        return http.status != 404;
+    }
+
+    useEffect(()=> {
+        setIdUser(userId())
+        const token = localStorage.userToken
+        if(!!token){
+            const decoded = jwt_decode(token)
+            getUser(decoded.uid, token).then(res => {
+                setUser({
+                    username: res.data.username,
+                    email: res.data.email
+                })
+            })
+        }
+    },[])
+
+    const imgUser = (size=50) => {
+        return imageExists(imgUrl(idUser)) &&
+        <img className="rounded-circle" src={imgUrl(idUser)} alt="img-user" width={size} height={size}/>
+        ||
+        <div className="letter-user text-center text-dark bg-light">
+            {username.trim().toUpperCase().charAt(0) || 'U'}
+        </div>
+    }
+
+    
     return (
         <nav className="navbar navbar-expand-sm navbar-default bg-arielle-smile">
             <span></span>
@@ -48,15 +84,24 @@ const NavbarAdmin = () => {
                         </div>
                     </li>
                     <li className="nav-item">
-                        <Dropdown >
-                            <Dropdown.Toggle variant="" className="text-white btn-no-box-shadow" caret="true">
-                            <img className="rounded-circle" src="https://codigo11-com-br.umbler.net/profiles/user6.jpg" alt="img-user" width="50" height="50"/>
-                            </Dropdown.Toggle>
-                            <Dropdown.Menu>
-                                <Dropdown.Item>Configuracões</Dropdown.Item>
-                                <Dropdown.Item>Logout</Dropdown.Item>
-                            </Dropdown.Menu>
-                        </Dropdown>
+                        {
+                            idUser && 
+                            <Dropdown>
+                                <Dropdown.Toggle variant="" className="text-white btn-no-box-shadow" caret="true">
+                                    {
+                                      imgUser()
+                                    }
+                                </Dropdown.Toggle>
+                                <Dropdown.Menu>
+                                    <Dropdown.Item>Configuracões</Dropdown.Item>
+                                    <Dropdown.Item>Logout</Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
+                            ||
+                            <Link href={`/login`}>
+                                <a className="btn btn-primary mt-3 ml-2" role="button">Login</a>
+                            </Link>
+                        }
                     </li>
                 </ul>
             </div>
@@ -77,7 +122,9 @@ const NavbarAdmin = () => {
                         </div>
                         <Dropdown drop='none'>
                             <Dropdown.Toggle variant="" className="text-white btn-no-box-shadow" caret="true">
-                                <img className="rounded-circle" src="https://codigo11-com-br.umbler.net/profiles/user6.jpg" alt="img-user" width="40" height="40"/>
+                                {
+                                    imgUser(40)
+                                }
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
                                 <Dropdown.Item>Configuracões</Dropdown.Item>

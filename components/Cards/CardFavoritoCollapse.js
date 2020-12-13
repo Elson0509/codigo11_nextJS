@@ -61,7 +61,7 @@ const CardFavoritoCollapse = (props) => {
                                         {props.favorito.cotacao && <ListGroupItem tag="button" action><span className="enfase">Valor de mercado: </span>R$ {valueToRes(props.favorito.cotacao * props.favorito.cotas_emitidas)}</ListGroupItem>}
                                         <ListGroupItem action>
                                             <Link href={`/${props.favorito.codigo}/profile`}>
-                                                <a class="btn btn-primary btn-block" role="button">VER PERFIL</a>
+                                                <a className="btn btn-primary btn-block" role="button">VER PERFIL</a>
                                             </Link>
                                         </ListGroupItem>
                                     </ListGroup>

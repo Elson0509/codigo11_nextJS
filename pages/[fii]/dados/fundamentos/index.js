@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import {useState, useEffect, Fragment} from 'react';
+import {Fragment} from 'react';
 import {Row, Col} from 'react-bootstrap'
 import { useRouter } from 'next/router'
 import axios from '../../../../util/axios-base'
