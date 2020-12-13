@@ -24,37 +24,25 @@ const index = ({data}) => {
                             async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
                         </script> */}
                     </Head>
-                    <div className="row">
-                        <div className="col-12">
-                            <GeneralCard title='Emissões' comentary='Emissões de novas cotas de fundos imobiliários'>
-                                <EventosPageTable eventos={data.rel_emissao}/>
-                            </GeneralCard>
-                        </div>
-                        <div className="col-12">
-                            <GeneralCard title='Fatos Relevantes' comentary='Informações aos cotistas e ao mercado sobre fatos relevantes'>
-                                <EventosPageTable eventos={data.rel_fato}/>
-                            </GeneralCard>
-                        </div>
-                        <div className="col-12">
-                            <GeneralCard title='Relatórios Gerenciais' comentary='Relatórios gerenciais recém divulgados'>
-                                <EventosPageTable eventos={data.rel_gerencial}/>
-                            </GeneralCard>
-                        </div>
-                        <div className="col-12">
-                            <GeneralCard title='Relatórios Trimestrais' comentary='Relatórios trimestrais recém divulgados'>
-                                <EventosPageTable eventos={data.rel_trimestral}/>
-                            </GeneralCard>
-                        </div>
-                        <div className="col-12">
-                            <GeneralCard title='Informativos Mensais' comentary='informativos mensais recém divulgados'>
-                                <EventosPageTable eventos={data.rel_mensal}/>
-                            </GeneralCard>
-                        </div>
-                        <div className="col-12">
-                            <GeneralCard title='Aluguéis e Amortizações' comentary='Relatório de proventos recém anunciados'>
-                                <EventosPageTable eventos={data.rel_rendimentos}/>
-                            </GeneralCard>
-                        </div>
+                    <div>
+                        <GeneralCard title='Emissões' comentary='Emissões de novas cotas de fundos imobiliários'>
+                            <EventosPageTable eventos={data.rel_emissao}/>
+                        </GeneralCard>
+                        <GeneralCard title='Fatos Relevantes' comentary='Informações aos cotistas e ao mercado sobre fatos relevantes'>
+                            <EventosPageTable eventos={data.rel_fato}/>
+                        </GeneralCard>
+                        <GeneralCard title='Relatórios Gerenciais' comentary='Relatórios gerenciais recém divulgados'>
+                            <EventosPageTable eventos={data.rel_gerencial}/>
+                        </GeneralCard>
+                        <GeneralCard title='Relatórios Trimestrais' comentary='Relatórios trimestrais recém divulgados'>
+                            <EventosPageTable eventos={data.rel_trimestral}/>
+                        </GeneralCard>
+                        <GeneralCard title='Informativos Mensais' comentary='informativos mensais recém divulgados'>
+                            <EventosPageTable eventos={data.rel_mensal}/>
+                        </GeneralCard>
+                        <GeneralCard title='Aluguéis e Amortizações' comentary='Relatório de proventos recém anunciados'>
+                            <EventosPageTable eventos={data.rel_rendimentos}/>
+                        </GeneralCard>
                     </div>
                 </Fragment>
                 || data && data.message &&

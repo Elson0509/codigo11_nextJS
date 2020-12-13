@@ -1,8 +1,7 @@
 import {useState, useEffect, Fragment} from 'react';
 import axios from '../../util/axios-base';
 import Icon from '../../components/Icon/Icon'
-//import CardQuotation from '../../../components/Cards/CardQuotation'
-//import CardFavoritoCollapse from '../../../components/Cards/CardFavoritoCollapse'
+import CardFavoritoCollapse from '../../components/Cards/CardFavoritoCollapse'
 import {userId} from '../../util/UserFunctions'
 import {saudacaoHorario, IconHorario} from '../../util/Utilities'
 import Loading from '../../components/Loading/Spinner'
@@ -69,7 +68,25 @@ const Index = () => {
                             </span>
                         </p>
                     </GeneralCard>
-                    <CardQuotation frase={dados.frase}/>
+                    <div className="col-12">
+                        <CardQuotation frase={dados.frase}/>
+                    </div>
+                    {dados.favoritos.length > 0 ?
+                         <GeneralCard>
+                            <div className="row">
+                                {dados.favoritos.map((el, ind) => {
+                                    return <div className="col-xl-3 col-lg-4 col-md-6 col-sm-12" key={`fav${ind}`}>
+                                                <CardFavoritoCollapse favorito={el}/>
+                                            </div>
+                                })}
+                            </div>
+                        </GeneralCard>
+                    :
+                    <div className="text-center no-favs mt-4 mb-4 slow-shadow">
+                        <Icon icon="meh"/>
+                        <p>Você ainda não está seguindo nenhum fundo.</p>
+                    </div>
+                    }
                 </Fragment>
             }
             

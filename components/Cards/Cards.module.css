@@ -66,7 +66,9 @@ z-index: 12; }
 .Widget_chart:hover .Widget_chart_actions .btn-link,
 .Widget_content:hover .Widget_chart_actions .btn-link {
     opacity: 1; }
-
+.Widget_chart_content {
+    position: relative;
+    z-index: 5; }
 .Icon_wrapper {
     display: flex;
     align-content: center;
@@ -188,7 +190,45 @@ z-index: 12; }
     font-size: 1.5rem;
     letter-spacing: 2px;
 }
+/****** CardFavoritoCollapse******/
+.Dialog_enter {
+    opacity: 0.01;
+    transform: scale(0.5);
+}
+  
+.Dialog_enter_active {
+    opacity: 1;
+    transform: scale(1);
+    transition: all 500ms;
+}
+  
+.Dialog_exit {
+    opacity: 1;
+    transform: scale(1);
+}
+  
+.Dialog_exit_active {
+    opacity: 0.01;
+    transform: scale(0.3);
+    transition: all 500ms;
+}
 
+.Card_fav_collapse{
+    display: flex;
+    justify-content: flex-start;
+    position: relative;  
+}
+
+.Text_card_fav{
+    flex: 0 1 auto;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.Icon_right{
+    margin-left: auto;
+}
 /******Card quotation *******/
 .Quote_card {
     background: #fff;

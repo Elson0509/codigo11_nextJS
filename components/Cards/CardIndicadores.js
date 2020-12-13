@@ -6,7 +6,7 @@ const CardIndicadores = (props) => {
     return (
         <div className="col-12">
             <div className="card mb-3">
-                <div className="card-body">
+                <div className="card-body slow-shadow">
                     <ul className="list-group">
                         <li className={`list-group-item active bg-${props.bgcolor} text-center`}>
                             <span className="enfase-title">

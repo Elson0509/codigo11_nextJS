@@ -7,7 +7,7 @@ const CardSegmento = (props) => {
         props.segmento &&
         <div className="col-12 col-lg-6 col-xl-3">
             <div className={`card text-white mb-3 bg-${props.segmento.color}`}>
-                <div className="card-body">
+                <div className="card-body slow-shadow">
                     <h4 className="card_header text-center">Segmento</h4>
                     <div className={classes.Icon_card_segmento}>
                         <Icon icon={props.segmento.icon}/>
