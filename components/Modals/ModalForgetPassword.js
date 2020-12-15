@@ -6,7 +6,6 @@ import * as Yup from 'yup'
 import Spinner from '../Loading/Spinner'
 
 const ModalForgetPassword = (props) => {
-
     const [errorMessage, setErrorMessage] = useState('')
     const [successMessage, setSuccessMessage] = useState('')
     const [buttonSuccessText, setButtonSuccessText] = useState('Confirmar')

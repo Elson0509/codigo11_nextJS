@@ -8,11 +8,13 @@ import Link from 'next/link'
 import {userId, imgUrl, getUser} from '../../util/UserFunctions'
 import jwt_decode from 'jwt-decode'
 import classes from './NavbarAdmin.module.css'
+import ModalConfiguration from '../../components/Modals/ModalConfiguration'
 
 const NavbarAdmin = () => {
     const [dropdownEllipsis, setDropdownEllipsis] = useState(false);
     const [idUser, setIdUser] = useState(0);
     const [user, setUser] = useState(null);
+    const [modal, setModal] = useState(false)
 
     const imageExists = image_url => {
         var http = new XMLHttpRequest();
@@ -77,6 +79,7 @@ const NavbarAdmin = () => {
 
             <div className="collapse navbar-collapse">
                 <ul className="navbar-nav mr-auto"> 
+                    <ModalConfiguration modal={modal} toggle={() => setModal(prev=> !prev)}/>
                 </ul>
                 <ul className="nav navbar-nav hide-sm navbar-right">
                     <li className="nav-item ">
@@ -98,7 +101,7 @@ const NavbarAdmin = () => {
                                     }
                                 </Dropdown.Toggle>
                                 <Dropdown.Menu>
-                                    <Dropdown.Item>Configuracões</Dropdown.Item>
+                                    <Dropdown.Item onClick={() => setModal(true)}>Configuracões</Dropdown.Item>
                                     <Dropdown.Item onClick={() => logout()}>Logout</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
@@ -132,8 +135,8 @@ const NavbarAdmin = () => {
                                 }
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
-                                <Dropdown.Item>Configuracões</Dropdown.Item>
-                                <Dropdown.Item>Logout</Dropdown.Item>
+                                <Dropdown.Item onClick={() => setModal(true)}>Configuracões</Dropdown.Item>
+                                <Dropdown.Item onClick={() => logout()}>Logout</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
                     </div>
