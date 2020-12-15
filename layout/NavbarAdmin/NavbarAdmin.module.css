@@ -1,0 +1,8 @@
+.Letter_user{
+    display: inline-block;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    font-size: 1.6rem;
+    font-weight: 600;
+}

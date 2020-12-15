@@ -12,6 +12,7 @@ import HeaderAdmin from '../../layout/HeaderAdmin/HeaderAdmin'
 import GeneralCard from '../../components/Cards/GeneralCard'
 import classes from './dashboard.module.css'
 import CardQuotation from '../../components/Cards/CardQuotation'
+import DashedCard from '../../components/Cards/DashedCard'
 
 const Index = () => {
     const [dados, setDados] = useState()
@@ -82,9 +83,8 @@ const Index = () => {
                             </div>
                         </GeneralCard>
                     :
-                    <div className="text-center no-favs mt-4 mb-4 slow-shadow">
-                        <Icon icon="meh"/>
-                        <p>Você ainda não está seguindo nenhum fundo.</p>
+                    <div className="col-12">
+                        <DashedCard icon="meh" message="Você ainda não está seguindo nenhum fundo."/>
                     </div>
                     }
                 </Fragment>

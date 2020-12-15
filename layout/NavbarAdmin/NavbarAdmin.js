@@ -7,17 +7,23 @@ import AnimatedEllipsisButton from '../../components/Buttons/AnimatedEllipsisBut
 import Link from 'next/link'
 import {userId, imgUrl, getUser} from '../../util/UserFunctions'
 import jwt_decode from 'jwt-decode'
+import classes from './NavbarAdmin.module.css'
 
 const NavbarAdmin = () => {
     const [dropdownEllipsis, setDropdownEllipsis] = useState(false);
     const [idUser, setIdUser] = useState(0);
-    const [user, setUser] = useState({});
+    const [user, setUser] = useState(null);
 
-    function imageExists(image_url){
+    const imageExists = image_url => {
         var http = new XMLHttpRequest();
         http.open('HEAD', image_url, false);
         http.send();
         return http.status != 404;
+    }
+
+    const logout = (e) => {
+        localStorage.removeItem('userToken')
+        window.location.reload()
     }
 
     useEffect(()=> {
@@ -38,11 +44,10 @@ const NavbarAdmin = () => {
         return imageExists(imgUrl(idUser)) &&
         <img className="rounded-circle" src={imgUrl(idUser)} alt="img-user" width={size} height={size}/>
         ||
-        <div className="letter-user text-center text-dark bg-light">
-            {username.trim().toUpperCase().charAt(0) || 'U'}
+        user && <div className={`${classes.Letter_user} text-center text-dark bg-light`}>
+            {user.username.trim().toUpperCase().charAt(0) || 'U'}
         </div>
     }
-
     
     return (
         <nav className="navbar navbar-expand-sm navbar-default bg-arielle-smile">
@@ -94,7 +99,7 @@ const NavbarAdmin = () => {
                                 </Dropdown.Toggle>
                                 <Dropdown.Menu>
                                     <Dropdown.Item>Configuracões</Dropdown.Item>
-                                    <Dropdown.Item>Logout</Dropdown.Item>
+                                    <Dropdown.Item onClick={() => logout()}>Logout</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
                             ||
