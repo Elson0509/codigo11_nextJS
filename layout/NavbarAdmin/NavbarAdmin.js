@@ -9,6 +9,7 @@ import {userId, imgUrl, getUser} from '../../util/UserFunctions'
 import jwt_decode from 'jwt-decode'
 import classes from './NavbarAdmin.module.css'
 import ModalConfiguration from '../../components/Modals/ModalConfiguration'
+import LoginButton from '../../components/Buttons/LoginButton/LoginButton'
 
 const NavbarAdmin = () => {
     const [dropdownEllipsis, setDropdownEllipsis] = useState(false);
@@ -91,7 +92,7 @@ const NavbarAdmin = () => {
                                 <FontAwesomeIcon className="text-white search-icon" size="2x" icon={faSearch}/>
                         </div>
                     </li>
-                    <li className="nav-item">
+                    <span className={`nav-item`}>
                         {
                             idUser && 
                             <Dropdown>
@@ -106,11 +107,12 @@ const NavbarAdmin = () => {
                                 </Dropdown.Menu>
                             </Dropdown>
                             ||
-                            <Link href={`/login`}>
-                                <a className="btn btn-primary mt-3 ml-2" role="button">Login</a>
-                            </Link>
+                            <LoginButton link='/login' nameLink='Login'/>
+                            // <Link href={`}>
+                            //     <a className="btn btn-primary mt-3 ml-2" role="button">Login</a>
+                            // </Link>
                         }
-                    </li>
+                    </span>
                 </ul>
             </div>
             <CSSTransition
@@ -128,6 +130,7 @@ const NavbarAdmin = () => {
                                 aria-label="Search"/>
                             <FontAwesomeIcon className="text-white search-icon-collapsed-menu" size="2x" icon={faSearch}/>
                         </div>
+                        {idUser &&
                         <Dropdown drop='none'>
                             <Dropdown.Toggle variant="" className="text-white btn-no-box-shadow" caret="true">
                                 {
@@ -139,6 +142,9 @@ const NavbarAdmin = () => {
                                 <Dropdown.Item onClick={() => logout()}>Logout</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
+                        ||
+                        <LoginButton link='/login' nameLink='Login'/>
+                        }
                     </div>
                 }
                 </Fragment>

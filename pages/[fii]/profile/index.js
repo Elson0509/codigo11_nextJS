@@ -24,12 +24,15 @@ import {numberWithVirgula,
         numberToMoney} from '../../../util/Utilities'
 import classes from './profile.module.css'
 import { ToastContainer, toast } from 'react-toastify';
+import jwt_decode from 'jwt-decode'
 
 const index = ({data}) => {
     const router = useRouter()
     const [notaCommunity, setNotaCommunity] = useState(0)
     const [notaUser, setNotaUser] = useState(0)
     const [favorito, setFavorito] = useState(false)
+
+    const fii = router.query.fii.toUpperCase()
 
     const configToast = {
         position: "bottom-center",
@@ -61,40 +64,36 @@ const index = ({data}) => {
     }, [])
 
     const changeRating = (newRating, name) => {
-        setNotaUser(newRating)
-        if(newRating==5)
-                 toast.warn(`Nota ${newRating} registrada. Você gosta mesmo desse fundo!`, configToast);
-             else
-                 toast.warn(`Nota ${newRating} registrada. Obrigado!`, configToast);
         const token = localStorage.userToken
-        // if(!!token && !!jwt_decode(token)){
-        //     setNotaUser(newRating)
-        //     if(newRating==5)
-        //         toast.warn(`Nota ${newRating} registrada. Você gosta mesmo desse fundo!`, configToast);
-        //     else
-        //         toast.warn(`Nota ${newRating} registrada. Obrigado!`, configToast);
-        //     const decode = jwt_decode(token)
-        //     axios.post(`/notas/update`, {
-        //         id: decode.uid,
-        //         fii,
-        //         nota: newRating,
-        //         token
-        //     })
-        // }
-        // else{
-        //     //toast.error(`Essa nota só tem efeito se você estiver logado :(`, configToast);
-        // }
+        if(!!token && !!jwt_decode(token)){
+            setNotaUser(newRating)
+            if(newRating==5)
+                toast.warn(`Nota ${newRating} registrada. Você gosta mesmo desse fundo!`, configToast);
+            else
+                toast.warn(`Nota ${newRating} registrada. Obrigado!`, configToast);
+            const decode = jwt_decode(token)
+            axios.post(`/notas/update`, {
+                id: decode.uid,
+                fii,
+                nota: newRating,
+                token
+            })
+        }
+        else{
+            toast.error(`Essa nota só tem efeito se você estiver logado :(`, configToast);
+        }
     }
 
     const favoritoHandler = () => {
         const token = localStorage.userToken
+        
         if(!!token && !!jwt_decode(token)){
             let newFav = !favorito
             setFavorito(newFav)
             if(newFav)
-                toast.info(`Você agora está seguindo ${cotacao.cod_neg} e passará a receber e-mails sempre que houver alguma novidade!`, configToast);
+                toast.info(`Você agora está seguindo ${fii} e passará a receber e-mails sempre que houver alguma novidade!`, configToast);
             else
-                toast.error(`Você não está mais seguindo ${cotacao.cod_neg} :(`, configToast);
+                toast.error(`Você não está mais seguindo ${fii} :(`, configToast);
             const decode = jwt_decode(token)
             axios.post(`/favoritos/update`, {
                 id: decode.uid,
@@ -107,6 +106,40 @@ const index = ({data}) => {
             toast.error('Você precisa estar logado para seguir esse FII.');
         }
     }
+
+    useEffect(() => {
+        const token = localStorage.userToken
+        if(!!token){
+            const decoded = jwt_decode(token)
+            if(!!decoded){
+                axios.get(`favoritos/${decoded.uid}/${fii}`)
+                    .then(res => {
+                        setFavorito(res.data.favorito)
+                    })
+                    .catch(err => {
+                        setFavorito(false)
+                    })
+            }
+        }
+    }, [])
+
+    useEffect(() => {
+        const token = localStorage.userToken
+        if(!!token && !!jwt_decode(token)){
+            const decode = jwt_decode(token)
+            axios.get(`/notas/${fii}/${decode.uid}`, {
+                params: {
+                    token
+                }
+            })
+            .then(res => {
+                setNotaUser(res.data.nota)
+            })
+            .catch(err => {
+                setNotaUser(0)
+            })
+        }
+    }, [])
 
     return (
         <Fragment>
