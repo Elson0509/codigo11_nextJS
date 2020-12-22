@@ -56,6 +56,7 @@ const index = ({data}) => {
 
 export const getServerSideProps = async (context) => {
     try{
+        /*https://codigo11-com-br.umbler.net/fii/search?search=&selectAvancada=false&selectDY=false&selectSegmento=false&selectQtdNegocios=false&selectPL=false&selectPVP=false&selectVPC=false&selectAtvFis=false&selectGestao=false&dyChange=%3E%3D&dy=0&segmento[]=2&negociosChange=%3E%3D&negocios=10&plChange=%3E%3D&gestao=0&pl=100000000&pvpChange=%3E%3D&pvp=1&vpcChange=%3E%3D&vpc=50&atvFisChange=%3E%3D&atvFis=2*/
         const response = await axios.get('/fii/search', {
             params: {
                 search: '',

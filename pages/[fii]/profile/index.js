@@ -150,7 +150,7 @@ const index = ({data}) => {
                 <Fragment>
                     <Head>
                         <meta name="description" content={`Codigo11 - ${router.query.fii.toUpperCase()}11 - Perfil e informações gerais relevantes do Fundo imobiliário`} />
-                        <title>{`Codigo11: ${data.cotacao.cod_neg} - Perfil de FII`}</title>
+                        <title>{`Codigo11: ${data.cotacao?.cod_neg || `${router.query.fii.toUpperCase()}11`} - Perfil de FII`}</title>
                         {/* <script data-ad-client="ca-pub-8540652797620487" 
                             async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
                         </script> */}
@@ -158,7 +158,7 @@ const index = ({data}) => {
                     <MainAdmin
                         bgcolor={data.segmento.bgcolor}
                         fiiname={data.razao_social}
-                        fiiticker={data.cotacao.cod_neg}
+                        fiiticker={`${data.cotacao?.cod_neg || `${router.query.fii.toUpperCase()}11`}`}
                         icon={data.segmento.icon || "building"}
                         descricao={data.segmento.descricao}>
                         <div className={`card slow-shadow ${data.segmento.bgcolor}`}>
@@ -173,7 +173,7 @@ const index = ({data}) => {
                             <div className="card-body">
                                 <ProfileTitleList 
                                     segmento={data.segmento} 
-                                    codigo={data.cotacao.cod_neg}
+                                    codigo={`${data.cotacao?.cod_neg || `${router.query.fii.toUpperCase()}11`}`}
                                     cnpj={data.cnpj}
                                     site={data.site}
                                     data_func={data.data_func}
@@ -185,15 +185,19 @@ const index = ({data}) => {
                             </div>
                         </div>
                         <Row className="mt-2">
-                            <Col lg="4" md="6" sm="12">
-                                <CardCotacao cotacao={data.cotacao}/>
-                            </Col>
-                            <Col lg="4" md="6" sm="12">
-                                <CardCotacaoDetalhes cotacao={data.cotacao}/>
-                            </Col>
-                            <Col lg="4" md="6" sm="12">
-                                <CardVolume cotacao={data.cotacao}/>
-                            </Col>
+                            {data.cotacao &&
+                            <Fragment>
+                                <Col lg="4" md="6" sm="12">
+                                    <CardCotacao cotacao={data.cotacao}/>
+                                </Col>
+                                <Col lg="4" md="6" sm="12">
+                                    <CardCotacaoDetalhes cotacao={data.cotacao}/>
+                                </Col>
+                                <Col lg="4" md="6" sm="12">
+                                    <CardVolume cotacao={data.cotacao}/>
+                                </Col>
+                            </Fragment>
+                            }
                             {/* <Col lg="4" md="6" sm="12">
                                 <CardNegocios cotacao={data.cotacao}/>
                             </Col> */}
@@ -246,7 +250,7 @@ const index = ({data}) => {
                                     />
                                 </Col>
                             }
-                            {data && !isNaN(data.cotistas_qtt) && 
+                            {data.cotacao && !isNaN(data.cotacao.numero_negocios) && 
                                 <Col md="6" xl="4">
                                     <SingleCard 
                                         icon="handshake"

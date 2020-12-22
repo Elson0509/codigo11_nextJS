@@ -295,6 +295,11 @@ const index = ({data}) => {
                                         <div className="col-12 my-2 py-2">
                                             <EventosTable eventos={simulacao.eventos}/>
                                         </div>
+                                        {/* <div className="col-12 my-2 py-2">
+                                            <h3>Conclusão (investimento em {data.codneg})</h3>
+                                            <p>Durante o período simulado, foi aportado um total de R${simulacao.aportes_data.reduce((acc, cur) => acc + cur.valor)},00.</p>
+                                            <p>Foram adquiridas um total de {simulacao.eventos[simulacao.eventos.length-1].qtd_total} cotas. Considerando que cada uma tinha o preço final de {simulacao.eventos[simulacao.eventos.length-1].preco_cota}.</p>
+                                        </div> */}
                                     </div>
                                 </Fragment>
                             }

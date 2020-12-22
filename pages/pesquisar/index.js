@@ -14,6 +14,7 @@ import {
 } from 'react-bootstrap';
 import CheckBoxGestao from '../../components/Buttons/CheckBoxGestao/CheckBoxGestao'
 import LoadingAdvancedSearch from '../../components/Loading/LoadingAdvancedSearch'
+import Icon from '../../components/Icon/Icon'
 
 const index = ({data}) => {
     const [result, setResult] = useState()
@@ -135,11 +136,15 @@ const index = ({data}) => {
                                 />
                                 {!selectAvancada &&
                                     <div>
-                                        <button className="border-0 btn btn-outline-dark btn-sm btn-no-box-shadow btn-no-outline" onClick={() => setSelectAvancada(prev => !prev)}>Pesquisa Detalhada</button>
+                                        <button className="border-0 btn btn-outline-dark btn-sm btn-no-box-shadow btn-no-outline" onClick={() => setSelectAvancada(prev => !prev)}>
+                                            Pesquisa Detalhada <Icon icon='caret-right'/>
+                                        </button>
                                     </div>
                                     ||
                                     <div>
-                                        <button className="border-0 btn btn-dark btn-sm btn-no-box-shadow btn-no-outline" onClick={() => setSelectAvancada(prev => !prev)}>Pesquisa Detalhada</button>
+                                        <button className="border-0 btn btn-dark btn-sm btn-no-box-shadow btn-no-outline" onClick={() => setSelectAvancada(prev => !prev)}>
+                                            Pesquisa Detalhada <Icon icon='caret-down'/>
+                                        </button>
                                     </div>
                                 }
                                 {selectAvancada &&

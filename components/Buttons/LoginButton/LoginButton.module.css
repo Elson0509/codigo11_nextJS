@@ -11,7 +11,7 @@
     letter-spacing: 1px;
     min-width: 50px;
     vertical-align: middle;
-    text-decoration: none !important;
+    text-decoration: none;
     line-height: 75px;
 }
 
@@ -20,4 +20,12 @@
     transition: all 0.8s;
     box-shadow: 0px 6px 15px #2FA4E7;
     color: #46AEF7;
+}
+
+@media (max-width: 575px) {
+    .Login_btn:hover {
+        background: none;
+        box-shadow: none;
+        color: #46AEF7;
+    }
 }

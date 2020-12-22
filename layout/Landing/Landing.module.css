@@ -1,0 +1,144 @@
+.Logo_login{
+    display: block;
+    width: 260px;
+    height: 80px;
+    background: url("/img/logo-preto.png");
+    margin-left: 0 auto;
+    background-size: 260px 80px;
+}
+
+.Bg_theme_color{
+    background: #46AEF7;
+}
+
+.Logo_landing{
+    width: 180px;
+    height: 45px;
+    background: url("/img/logo-branco.png");
+    background-size: 180px 45px;
+}
+
+.Loading_search_landing{
+    position: absolute;
+    border-style: solid;
+    background-color: #ccc;
+    top: 100%;
+    width: 93%;
+    z-index: 99;
+    border-radius: 0 0 15px 15px;
+}
+
+.Bg_light_landing{
+    background-color: #f8f9fa !important;
+}
+
+.Term{
+    max-height: 500px;
+    overflow: scroll;
+    text-align: justify;
+}
+
+.Masthead {
+	position: relative;
+	background-color: #343a40;
+	background-size: cover;
+	padding-top: 8rem;
+	padding-bottom: 8rem
+}
+
+.Masthead .Overlay {
+	position: absolute;
+	background-color: #212529;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	opacity: .3
+}
+
+.Masthead h1 {
+	font-size: 3rem
+}
+
+@media (min-width:768px) {
+	.Masthead {
+		padding-top: 8rem;
+		padding-bottom: 8rem
+	}
+	.Masthead h1 {
+		font-size: 3rem
+	}
+}
+
+.Showcase .Showcase_text {
+	padding: 3rem
+}
+
+.Showcase .Showcase_img {
+	min-height: 30rem;
+	background-size: cover
+}
+
+@media (min-width:768px) {
+	.Showcase .Showcase_text {
+		padding: 7rem
+	}
+}
+
+.Features_icons {
+	padding-top: 7rem;
+	padding-bottom: 7rem
+}
+
+.Features_icons .Features_icons_item {
+	max-width: 20rem
+}
+
+.Features_icons .Features_icons_item .Features_icons_icon {
+	height: 7rem
+}
+
+.Features_icons .Features_icons_item .Features_icons_icon i {
+	font-size: 4.5rem
+}
+
+.Features_icons .Features_icons_item:hover .Features_icons_icon i {
+	font-size: 5rem
+}
+
+.Testimonials {
+	padding-top: 7rem;
+	padding-bottom: 7rem
+}
+
+.Testimonials .Testimonial_item {
+	max-width: 18rem
+}
+
+.Testimonials .Testimonial_item img {
+	max-width: 12rem;
+	box-shadow: 0 5px 5px 0 #adb5bd
+}
+
+.Call_to_action {
+	position: relative;
+	background-color: #343a40;
+	background-size: cover;
+	padding-top: 7rem;
+	padding-bottom: 7rem
+}
+
+.Call_to_action .Overlay {
+	position: absolute;
+	background-color: #212529;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	opacity: .3
+}
+
+.Footer {
+	padding-top: 4rem;
+	padding-bottom: 4rem
+}
