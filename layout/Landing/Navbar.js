@@ -7,7 +7,9 @@ const Navbar = () => {
             <div className="container">
                 <div className={`navbar-brand ${classes.Logo_landing}`}/>
                 <span>
-                    <LoginButton link='/login?aba=1' nameLink='Criar Conta'/>
+                    <span className={classes.Criar_btn}>
+                        <LoginButton link='/login?aba=1' nameLink='Criar Conta'/>
+                    </span>
                     <LoginButton link='/login' nameLink='Entrar'/>
                 </span>
             </div>

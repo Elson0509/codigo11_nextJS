@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
-import ModalTermos from '../../../components/Modals/ModalTermos'
-import ModalPrivacidade from '../../../components/Modals/ModalPrivacidade'
+import {memo, useState} from 'react';
+import ModalTermos from '../../components/Modals/ModalTermos'
+import ModalPrivacidade from '../../components/Modals/ModalPrivacidade'
 import classes from './Landing.module.css'
 
 import {
@@ -15,7 +15,7 @@ const Footer = () => {
     const [modalPrivacidade, setModalPrivacidade] = useState(false)
 
     return (
-        <footer className="footer bg-light">
+        <footer className={`${classes.Footer} bg-light`}>
             <ModalTermos modal={modalTermos} toggle={()=> setModalTermos(prev=>!prev)}/>
             <ModalPrivacidade modal={modalPrivacidade} toggle={()=> setModalPrivacidade(prev=>!prev)}/>
             <div className="container">
@@ -31,11 +31,11 @@ const Footer = () => {
                         </li>
                         <li className="list-inline-item">&sdot;</li>
                         <li className="list-inline-item">
-                            <a className="link "onClick={()=> setModalTermos(prev=>!prev)}>Termos de Uso</a>
+                            <a className="link" onClick={()=> setModalTermos(prev=>!prev)}>Termos de Uso</a>
                         </li>
                         <li className="list-inline-item">&sdot;</li>
                         <li className="list-inline-item">
-                            <a className="link "onClick={()=> setModalPrivacidade(prev=>!prev)}>Política de privacidade</a>
+                            <a className="link" onClick={()=> setModalPrivacidade(prev=>!prev)}>Política de privacidade</a>
                         </li>
                     </ul>
                     <p className="text-muted small mb-4 mb-lg-0">&copy; Codigo11 2020. Todos os direitos reservados.</p>
@@ -49,7 +49,7 @@ const Footer = () => {
                             </li>
                             <li className="list-inline-item mr-3">
                                 <a href="https://twitter.com/Codigo114" target="_blank" rel="noopener noreferrer">
-                                <FontAwesomeIcon icon={faTwitter} size="2x"/>
+                                    <FontAwesomeIcon icon={faTwitter} size="2x"/>
                                 </a>
                             </li>
                         </ul>
@@ -60,4 +60,4 @@ const Footer = () => {
     );
 };
 
-export default Footer;
+export default memo(Footer);

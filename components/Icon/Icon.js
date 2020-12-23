@@ -52,6 +52,8 @@ import {
     faMoon,/*moon*/
     faCaretRight, /*caret-right*/
     faCaretDown, /*caret-down*/
+    faSearchDollar, /*search-dollar*/
+    faCommentsDollar, /*comments-dollar*/
 } from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
@@ -105,6 +107,8 @@ library.add(
     faMoon,
     faCaretRight,
     faCaretDown,
+    faSearchDollar,
+    faCommentsDollar
 );
 
 const Icon = (props) => {

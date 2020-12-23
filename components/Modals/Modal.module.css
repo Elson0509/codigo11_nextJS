@@ -21,3 +21,9 @@
     height: 100%;
     object-fit: cover;
 }
+
+.Term{
+    max-height: 500px;
+    overflow: scroll;
+    text-align: justify;
+}

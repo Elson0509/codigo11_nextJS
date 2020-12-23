@@ -11,6 +11,20 @@
     background: #46AEF7;
 }
 
+.Color_theme{
+    color: #46AEF7;
+}
+
+.Criar_btn{
+    margin-right: 1em;
+}
+
+@media (max-width: 500px) {
+    .Criar_btn{
+        display: none;
+    }
+}
+
 .Logo_landing{
     width: 180px;
     height: 45px;
@@ -58,6 +72,18 @@
 
 .Masthead h1 {
 	font-size: 3rem
+}
+
+.Glass{
+    animation: square-path 5s linear infinite;
+}
+
+@keyframes square-path{
+    25%  { transform: translate(-50%);}
+    50% { transform: translate(-40%, 40%);}
+    75% { transform: translate(0, 30%);}
+    100% { transform: translate(0, 0);}
+
 }
 
 @media (min-width:768px) {
@@ -141,4 +167,33 @@
 .Footer {
 	padding-top: 4rem;
 	padding-bottom: 4rem
+}
+
+.Lead {
+	font-size: 1.25rem;
+	font-weight: 300; 
+}
+
+.No_gutters {
+	margin-right: 0;
+	margin-left: 0; }
+	.no-gutters > .col,
+	.no-gutters > [class*="col-"] {
+	  padding-right: 0;
+	  padding-left: 0; 
+}
+
+.Font_Animated_Section{
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	letter-spacing: 1px;
+	text-decoration: underline;
+	text-decoration-color: transparent;
+	-webkit-text-decoration-color: transparent;
+ 	-moz-text-decoration-color: transparent;
+	transition: .5s;
+}
+.Font_Animated_Section:hover{
+	text-decoration-color: black;
+	-webkit-text-decoration-color: black;
+	-moz-text-decoration-color: black;
 }

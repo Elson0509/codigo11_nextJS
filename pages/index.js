@@ -8,6 +8,11 @@ import SpinnerSearch from '../components/Loading/SpinnerSearch'
 import ListSearch from '../components/Lists/ListSearch/ListSearch'
 import axios from '../util/axios-base'
 import {removerAcentos} from '../util/Utilities'
+import IconsGrid from '../layout/Landing/IconsGrid'
+import ImageShowcases from '../layout/Landing/ImageShowcases'
+import Signup from '../layout/Landing/Signup'
+import Footer from '../layout/Landing/Footer'
+import AnimatedSection from '../layout/Landing/AnimatedSection'
 
 export default function Home() {
   const [search, setSearch] = useState('')
@@ -93,7 +98,18 @@ export default function Home() {
           </div>
         </div>
       </header>
+
+      <AnimatedSection/>
+
+      <IconsGrid/>
       
+      <ImageShowcases/>
+
+      {/* <Testemonials/> */}
+
+      <Signup/>
+
+      <Footer/>
 
     </div>
   )
