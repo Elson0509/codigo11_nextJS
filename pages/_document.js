@@ -5,10 +5,10 @@ class MyDocument extends Document {
   render() {
     return (
         <Html lang="pt-br">
-        <Head/>
+        <Head crossOrigin="anonymous"/>
         <body>
           <Main />
-          <NextScript/>
+          <NextScript crossOrigin="anonymous"/>
         </body>
       </Html>
     )

@@ -16,7 +16,9 @@ const CardIndicadores = (props) => {
                                 Indicadores
                             </span>
                         </li>
-                        <IndicadoresTable indicadores={props.indicadores} bgcolor={props.bgcolor}/>
+                        <li style={{listStyleType:'none'}}> 
+                            <IndicadoresTable indicadores={props.indicadores} bgcolor={props.bgcolor}/>
+                        </li>
                     </ul>
                 </div>
             </div>

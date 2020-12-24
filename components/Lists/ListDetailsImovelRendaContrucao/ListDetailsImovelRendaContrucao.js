@@ -30,7 +30,7 @@ const ListImovelRendaAcabado = (props) => {
                 {props.imovel.nome}
             </li>}
             {props.imovel.endereco && <li className="list-group-item">
-                <span className="enfase">Endereço: <a target="_blank" rel="noopener noreferrer" href={getLinkMapFromEndereco(props.imovel.endereco)}><Icon icon="map-marked-alt"/></a> </span>
+                <span className="enfase">Endereço: <a target="_blank" rel="noopener noreferrer" aria-label="Abrir endereço no Google Maps" href={getLinkMapFromEndereco(props.imovel.endereco)}><Icon icon="map-marked-alt"/></a> </span>
                 {props.imovel.endereco}
             </li>}
             {typeof (props.imovel.area) != "undefined"  && <li className="list-group-item">

@@ -27,7 +27,7 @@ const Post = (props) => {
                 <p className={classes.Profile_member}>{revertData(props.user.created_at)}</p>
             </div>
             <div className={classes.Panel_body}>
-                <h6>Postado em {revertCompleteData(props.post.created_at)}</h6>
+                <small>Postado em {revertCompleteData(props.post.created_at)}</small>
                 <p>{props.post.comment}</p>
             </div>
         </div>

@@ -8,6 +8,7 @@ const PostEditor = (props) => {
                     className={`form-control ${classes.Post_editor_input}`} 
                     rows="8" 
                     value={props.comment} 
+                    aria-label="Comente aqui"
                     placeholder="Comente aqui :)"
                     onChange={props.changed}
                 />

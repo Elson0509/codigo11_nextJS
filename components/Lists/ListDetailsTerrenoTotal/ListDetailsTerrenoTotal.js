@@ -43,8 +43,8 @@ const ListDetailsTerrenoTotal = (props) => {
                 <span className="enfase">
                     Área Total: 
                     <OverlayTrigger trigger="click" placement="top" overlay={popover}>
-                    <button className={`btn btn-link btn-no-outline`}>
-                        <Icon icon="th-large"/>
+                        <button aria-label="Área Total" className={`btn btn-link btn-no-outline`}>
+                            <Icon icon="th-large"/>
                         </button>
                     </OverlayTrigger>
                 </span>

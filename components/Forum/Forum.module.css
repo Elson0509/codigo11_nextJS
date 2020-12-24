@@ -82,9 +82,12 @@
     background-color: white;
 }
 
-.Panel_body h6{
-    margin-top: -4px;
+.Panel_body small{
+    display: block;
+    margin-top: -6px;
+    margin-bottom: 4px;
     font-size: 0.7em;
+    font-weight: 500;
     border-bottom: 1px dashed #ccc;
 }
 

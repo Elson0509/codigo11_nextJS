@@ -1,6 +1,7 @@
 import {memo} from 'react';
 import ImoveisTable from '../Tables/ImoveisTable'
 import Icon from '../Icon/Icon'
+import classes from './Cards.module.css'
 
 const CardImoveis = (props) => {
     return (
@@ -16,7 +17,9 @@ const CardImoveis = (props) => {
                                 Imóveis
                             </span>
                         </li>
-                        <ImoveisTable imoveis={props.imoveis} bgcolor={props.bgcolor}/>
+                        <li style={{listStyleType:'none'}}> 
+                            <ImoveisTable imoveis={props.imoveis} bgcolor={props.bgcolor}/>
+                        </li>
                     </ul>
                 </div>
             </div>
