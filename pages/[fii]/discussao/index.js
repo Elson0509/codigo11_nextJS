@@ -8,7 +8,6 @@ import NavbarAdmin from '../../../layout/NavbarAdmin/NavbarAdmin'
 import HeaderAdmin from '../../../layout/HeaderAdmin/HeaderAdmin'
 import Forum from '../../../components/Forum/Forum'
 import Tabs from 'react-responsive-tabs'
-import 'react-responsive-tabs/styles.css'
 
 const index = ({data}) => {
     const fii=data.codigo

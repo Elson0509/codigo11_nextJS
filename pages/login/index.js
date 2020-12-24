@@ -5,7 +5,6 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import LoginForm from '../../components/Forms/LoginForm/LoginForm'
 import SignupForm from '../../components/Forms/SignupForm/SignupForm'
-import 'react-responsive-tabs/styles.css'
 import ModalForgetPassword from '../../components/Modals/ModalForgetPassword'
 import classes from './Login.module.css'
 
