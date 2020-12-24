@@ -49,8 +49,6 @@ const index = ({data}) => {
                !data.venda_construcao.length
     }
 
-    console.log(data)
-    console.log('noImoVeis', noImoVeis())
     return (
         <Fragment>
             <NavbarAdmin/>

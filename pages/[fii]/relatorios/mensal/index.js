@@ -32,7 +32,6 @@ const index = ({data}) => {
         valor: el.pat_liq / el.cotas_qtt
     }))
 
-    console.log(data)
     return (
         <Fragment>
             <NavbarAdmin/>

@@ -15,7 +15,7 @@ import CardIndicadores from '../../../../components/Cards/CardIndicadores'
 
 const index = ({data}) => {
     const router = useRouter()
-    console.log(data)
+
     return (
         <Fragment>
             <NavbarAdmin/>

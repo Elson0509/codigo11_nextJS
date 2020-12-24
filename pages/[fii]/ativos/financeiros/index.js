@@ -13,7 +13,6 @@ import ChartPieAtvFin from '../../../../components/Charts/ChartPieAtvFin'
 
 const index = ({data}) => {
     const router = useRouter()
-    console.log(data)
 
     const allEmpty = () => {
         let find = true;

@@ -11,7 +11,7 @@ import CardProventosExtended from '../../../../components/Cards/CardProventosExt
 
 const index = ({data}) => {
     const router = useRouter()
-    console.log(data)
+
     return (
         <Fragment>
             <NavbarAdmin/>

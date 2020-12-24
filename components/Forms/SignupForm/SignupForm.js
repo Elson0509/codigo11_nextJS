@@ -23,7 +23,6 @@ const SignupForm = (props) => {
             password2: ''
         },
         onSubmit: values => {
-            console.log('values', values)
             if(buttonText==='CRIAR'){
                 setButtonText('CRIANDO...')
                 Axios.post('/register', values)
@@ -32,7 +31,6 @@ const SignupForm = (props) => {
                         setButtonText('CONTA CRIADA!')
                     })
                     .catch(err => {
-                        console.log(err.response)
                         setErrorMessage(err.response?.data?.error?.message?.message || 'Desculpe, mas um erro ocorreu.')
                         setButtonText('CRIAR')
                     })

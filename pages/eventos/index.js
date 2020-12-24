@@ -10,7 +10,6 @@ import EventosPageTable from '../../components/Tables/EventosPageTable'
 
 const index = ({data}) => {
     const router = useRouter()
-    console.log(data)
     return (
         <Fragment>
             <NavbarAdmin/>

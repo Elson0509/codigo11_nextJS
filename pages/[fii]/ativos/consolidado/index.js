@@ -16,7 +16,6 @@ import GeneralCard from '../../../../components/Cards/GeneralCard'
 
 const index = ({data}) => {
     const router = useRouter()
-    console.log(data)
     return (
         <Fragment>
             <NavbarAdmin/>

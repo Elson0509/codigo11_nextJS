@@ -56,7 +56,7 @@ const NavbarAdmin = () => {
         <nav className="navbar navbar-expand-sm navbar-default bg-arielle-smile">
             <span></span>
             <span>
-                <img src="/img/logo-alone.png" height="55" className="mr-2"/>
+                <img src="/img/logo-alone.png" height="55" className="mr-2" alt="logo codigo11"/>
                 <svg className="logo" viewBox="0 0 356.401 75.001" xmlns="http://www.w3.org/2000/svg">
                     <g 
                         strokeLinecap="round" 

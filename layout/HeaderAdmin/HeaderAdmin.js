@@ -41,6 +41,7 @@ const HeaderAdmin = () => {
                         </ul>
                     </div>
                     <div className="nav flex-column col-12 show-md">
+                        <ul>
                         {
                             menuItems.map((el, ind)=>(
                                 <li className="nav-item active" key={ind}>
@@ -50,6 +51,7 @@ const HeaderAdmin = () => {
                                 </li>
                             ))
                         }
+                        </ul>
                     </div>
                 </div>
             </div>

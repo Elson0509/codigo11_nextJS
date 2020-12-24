@@ -91,7 +91,7 @@ const index = ({data}) => {
                 corretagem
                 })
                 .then(res => {
-                    console.log(res.data)
+
                     setSpinner(false)
                     setErrorMessage('')
                     setSimulacao(res.data)
@@ -103,7 +103,7 @@ const index = ({data}) => {
         }
     }
 
-    console.log(data)
+
     return (
         <Fragment>
             <NavbarAdmin/>

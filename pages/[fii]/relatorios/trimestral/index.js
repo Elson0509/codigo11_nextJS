@@ -20,7 +20,6 @@ const index = ({data}) => {
         })
     )
 
-    console.log(data)
     return (
         <Fragment>
             <NavbarAdmin/>

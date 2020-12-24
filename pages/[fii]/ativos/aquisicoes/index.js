@@ -10,7 +10,6 @@ import TimelineOperations from '../../../../components/Timelines/TimelineOperati
 
 const index = ({data}) => {
     const router = useRouter()
-    console.log(data)
     return (
         <Fragment>
             <NavbarAdmin/>

@@ -33,7 +33,6 @@ const Index = () => {
                 .then(res => {
                     setLoading(false)
                     setDados(res.data)
-                    console.log(res.data)
                 })
                 .catch(err => {
                     setLoading(false)

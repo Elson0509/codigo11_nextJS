@@ -9,7 +9,6 @@ import SearchTable from '../../components/Tables/SearchTable'
 
 const index = ({data}) => {
     const router = useRouter()
-    console.log(data)
     return (
         <Fragment>
             <NavbarAdmin/>
