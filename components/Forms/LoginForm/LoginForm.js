@@ -40,7 +40,7 @@ const LoginForm = (props) => {
             <div>
                 <form onSubmit={formik.handleSubmit}>
                     <div className="form-group">
-                        <label>Email</label>
+                        <label htmlFor="email">Email</label>
                         <input type="email" 
                             name="email" 
                             className="form-control" 
@@ -53,7 +53,7 @@ const LoginForm = (props) => {
                         </div>}
                     </div>
                     <div className="form-group">
-                        <label>Senha</label>
+                        <label htmlFor="password">Senha</label>
                         <input 
                             type="password" 
                             name="password" 

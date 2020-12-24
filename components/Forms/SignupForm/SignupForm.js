@@ -43,7 +43,7 @@ const SignupForm = (props) => {
         <div>
             <form onSubmit={formik.handleSubmit}>
                 <div className="form-group">
-                    <label>Apelido</label>
+                    <label htmlFor="username">Apelido</label>
                     <input 
                         type="text" 
                         name='username' 
@@ -58,7 +58,7 @@ const SignupForm = (props) => {
                     </div>}
                 </div>
                 <div className="form-group">
-                    <label>Email</label>
+                    <label htmlFor="email">Email</label>
                     <input 
                         type="email" 
                         name='email' 
@@ -73,7 +73,7 @@ const SignupForm = (props) => {
                     </div>}
                 </div>
                 <div className="form-group">
-                    <label>Senha</label>
+                    <label htmlFor="password">Senha</label>
                     <input 
                         type="password" 
                         name='password' 
@@ -86,7 +86,7 @@ const SignupForm = (props) => {
                     </div>}
                 </div>
                 <div className="form-group">
-                    <label>Repita a Senha</label>
+                    <label htmlFor="password2">Repita a Senha</label>
                     <input 
                         type="password" 
                         name='password2' 

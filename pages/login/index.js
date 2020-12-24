@@ -47,7 +47,7 @@ const index = () => {
                     async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
                 </script> */}
             </Head>
-            <div className={classes.LoginBack}>
+            <header className={classes.LoginBack}>
                 <ModalForgetPassword modal={modal} toggle={() => setModal(prev=> !prev)}/>
                 <div className={classes.LoginPanel}>
                     <Link href='/'>
@@ -61,7 +61,7 @@ const index = () => {
                         showInkBar={true} 
                         items={getTabs()}/>
                 </div>
-            </div>
+            </header>
         </Fragment>
     );
 };
