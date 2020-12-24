@@ -10,6 +10,7 @@ import jwt_decode from 'jwt-decode'
 import classes from './NavbarAdmin.module.css'
 import ModalConfiguration from '../../components/Modals/ModalConfiguration'
 import LoginButton from '../../components/Buttons/LoginButton/LoginButton'
+import SearchBox from './SearchBox/SearchBox'
 
 const NavbarAdmin = () => {
     const [dropdownEllipsis, setDropdownEllipsis] = useState(false);
@@ -84,22 +85,14 @@ const NavbarAdmin = () => {
                 </ul>
                 <ul className="nav navbar-nav hide-sm navbar-right">
                     <li className="nav-item ">
-                        <div className="mt-2 navbar-collapse">
-                            <input className="search-input" 
-                                type="text" 
-                                placeholder="Código, nome ou segmento..." 
-                                aria-label="Search"/>
-                                <FontAwesomeIcon className="text-white search-icon" size="2x" icon={faSearch}/>
-                        </div>
+                        <SearchBox/>
                     </li>
                     <span className={`nav-item`}>
                         {
                             idUser && 
                             <Dropdown>
                                 <Dropdown.Toggle variant="" className="text-white btn-no-box-shadow" caret="true">
-                                    {
-                                      imgUser()
-                                    }
+                                    {imgUser()}
                                 </Dropdown.Toggle>
                                 <Dropdown.Menu>
                                     <Dropdown.Item onClick={() => setModal(true)}>Configuracões</Dropdown.Item>
@@ -108,9 +101,6 @@ const NavbarAdmin = () => {
                             </Dropdown>
                             ||
                             <LoginButton link='/login' nameLink='Login'/>
-                            // <Link href={`}>
-                            //     <a className="btn btn-primary mt-3 ml-2" role="button">Login</a>
-                            // </Link>
                         }
                     </span>
                 </ul>
@@ -123,19 +113,11 @@ const NavbarAdmin = () => {
                     <Fragment>
                 {dropdownEllipsis && 
                     <div className="collapsed-menu bg-dark">
-                        <div className="search-collapsed-menu bg-premium-dark">
-                            <input className="search-input-collapsed-menu" 
-                                type="text" 
-                                placeholder="Código, nome ou segmento..." 
-                                aria-label="Search"/>
-                            <FontAwesomeIcon className="text-white search-icon-collapsed-menu" size="2x" icon={faSearch}/>
-                        </div>
+                        <SearchBox collapsed/>
                         {idUser &&
                         <Dropdown drop='none'>
                             <Dropdown.Toggle variant="" className="text-white btn-no-box-shadow" caret="true">
-                                {
-                                    imgUser(40)
-                                }
+                                {imgUser(40)}
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
                                 <Dropdown.Item onClick={() => setModal(true)}>Configuracões</Dropdown.Item>

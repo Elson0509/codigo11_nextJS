@@ -1,0 +1,19 @@
+.Loading_search{
+    position: absolute;
+    border-style: solid;
+    border-color: rgb(80, 179, 209);
+    background-color: rgb(80, 179, 209);
+    top: 70%;
+    width: 245px;
+    z-index: 99;
+    border-radius: 0 0 15px 15px;
+}
+
+@media (max-width: 575px) {
+    .Loading_search{
+        top: 85%;
+        left: 21px;
+        border-color: black;
+        background-color: rgb(73, 71, 71);
+    }
+}

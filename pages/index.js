@@ -90,7 +90,7 @@ export default function Home() {
                     onChange={(ev)=> setSearch(ev.target.value)}
                   />
                   {loading && <div className={classes.Loading_search_landing}><SpinnerSearch/></div>}
-                  {display && result && result.length > 0 && <ListSearch result={result} isLanding/>}
+                  {display && result && result.length > 0 && <ListSearch isLanding result={result} isLanding/>}
                   {display && result && result.length === 0 && <div className={`${classes.Loading_search} text-white`}>Sem resultado...</div>}
                 </div>
               </form>

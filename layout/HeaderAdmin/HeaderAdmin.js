@@ -41,7 +41,7 @@ const HeaderAdmin = () => {
                         </ul>
                     </div>
                     <div className="nav flex-column col-12 show-md">
-                        <ul>
+                        <ul style={{listStyleType:'none'}}>
                         {
                             menuItems.map((el, ind)=>(
                                 <li className="nav-item active" key={ind}>
