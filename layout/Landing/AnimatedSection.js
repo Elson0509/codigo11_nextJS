@@ -4,7 +4,7 @@ import classes from './Landing.module.css'
 const AnimatedSection = () => {
     return (
         <section className="text-center py-5">
-            <svg width="33%" height="auto" viewBox="0 0 800 487" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="33%" viewBox="0 0 800 487" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g id="undraw_house_searching_n8mp 1" clipPath="url(#clip0)">
                     <g id="house">
                         <path id="Vector" opacity="0.3"

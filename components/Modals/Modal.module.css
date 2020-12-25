@@ -27,3 +27,13 @@
     overflow: scroll;
     text-align: justify;
 }
+
+.Commentary_loading{
+    background-color: #2196f3;
+    color: white;
+    padding: 10px;
+    margin: 0;
+    text-align: center;
+    letter-spacing: 1px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}

@@ -1,6 +1,5 @@
 import Head from 'next/head'
-import Link from 'next/link'
-import {Fragment, useState, useEffect, useRef} from 'react';
+import {useState, useEffect, useRef} from 'react';
 import ButtonListFundos from '../components/Buttons/ButtonListFundos/ButtonListFundos'
 import NavBar from '../layout/Landing/Navbar'
 import classes from '../layout/Landing/Landing.module.css'

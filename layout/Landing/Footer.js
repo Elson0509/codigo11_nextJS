@@ -1,6 +1,7 @@
 import {memo, useState} from 'react';
 import ModalTermos from '../../components/Modals/ModalTermos'
 import ModalPrivacidade from '../../components/Modals/ModalPrivacidade'
+import ModalLoading from '../../components/Modals/ModalLoading'
 import classes from './Landing.module.css'
 
 import {

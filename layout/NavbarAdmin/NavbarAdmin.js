@@ -1,10 +1,7 @@
-import { faSearch, } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useState, Fragment, useEffect } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { Dropdown } from 'react-bootstrap'; 
 import AnimatedEllipsisButton from '../../components/Buttons/AnimatedEllipsisButton/AnimatedEllipsisButton'
-import Link from 'next/link'
 import {userId, imgUrl, getUser} from '../../util/UserFunctions'
 import jwt_decode from 'jwt-decode'
 import classes from './NavbarAdmin.module.css'

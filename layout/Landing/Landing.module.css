@@ -191,6 +191,8 @@
 	-webkit-text-decoration-color: transparent;
  	-moz-text-decoration-color: transparent;
 	transition: .5s;
+	width: 80%;
+	margin: 0 auto;
 }
 .Font_Animated_Section:hover{
 	text-decoration-color: black;

@@ -1,0 +1,81 @@
+.Loading_coin{
+    text-align: center;
+    background-color: #2196f3;
+    top: 0;
+    left: 0;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .2s linear; 
+    
+}
+
+.Coin {
+    content: "";
+    display: block;
+    border: 20px solid #ffffff;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: -10; 
+}
+
+.Coin_keep {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100px;
+    z-index: 10;
+    position: relative; 
+    enable-background: new 0 0 512 512;
+}
+
+.Loading_point span {
+    width: 10px;
+    height: 10px;
+    content: "";
+    display: inline-block;
+    background-color: #fff;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    animation-name: fadeIn;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out; 
+}
+.Loading_point span:nth-child(1) {
+    animation-duration: 1s; 
+}
+.Loading_point span:nth-child(2) {
+    animation-duration: 3s; 
+}
+.Loading_point span:nth-child(3) {
+    animation-duration: 1.5s; 
+}
+
+@keyframes fadeIn {
+    0%, 100% {
+    opacity: 0;
+    transform: scale(0); }
+    50% {
+    opacity: 1;
+    transform: scale(1); } 
+}
+@keyframes coin-loading {
+    0% {
+    transform: translateY(-50px) scale(0); }
+    30% {
+    transform: translateY(-50px) scale(1);
+    opacity: 1; }
+    60% {
+    opacity: 1; }
+    80% {
+    opacity: 0;
+    transform: translateY(40px) scale(0); }
+    100% {
+    opacity: 0; } 
+}
