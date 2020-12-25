@@ -9,14 +9,14 @@ import classes from './SearchBox.module.css'
 
 const SearchBox = (props) => {
     const [search, setSearch] = useState('')
-    const [result, setResult] = useState()
+    const [result, setResult] = useState(null)
     const [loading, setLoading] = useState(false)
     const [display, setDisplay] = useState(false)
     const wrapperRef = useRef(null)
 
     useEffect(() => {
         if(!search || search.length < 2)  
-            setResult()  
+            setResult(null)  
 
         const timer = setTimeout(() => {
             if(search && search.length >= 2){
@@ -34,7 +34,7 @@ const SearchBox = (props) => {
                     })
             }
             else{
-                setResult([])
+                setResult(null)
             }
         }, 2000);
         return () => clearTimeout(timer);

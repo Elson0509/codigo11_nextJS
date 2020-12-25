@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useRouter } from 'next/router'
 import ModalLoading from '../../../components/Modals/ModalLoading'
 import { ToastContainer, toast } from 'react-toastify';
+import Link from 'next/link'
 
 const AccordionAdmin = () => {
     const router = useRouter()
@@ -135,10 +136,12 @@ const AccordionAdmin = () => {
                             <Card.Header>
                                 {
                                     item.link &&
-                                        <a onClick={()=> showLoadingModal(item)} className={`text-left btn-no-box-shadow no_text_decoration link ${classes.Item_Text} ${classes.Margin_padding}`}>
-                                            <FontAwesomeIcon size="lg" className="mr-2" icon={item.icon}/>
-                                            {item.name}
-                                        </a>
+                                        <Link href={item.link}>
+                                            <a onClick={()=> showLoadingModal(item)} className={`text-left btn-no-box-shadow no_text_decoration link ${classes.Item_Text} ${classes.Margin_padding}`}>
+                                                <FontAwesomeIcon size="lg" className="mr-2" icon={item.icon}/>
+                                                {item.name}
+                                            </a>
+                                        </Link>
                                     ||
                                     <Accordion.Toggle as={Button} variant="link" eventKey={ind} className={`text-left btn-no-box-shadow no_text_decoration ${classes.Item_Text} ${classes.Margin_padding}`}>
                                         <FontAwesomeIcon size="lg" className="mr-2" icon={item.icon}/>
@@ -152,7 +155,9 @@ const AccordionAdmin = () => {
                                         <Accordion.Collapse eventKey={ind} key={`${ind}-${subind}`}>
                                             <div className={subind !== item.subItems.length-1 && classes.Submenu_item_border_bottom || ""}>
                                                 <Card.Body>
-                                                    <a onClick={()=> showLoadingModal(subItem)} className={`no_text_decoration link`}>{subItem.name}</a>
+                                                    <Link href={subItem.link}>
+                                                        <a onClick={()=> showLoadingModal(subItem)} className={`no_text_decoration link`}>{subItem.name}</a>
+                                                    </Link>
                                                 </Card.Body>
                                             </div>
                                         </Accordion.Collapse>

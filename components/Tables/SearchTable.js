@@ -4,6 +4,7 @@ import {numberBrazilianMoney, decimalNumberBrazilian,
 import Icon from '../Icon/Icon'
 import { useRouter } from 'next/router'
 import ModalLoading from '../Modals/ModalLoading'
+import Link from 'next/link'
 
 const SearchTable = (props) => {
     const {fiis} = props
@@ -124,7 +125,9 @@ const SearchTable = (props) => {
                             return (
                                 <tr key={ind} className="link">
                                     <th scope="row" className={sortConfig && sortConfig.key ==='codfii' ? 'table-primary' : ''}>
-                                        <a className="btn btn-link" role="button" aria-label={`Perfil de ${el.codfii}`} onClick={()=> showLoadingModal(el.codfii)}>{el.codfii}</a>
+                                        <Link href={`/${el.codfii}/profile`}>
+                                            <a className="btn btn-link" role="button" aria-label={`Perfil de ${el.codfii}`} onClick={()=> showLoadingModal(el.codfii)}>{el.codfii}</a>
+                                        </Link>
                                     </th>
                                     <td className={sortConfig && sortConfig.key ==='razao_social' ? 'table-primary' : ''}>{el.razao_social}</td>
                                     <td className={sortConfig && sortConfig.key ==='descricao' ? 'table-primary' : ''}>{el.descricao}</td>
