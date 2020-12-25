@@ -1,13 +1,23 @@
 import {memo, Fragment, useState} from 'react';
 import {numberBrazilianMoney, decimalNumberBrazilian,
         percentNumberBrazilian, valueToRes, IntegerNumberBrazilian} from '../../util/Utilities'
-import Link from 'next/link'
 import Icon from '../Icon/Icon'
+import { useRouter } from 'next/router'
+import ModalLoading from '../Modals/ModalLoading'
 
 const SearchTable = (props) => {
     const {fiis} = props
     const [sortConfig, setSortConfig] = useState(null);
     let sortedFiis = [...fiis]
+    const [showModalLoading, setShowModalLoading] = useState(false)
+    const [LoadingMessage, setLoadingMessage] = useState('')
+    const router = useRouter()
+
+    const showLoadingModal = name => {
+        setLoadingMessage(`Carregando perfil de ${name}...`)
+        setShowModalLoading(true)
+        router.push(`/${name}/profile`)
+    }
 
     const requestSort = key => {
         const direction = sortConfig && sortConfig.key === key && sortConfig.direction === 'ascending' ? 'descending' : 'ascending'
@@ -40,6 +50,7 @@ const SearchTable = (props) => {
     return (
         props.fiis && 
             <div className="over">
+                <ModalLoading commentary={LoadingMessage} modal={showModalLoading}/>
                 <table className="table table-striped text-center table-hover">
                     <caption>Lista de fundos</caption>
                     <thead>
@@ -112,7 +123,9 @@ const SearchTable = (props) => {
                         {sortedFiis.map((el, ind) => {
                             return (
                                 <tr key={ind} className="link">
-                                    <th scope="row" className={sortConfig && sortConfig.key ==='codfii' ? 'table-primary' : ''}><Link href={`/${el.codfii}/profile`}><a>{el.codfii}</a></Link></th>
+                                    <th scope="row" className={sortConfig && sortConfig.key ==='codfii' ? 'table-primary' : ''}>
+                                        <a className="btn btn-link" role="button" aria-label={`Perfil de ${el.codfii}`} onClick={()=> showLoadingModal(el.codfii)}>{el.codfii}</a>
+                                    </th>
                                     <td className={sortConfig && sortConfig.key ==='razao_social' ? 'table-primary' : ''}>{el.razao_social}</td>
                                     <td className={sortConfig && sortConfig.key ==='descricao' ? 'table-primary' : ''}>{el.descricao}</td>
                                     <td className={sortConfig && sortConfig.key ==='cotacao' ? 'table-primary' : ''}>{el.cotacao ? numberBrazilianMoney(el.cotacao) : 'N/A'}</td>

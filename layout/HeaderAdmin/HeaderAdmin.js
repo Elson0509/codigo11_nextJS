@@ -1,8 +1,8 @@
 import { memo, useState } from 'react';
 import classes from './HeaderAdmin.module.css'
 import { useRouter } from 'next/router'
-import Link from 'next/link'
 import ModalLoading from '../../components/Modals/ModalLoading'
+import { ToastContainer, toast } from 'react-toastify';
 
 const HeaderAdmin = () => {
     const [showModalLoading, setShowModalLoading] = useState(false)
@@ -31,11 +31,24 @@ const HeaderAdmin = () => {
         },
     ]
 
+    const configToast = {
+        position: "bottom-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+    }
+
     const showLoadingModal = el => {
-        if(router.pathname!==el.link){
+        if(router.pathname.toLowerCase()!==el.link.toLowerCase()){
             setLoadingMessage(`Carregando ${el.description}...`)
             setShowModalLoading(true)
             router.push(el.link)
+        }
+        else{
+            toast.info(`Você já está na página.`, configToast);
         }
     }
 
