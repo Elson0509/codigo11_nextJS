@@ -173,7 +173,7 @@ const index = ({data}) => {
                                     {selectAvancada && (
                                         <Fragment>
                                             {selectDY && 
-                                                <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-2">
+                                                <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-2 col-12">
                                                     <Card body inverse bg="light">
                                                         <Card.Title className={`text-center text-uppercase ${classes.Size_title}`}>Dividend Yeld Médio (mensal)</Card.Title>
                                                         <select value={dyChange} className='form-control' onChange={(ev) => setDyChange(ev.target.value)}>
@@ -186,7 +186,7 @@ const index = ({data}) => {
                                                 </div>
                                             }
                                             {selectSegmento &&  
-                                                <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-2">
+                                                <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-2 col-12">
                                                     <Card body inverse bg="danger">
                                                         <Card.Title className={`text-center text-uppercase text-white ${classes.Size_title}`}>Segmentos</Card.Title>
                                                         <select value={segmento} multiple className='form-control' onChange={selectSegmentosHandler}>
@@ -196,7 +196,7 @@ const index = ({data}) => {
                                                 </div>
                                             }
                                             {selectQtdNegocios && 
-                                                <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-2">
+                                                <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-2 col-12">
                                                     <Card body inverse bg="primary">
                                                         <Card.Title className={`text-center text-uppercase text-white ${classes.Size_title}`}>Quantidade de negócios</Card.Title>
                                                         <select className='form-control' value={negociosChange} onChange={(ev) => setNegociosChange(ev.target.value)}>
@@ -216,7 +216,7 @@ const index = ({data}) => {
                                                 </div>
                                             }
                                             {selectPL && 
-                                                <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-2">
+                                                <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-2 col-12">
                                                     <Card body inverse bg="success">
                                                     <Card.Title className={`text-center text-uppercase text-white ${classes.Size_title}`}>Patrimônio Líquido</Card.Title>
                                                         <select className='form-control' value={plChange} onChange={(ev) => setPlChange(ev.target.value)}>
@@ -242,7 +242,7 @@ const index = ({data}) => {
                                                 </div>
                                             }
                                             {selectPVP && 
-                                                <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-2">
+                                                <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-2 col-12">
                                                     <Card body inverse bg="warning">
                                                         <Card.Title className={`text-center text-uppercase text-white ${classes.Size_title}`}>Preço / Valor Patrimonial</Card.Title>
                                                         <select className='form-control' value={pvpChange} onChange={(ev) => setPvpChange(ev.target.value)}>
@@ -255,7 +255,7 @@ const index = ({data}) => {
                                                 </div>
                                             }
                                             {selectVPC && 
-                                                <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-2">
+                                                <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-2 col-12">
                                                     <Card body bg="secondary">
                                                         <Card.Title className={`text-center text-uppercase text-white ${classes.Size_title}`}>Cotação</Card.Title>
                                                         <select className='form-control' value={vpcChange} onChange={(ev) => setVpcChange(ev.target.value)}>
@@ -268,7 +268,7 @@ const index = ({data}) => {
                                                 </div>
                                             }
                                             {selectAtvFis && 
-                                                <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-2">
+                                                <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-2 col-12">
                                                     <Card body inverse bg="dark">
                                                         <Card.Title className={`text-center text-uppercase text-white ${classes.Size_title}`}>Quantidade de ativos físicos</Card.Title>
                                                         <select className='form-control' value={atvFisChange} onChange={(ev) => setAtvFisChange(ev.target.value)}>
@@ -281,7 +281,7 @@ const index = ({data}) => {
                                                 </div>
                                             }
                                             {selectGestao && 
-                                                <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-2">
+                                                <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-2 col-12">
                                                     <Card body inverse bg="info">
                                                         <Card.Title className={`text-center text-uppercase text-white ${classes.Size_title}`}>Tipo de Gestão</Card.Title>
                                                         <CheckBoxGestao clicked={(ev) => setGestao(prev => prev == 1 ? 0 : 1)}/>
