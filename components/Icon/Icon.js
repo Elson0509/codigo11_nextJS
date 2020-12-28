@@ -18,6 +18,7 @@ import {
     faArrowLeft,
     faAngleDown,
     faHandshake, /*handshake*/
+    faHandHoldingUsd, /*hand-holding-usd*/
     faMoneyBillWave,/*money-bill-wave*/
     faUsers, /*users*/
     faTh, /*th*/
@@ -73,6 +74,7 @@ library.add(
     faArrowLeft,
     faAngleDown,
     faHandshake, 
+    faHandHoldingUsd,
     faMoneyBillWave,
     faUsers,
     faTh,

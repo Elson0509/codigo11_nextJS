@@ -224,19 +224,6 @@ const index = ({data}) => {
                                     />
                                 </Col>
                             }
-                            {data && !isNaN(data.valor_tx_adm)  && 
-                                <Col md="6" xl="4">
-                                    <SingleCard 
-                                        icon="percentage"
-                                        bgIcon="malibu-beach" 
-                                        title="Taxa Adm / Patrimônio Líquido"   
-                                        text1={numberWithPercentual(data.tx_adm_pl)}
-                                        colorText1="danger"
-                                        text2={"Último mês: R$" + valueToRes(data.valor_tx_adm)}
-                                        colorText2="secondary"
-                                    />
-                                </Col>
-                            }
                             {data && !isNaN(data.dy_medio) && 
                                 <Col md="6" xl="4">
                                     <SingleCard 
@@ -320,7 +307,58 @@ const index = ({data}) => {
                                     />
                                 </Col>
                             }
-                            
+                            {data && !isNaN(data.receita_alugueis)  && 
+                                <Col md="6" xl="4">
+                                    <SingleCard 
+                                        icon="hand-holding-usd"
+                                        bgIcon="primary" 
+                                        title="Receita de aluguéis"   
+                                        text1={`R$${valueToRes(data.receita_alugueis)}`}
+                                        colorText1="secondary"
+                                        text2={"Último trimestre"}
+                                        colorText2="muted"
+                                    />
+                                </Col>
+                            }
+                            {data && !isNaN(data.receita_aplicacoes)  && 
+                                <Col md="6" xl="4">
+                                    <SingleCard 
+                                        icon="hand-holding-usd"
+                                        bgIcon="success" 
+                                        title="Receita de aplicações financeiras"   
+                                        text1={`R$${valueToRes(data.receita_aplicacoes)}`}
+                                        colorText1="info"
+                                        text2={"Último trimestre"}
+                                        colorText2="muted"
+                                    />
+                                </Col>
+                            }
+                            {data && !isNaN(data.valor_tx_adm)  && 
+                                <Col md="6" xl="4">
+                                    <SingleCard 
+                                        icon="money-bill-wave"
+                                        bgIcon="danger" 
+                                        title="Taxa de Administracão"   
+                                        text1={`R$${valueToRes(data.valor_tx_adm)}`}
+                                        colorText1="danger"
+                                        text2="Último trimestre"
+                                        colorText2="muted"
+                                    />
+                                </Col>
+                            }
+                            {data && !isNaN(data.tx_adm_pl)  && 
+                                <Col md="6" xl="4">
+                                    <SingleCard 
+                                        icon="percentage"
+                                        bgIcon="malibu-beach" 
+                                        title="Taxa Adm / Patrimônio Líquido"   
+                                        text1={numberWithPercentual(data.tx_adm_pl)}
+                                        colorText1="danger"
+                                        text2={"Taxa trimestral anualizada"}
+                                        colorText2="muted"
+                                    />
+                                </Col>
+                            }
                             {data && !isNaN(data.custo_tx_por_cota_anual) && 
                                 <Col md="6" xl="4">
                                     <SingleCard 
@@ -329,6 +367,8 @@ const index = ({data}) => {
                                         title="Custo anual da taxa adm / cota"   
                                         text1={numberToMoney(data.custo_tx_por_cota_anual)}
                                         colorText1="danger"
+                                        text2={"Custo trimestral anualizado"}
+                                        colorText2="muted"
                                     />
                                 </Col>
                             }

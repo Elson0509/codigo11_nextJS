@@ -92,7 +92,7 @@ const NavbarAdmin = () => {
                                     {imgUser()}
                                 </Dropdown.Toggle>
                                 <Dropdown.Menu>
-                                    <Dropdown.Item onClick={() => setModal(true)}>Configuracões</Dropdown.Item>
+                                    <Dropdown.Item onClick={() => setModal(true)}>Configurações</Dropdown.Item>
                                     <Dropdown.Item onClick={() => logout()}>Logout</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
@@ -117,7 +117,7 @@ const NavbarAdmin = () => {
                                 {imgUser(40)}
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
-                                <Dropdown.Item onClick={() => setModal(true)}>Configuracões</Dropdown.Item>
+                                <Dropdown.Item onClick={() => setModal(true)}>Configurações</Dropdown.Item>
                                 <Dropdown.Item onClick={() => logout()}>Logout</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
