@@ -386,6 +386,17 @@ const index = ({data}) => {
                             {data &&
                                 <Col md="6" xl="4">
                                     <SingleCard 
+                                        icon="building"
+                                        bgIcon="premium-dark" 
+                                        title="Quantidade de ativos físicos"
+                                        text1={data.bens_imoveis_qtt}
+                                        colorText1="dark"
+                                    />
+                                </Col>
+                            }
+                            {data &&
+                                <Col md="6" xl="4">
+                                    <SingleCard 
                                         icon="file-invoice-dollar"
                                         bgIcon="premium-dark" 
                                         title="Quantidade de ativos financeiros"
