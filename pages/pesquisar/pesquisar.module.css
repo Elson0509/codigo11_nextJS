@@ -10,6 +10,11 @@
     margin: 24px 0 16px;
     transition: box-shadow 0.2s ease-in-out;
 }
+
+.Min_Height{
+    min-height: 350px;
+}
+
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
     .Slider {
         overflow: hidden;

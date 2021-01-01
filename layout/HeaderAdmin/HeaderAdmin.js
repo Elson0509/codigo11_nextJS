@@ -71,7 +71,7 @@ const HeaderAdmin = () => {
                         </ul>
                     </div>
                     <div className="nav flex-column col-12 show-md">
-                        <ul style={{listStyleType:'none'}}>
+                        <ul style={{listStyleType:'none', margin:'0', padding:'0'}}>
                         {
                             itens
                         }

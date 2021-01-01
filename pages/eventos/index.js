@@ -7,6 +7,7 @@ import NavbarAdmin from '../../layout/NavbarAdmin/NavbarAdmin'
 import HeaderAdmin from '../../layout/HeaderAdmin/HeaderAdmin'
 import GeneralCard from '../../components/Cards/GeneralCard'
 import EventosPageTable from '../../components/Tables/EventosPageTable'
+import FooterAdmin from '../../layout/FooterAdmin/FooterAdmin'
 
 const index = ({data}) => {
     const router = useRouter()
@@ -65,6 +66,7 @@ const index = ({data}) => {
                     </div>
                 </main>
             }
+            <FooterAdmin/>
         </Fragment>
     );
 };

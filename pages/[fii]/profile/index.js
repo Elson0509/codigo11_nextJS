@@ -33,7 +33,6 @@ const index = ({data}) => {
     const [favorito, setFavorito] = useState(false)
 
     const fii = router.query.fii.toUpperCase()
-
     const configToast = {
         position: "bottom-center",
         autoClose: 4000,
@@ -454,7 +453,7 @@ const index = ({data}) => {
                     <div className="row">
                         <div className="col-12">
                             <div className="alert alert-danger text-center" role="alert">
-                        {data.message}
+                                {data.message}
                             </div>
                         </div>
                     </div>
@@ -464,7 +463,7 @@ const index = ({data}) => {
                     <div className="row">
                         <div className="col-12">
                             <div className="alert alert-danger text-center" role="alert">
-                        Ops. Um erro ocorreu.
+                                Ops. Um erro ocorreu.
                             </div>
                         </div>
                     </div>

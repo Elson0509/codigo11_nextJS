@@ -33,8 +33,8 @@ const ListSearch = (props) => {
             <ul className={`list-group ${classes.Search_list}`}>
                 {props.result && props.result.map((el, ind) => {
                     return (
-                        <Link href={`/${el.codigo}/profile`}>
-                            <a onClick={()=> clickHandler(el)} className="link" key={`se${ind}`}>
+                        <Link href={`/${el.codigo}/profile`} key={`se${ind}`}>
+                            <a onClick={()=> clickHandler(el)} className="link">
                                 <ListSearchItem item={el}/>
                             </a>
                         </Link>

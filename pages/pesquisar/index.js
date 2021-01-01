@@ -15,6 +15,7 @@ import {
 import CheckBoxGestao from '../../components/Buttons/CheckBoxGestao/CheckBoxGestao'
 import LoadingAdvancedSearch from '../../components/Loading/LoadingAdvancedSearch'
 import Icon from '../../components/Icon/Icon'
+import FooterAdmin from '../../layout/FooterAdmin/FooterAdmin'
 
 const index = ({data}) => {
     const [result, setResult] = useState()
@@ -123,7 +124,7 @@ const index = ({data}) => {
                         </script> */}
                     </Head>
                     <Fragment>
-                        <GeneralCard className="col-12" title="Pesquisa Avançada de Fundos Imobiliários" titleStyle="text-center">
+                        <GeneralCard addClasses={classes.Min_Height} title="Pesquisa Avançada de Fundos Imobiliários" titleStyle="text-center">
                             <div className="mb-4">
                                 <input 
                                     className="form-control mb-1" 
@@ -336,6 +337,7 @@ const index = ({data}) => {
                     </div>
                 </main>
             }
+            <FooterAdmin/>
         </Fragment>
     );
 };

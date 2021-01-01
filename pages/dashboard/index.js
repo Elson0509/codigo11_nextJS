@@ -13,6 +13,7 @@ import GeneralCard from '../../components/Cards/GeneralCard'
 import classes from './dashboard.module.css'
 import CardQuotation from '../../components/Cards/CardQuotation'
 import DashedCard from '../../components/Cards/DashedCard'
+import FooterAdmin from '../../layout/FooterAdmin/FooterAdmin'
 
 const Index = () => {
     const [dados, setDados] = useState()
@@ -106,6 +107,7 @@ const Index = () => {
                     </a>
                 </Link>
             }
+            <FooterAdmin/>
         </Fragment>
     );
 };
