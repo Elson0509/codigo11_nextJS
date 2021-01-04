@@ -181,7 +181,7 @@ const index = ({data}) => {
                                                             <option value=">=">Maior que</option>
                                                             <option value="<=">Menor que</option>
                                                         </select>
-                                                        <input type="range" className={`form-control ${classes.Slider}`} min="0" max="2" step="0.1" value={dy} onChange={(ev) => setDy(ev.target.value)}/>
+                                                        <input type="range" className={`form-control ${classes.Slider}`} min="0" max="2" step="0.05" value={dy} onChange={(ev) => setDy(ev.target.value)}/>
                                                         <h4 className="text-center enfase">{dy}%</h4>
                                                     </Card>
                                                 </div>
@@ -250,7 +250,7 @@ const index = ({data}) => {
                                                             <option value=">=">Maior que</option>
                                                             <option value="<=">Menor que</option>
                                                         </select>
-                                                        <input type="range" className={`form-control ${classes.Slider}`} min="0.1" max="3" step="0.1" value={pvp} onChange={(ev) => setPvp(ev.target.value)}/>
+                                                        <input type="range" className={`form-control ${classes.Slider}`} min="0.1" max="3" step="0.05" value={pvp} onChange={(ev) => setPvp(ev.target.value)}/>
                                                         <h4 className="text-center enfase text-white">{pvp}</h4>
                                                     </Card>
                                                 </div>
