@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: codigo11.com.br
+Token: 42410430c8500f72ae1fdc3f14dd6458e6617f8fcb16aba32a48f0c478c9037d
