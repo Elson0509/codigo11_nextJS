@@ -1,8 +1,10 @@
 import {
-    ListGroup
+    ListGroup,
+    ListGroupItem
 } from 'react-bootstrap';
 import ListGroupItemProfile from './ListGroupItemProfile/ListGroupItemProfile'
 import ListGroupItemProfileStar from './ListGroupItemProfile/ListGroupItemProfileStar'
+import ShareBar from '../Bars/ShareBar/ShareBar'
 
 const ProfileTitleList = (props) => {
     return (
@@ -16,6 +18,7 @@ const ProfileTitleList = (props) => {
             {props.tipoGestao && <ListGroupItemProfile color={props.segmento.color} label="Tipo de gestão: " text={props.tipoGestao}/>}
             {!isNaN(props.notaUsuario) && <ListGroupItemProfileStar color={props.segmento.color} changeRating={props.changeRating} label="Sua nota: " rating={props.notaUsuario}/>}
             {!isNaN(props.notaComunidade) && <ListGroupItemProfileStar color={props.segmento.color} label="Nota da comunidade: " rating={props.notaComunidade}/>}
+            <ListGroupItem><ShareBar fiiname={props.fiiname}/></ListGroupItem>
         </ListGroup>
     );
 };

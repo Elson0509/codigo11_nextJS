@@ -1,0 +1,199 @@
+.Bar_align{
+    text-align: right;
+}
+
+@media (max-width: 575px) {
+    .Bar_align{
+        text-align: center;
+    }
+}
+
+.Resp_sharing_button__link,
+.Resp_sharing_button__icon {
+  display: inline-block
+}
+
+.Resp_sharing_button__link {
+  text-decoration: none;
+  color: #fff;
+  margin: .2em
+}
+
+.Resp_sharing_button {
+  border-radius: 5px;
+  transition: 25ms ease-out;
+  padding: 0.3em 0.45em;
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif
+}
+
+.Resp_sharing_button__icon svg {
+  width: 1.5em;
+  height: 1.5em;
+  margin-right: 0.4em;
+  vertical-align: top
+}
+
+.Resp_sharing_button__small svg {
+  margin: 0;
+  vertical-align: middle
+}
+
+/* Non solid icons get a stroke */
+.Resp_sharing_button__icon {
+  stroke: #fff;
+  fill: none
+}
+
+.Resp_sharing_button__icon__solid,
+.Resp_sharing_button__icon__solidcircle {
+  fill: #fff;
+  stroke: none
+}
+
+.Resp_sharing_button__twitter {
+  background-color: #55acee
+}
+
+.Resp_sharing_button__twitter:hover {
+  background-color: #2795e9
+}
+
+.Resp_sharing_button__pinterest {
+  background-color: #bd081c
+}
+
+.Resp_sharing_button__pinterest:hover {
+  background-color: #8c0615
+}
+
+.Resp_sharing_button__facebook {
+  background-color: #3b5998
+}
+
+.Resp_sharing_button__facebook:hover {
+  background-color: #2d4373
+}
+
+.Resp_sharing_button__tumblr {
+  background-color: #35465C
+}
+
+.Resp_sharing_button__tumblr:hover {
+  background-color: #222d3c
+}
+
+.Resp_sharing_button__reddit {
+  background-color: #5f99cf
+}
+
+.Resp_sharing_button__reddit:hover {
+  background-color: #3a80c1
+}
+
+.Resp_sharing_button__google {
+  background-color: #dd4b39
+}
+
+.Resp_sharing_button__google:hover {
+  background-color: #c23321
+}
+
+.Resp_sharing_button__linkedin {
+  background-color: #0077b5
+}
+
+.Resp_sharing_button__linkedin:hover {
+  background-color: #046293
+}
+
+.Resp_sharing_button__email {
+  background-color: #777
+}
+
+.Resp_sharing_button__email:hover {
+  background-color: #5e5e5e
+}
+
+.Resp_sharing_button__xing {
+  background-color: #1a7576
+}
+
+.Resp_sharing_button__xing:hover {
+  background-color: #114c4c
+}
+
+.Resp_sharing_button__whatsapp {
+  background-color: #25D366
+}
+
+.Resp_sharing_button__whatsapp:hover {
+  background-color: #1da851
+}
+
+.Resp_sharing_button__hackernews {
+background-color: #FF6600
+}
+.Resp_sharing_button__hackernews:hover, .Resp_sharing_button__hackernews:focus {   background-color: #FB6200 }
+
+.Resp_sharing_button__vk {
+  background-color: #507299
+}
+
+.Resp_sharing_button__vk:hover {
+  background-color: #43648c
+}
+
+.Resp_sharing_button__facebook {
+  background-color: #3b5998;
+  border-color: #3b5998;
+}
+
+.Resp_sharing_button__facebook:hover,
+.Resp_sharing_button__facebook:active {
+  background-color: #2d4373;
+  border-color: #2d4373;
+}
+
+.Resp_sharing_button__twitter {
+  background-color: #55acee;
+  border-color: #55acee;
+}
+
+.Resp_sharing_button__twitter:hover,
+.Resp_sharing_button__twitter:active {
+  background-color: #2795e9;
+  border-color: #2795e9;
+}
+
+.Resp_sharing_button__email {
+  background-color: #777777;
+  border-color: #777777;
+}
+
+.Resp_sharing_button__email:hover,
+.Resp_sharing_button__email:active {
+  background-color: #5e5e5e;
+  border-color: #5e5e5e;
+}
+
+.Resp_sharing_button__linkedin {
+  background-color: #0077b5;
+  border-color: #0077b5;
+}
+
+.Resp_sharing_button__linkedin:hover,
+.Resp_sharing_button__linkedin:active {
+  background-color: #046293;
+  border-color: #046293;
+}
+
+.Resp_sharing_button__whatsapp {
+  background-color: #25D366;
+  border-color: #25D366;
+}
+
+.Resp_sharing_button__whatsapp:hover,
+.Resp_sharing_button__whatsapp:active {
+  background-color: #1DA851;
+  border-color: #1DA851;
+}

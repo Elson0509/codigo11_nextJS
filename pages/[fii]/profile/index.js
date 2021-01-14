@@ -171,6 +171,7 @@ const index = ({data}) => {
                             </div>
                             <div className="card-body">
                                 <ProfileTitleList 
+                                    fiiname={data.razao_social}
                                     segmento={data.segmento} 
                                     codigo={`${data.cotacao?.cod_neg || `${router.query.fii.toUpperCase()}11`}`}
                                     cnpj={data.cnpj}
