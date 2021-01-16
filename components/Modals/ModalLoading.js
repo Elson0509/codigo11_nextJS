@@ -5,7 +5,7 @@ import classes from './Modal.module.css'
 
 const ModalLoading = (props) => {
     return (
-        <Modal show={props.modal} size="sm" centered backdrop="static" onHide={props.toggle}>
+        <Modal className={classes.Modal_Loading_Background} show={props.modal} size="sm" centered backdrop="static" onHide={props.toggle}>
             <LoadingHouse/>
             {props.commentary && <h5 className={classes.Commentary_loading}>{props.commentary}</h5>}
         </Modal>
