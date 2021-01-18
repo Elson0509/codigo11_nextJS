@@ -1,4 +1,5 @@
 export const sizeCampoFutebol = 7140;
+export const revalidateTime = 7200;
 
 export const numberWithDots = (x) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
