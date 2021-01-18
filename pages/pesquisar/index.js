@@ -16,6 +16,7 @@ import CheckBoxGestao from '../../components/Buttons/CheckBoxGestao/CheckBoxGest
 import LoadingAdvancedSearch from '../../components/Loading/LoadingAdvancedSearch'
 import Icon from '../../components/Icon/Icon'
 import FooterAdmin from '../../layout/FooterAdmin/FooterAdmin'
+import {revalidateTime} from '../../util/Utilities'
 
 const index = ({data}) => {
     const [result, setResult] = useState()
@@ -342,13 +343,14 @@ const index = ({data}) => {
     );
 };
 
-export const getServerSideProps = async (context) => {
+export const getStaticProps = async () => {
     try{
         const response = await axios.get('/segmento')
         return {
             props: {
                 data: response.data,
-            }
+            },
+            revalidate: revalidateTime
         }
     }catch(er){
         return {

@@ -1,6 +1,5 @@
 import Head from 'next/head'
-import {useState, useEffect, Fragment} from 'react';
-import {Row, Col} from 'react-bootstrap'
+import {Fragment} from 'react';
 import { useRouter } from 'next/router'
 import axios from '../../util/axios-base'
 import NavbarAdmin from '../../layout/NavbarAdmin/NavbarAdmin'
@@ -8,6 +7,7 @@ import HeaderAdmin from '../../layout/HeaderAdmin/HeaderAdmin'
 import GeneralCard from '../../components/Cards/GeneralCard'
 import EventosPageTable from '../../components/Tables/EventosPageTable'
 import FooterAdmin from '../../layout/FooterAdmin/FooterAdmin'
+import {revalidateTime} from '../../util/Utilities'
 
 const index = ({data}) => {
     const router = useRouter()
@@ -71,13 +71,14 @@ const index = ({data}) => {
     );
 };
 
-export const getServerSideProps = async (context) => {
+export const getStaticProps = async () => {
     try{
         const response = await axios.get('/relatorios/reldias')
         return {
             props: {
                 data: response.data,
-            }
+            },
+            revalidate: revalidateTime
         }
     }catch(er){
         return {
