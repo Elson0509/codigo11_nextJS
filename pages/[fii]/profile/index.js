@@ -21,7 +21,8 @@ import {numberWithVirgula,
         numberWithPercentual, 
         numberWithDots, 
         valueToRes, 
-        numberToMoney} from '../../../util/Utilities'
+        numberToMoney,
+        revalidateTime} from '../../../util/Utilities'
 import classes from './profile.module.css'
 import { ToastContainer, toast } from 'react-toastify';
 import jwt_decode from 'jwt-decode'
@@ -31,7 +32,6 @@ const index = ({data}) => {
     const [notaCommunity, setNotaCommunity] = useState(0)
     const [notaUser, setNotaUser] = useState(0)
     const [favorito, setFavorito] = useState(false)
-
     const fii = router.query.fii.toUpperCase()
     const configToast = {
         position: "bottom-center",
@@ -474,8 +474,8 @@ const index = ({data}) => {
     );
 };
 
-export const getServerSideProps = async (context) => {
-    const fii = context.query.fii
+export const getStaticProps = async (context) => {
+    const fii = context.params.fii
     if(fii && fii.length==4){
         try{
             const response = await axios.get(
@@ -484,6 +484,7 @@ export const getServerSideProps = async (context) => {
             return {
                 props: {
                     data: response.data,
+                    revalidate: revalidateTime
                 }
             }
         }catch(er){
@@ -500,6 +501,47 @@ export const getServerSideProps = async (context) => {
             }
         }
     }
+}
+
+export const getStaticPaths = async() =>{
+    const response = await axios.get('/fii/search', {
+        params: {
+            search: '',
+            selectAvancada: false,
+            selectDY: false,
+            selectSegmento: false,
+            selectQtdNegocios: false,
+            selectPL: false,
+            selectPVP: false,
+            selectVPC: false,
+            selectAtvFis: false,
+            selectGestao: false,
+            dyChange: '>=',
+            dy: 0,
+            segmento: [2],
+            negociosChange: '>=',
+            negocios: 10,
+            plChange: '>=',
+            gestao: 0,
+            pl: 100000000,
+            pvpChange: '>=',
+            pvp: 1,
+            vpcChange: '>=',
+            vpc: 50,
+            atvFisChange: '>=',
+            atvFis: 2
+        }
+    })
+    const paths = response.data.map(el=> {
+        return {
+            params: {fii: el.codfii}
+        }
+    })
+    return {
+        paths: paths,
+        fallback: false
+    }
+
 }
 
 export default index;
