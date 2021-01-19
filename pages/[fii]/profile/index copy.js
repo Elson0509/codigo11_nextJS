@@ -476,13 +476,29 @@ const index = ({data}) => {
 
 export const getStaticProps = async (context) => {
     const fii = context.params.fii
-    const response = await axios.get(
-        `/profile/${fii}`
-    )
-    return {
-        props: {
-            data: response.data,
-            revalidate: revalidateTime
+    if(fii && fii.length==4){
+        try{
+            const response = await axios.get(
+                `/profile/${fii}`
+            )
+            return {
+                props: {
+                    data: response.data,
+                    revalidate: revalidateTime
+                }
+            }
+        }catch(er){
+            return {
+                props:{data: er.response.data}
+            }
+        }
+    }
+    else{
+        return {
+            props:{ data: {
+                message: `Este codigo (${context.query.fii}) não é válido. Eles costumam ter 4 letras.`
+                }
+            }
         }
     }
 }
