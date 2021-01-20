@@ -21,8 +21,7 @@ import {numberWithVirgula,
         numberWithPercentual, 
         numberWithDots, 
         valueToRes, 
-        numberToMoney,
-        revalidateTime} from '../../../util/Utilities'
+        numberToMoney} from '../../../util/Utilities'
 import classes from './profile.module.css'
 import { ToastContainer, toast } from 'react-toastify';
 import jwt_decode from 'jwt-decode'
@@ -474,58 +473,32 @@ const index = ({data}) => {
     );
 };
 
-export const getStaticProps = async (context) => {
-    const fii = context.params.fii
-    const response = await axios.get(
-        `/profile/${fii}`
-    )
-    return {
-        props: {
-            data: response.data,
-            revalidate: revalidateTime
+export const getServerSideProps = async (context) => {
+    const fii = context.query.fii
+    if(fii && fii.length==4){
+        try{
+            const response = await axios.get(
+                `/profile/${fii}`
+            )
+            return {
+                props: {
+                    data: response.data
+                }
+            }
+        }catch(er){
+            return {
+                props:{data: er.response.data}
+            }
         }
     }
-}
-
-export const getStaticPaths = async() =>{
-    const response = await axios.get('/fii/search', {
-        params: {
-            search: '',
-            selectAvancada: false,
-            selectDY: false,
-            selectSegmento: false,
-            selectQtdNegocios: false,
-            selectPL: false,
-            selectPVP: false,
-            selectVPC: false,
-            selectAtvFis: false,
-            selectGestao: false,
-            dyChange: '>=',
-            dy: 0,
-            segmento: [2],
-            negociosChange: '>=',
-            negocios: 10,
-            plChange: '>=',
-            gestao: 0,
-            pl: 100000000,
-            pvpChange: '>=',
-            pvp: 1,
-            vpcChange: '>=',
-            vpc: 50,
-            atvFisChange: '>=',
-            atvFis: 2
-        }
-    })
-    const paths = response.data.map(el=> {
+    else{
         return {
-            params: {fii: el.codfii}
+            props:{ data: {
+                message: `Este codigo (${context.query.fii}) não é válido. Eles costumam ter 4 letras.`
+                }
+            }
         }
-    })
-    return {
-        paths: paths,
-        fallback: false
     }
-
 }
 
 export default index;
