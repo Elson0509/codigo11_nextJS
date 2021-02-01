@@ -56,7 +56,7 @@ const index = ({data}) => {
     );
 };
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
     try{
         const response = await axios.get('/fii/search', {
             params: {
@@ -89,8 +89,7 @@ export const getStaticProps = async () => {
         return {
             props: {
                 data: response.data,
-            },
-            revalidate: revalidateTime
+            }
         }
     }catch(er){
         return {
