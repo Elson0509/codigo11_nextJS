@@ -49,6 +49,11 @@ const ModalConfiguration = (props) => {
             axios.post(`/user/update/notification`, config)
             .then(res=> {
                 toast.info(`Alteração de configuração registrada!`);
+                props.updateUser({
+                    ...props.user,
+                    notification: props.notification
+                    
+                })
             })
             .catch(err => {
                 setErrorMessage('Ops. Algo deu errado.')

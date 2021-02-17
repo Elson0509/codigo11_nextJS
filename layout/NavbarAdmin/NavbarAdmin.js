@@ -81,7 +81,14 @@ const NavbarAdmin = () => {
 
             <div className="collapse navbar-collapse">
                 <ul className="navbar-nav mr-auto"> 
-                    <ModalConfiguration notification={notification} user={user} notificationChange={()=>setNotification(prev => !prev)} modal={modal} toggle={() => setModal(prev=> !prev)}/>
+                    <ModalConfiguration 
+                        notification={notification} 
+                        user={user} 
+                        updateUser={setUser}
+                        notificationChange={()=>setNotification(prev => !prev)} 
+                        modal={modal} 
+                        toggle={() => setModal(prev=> !prev)}
+                    />
                 </ul>
                 <ul className="nav navbar-nav hide-sm navbar-right">
                     <li className="nav-item ">
