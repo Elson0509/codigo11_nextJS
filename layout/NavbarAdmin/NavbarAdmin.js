@@ -14,6 +14,7 @@ const NavbarAdmin = () => {
     const [idUser, setIdUser] = useState(0);
     const [user, setUser] = useState(null);
     const [modal, setModal] = useState(false)
+    const [notification, setNotification] = useState(true)
 
     const imageExists = image_url => {
         var http = new XMLHttpRequest();
@@ -35,8 +36,10 @@ const NavbarAdmin = () => {
             getUser(decoded.uid, token).then(res => {
                 setUser({
                     username: res.data.username,
-                    email: res.data.email
+                    email: res.data.email,
+                    notification: res.data.notification
                 })
+                setNotification(res.data.notification)
             })
         }
     },[])
@@ -78,7 +81,7 @@ const NavbarAdmin = () => {
 
             <div className="collapse navbar-collapse">
                 <ul className="navbar-nav mr-auto"> 
-                    <ModalConfiguration modal={modal} toggle={() => setModal(prev=> !prev)}/>
+                    <ModalConfiguration notification={notification} user={user} notificationChange={()=>setNotification(prev => !prev)} modal={modal} toggle={() => setModal(prev=> !prev)}/>
                 </ul>
                 <ul className="nav navbar-nav hide-sm navbar-right">
                     <li className="nav-item ">

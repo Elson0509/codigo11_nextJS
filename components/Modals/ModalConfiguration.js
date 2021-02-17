@@ -13,7 +13,6 @@ const ModalConfiguration = (props) => {
     const [previewUrl, setPreviewUrl] = useState()
     const [isValid, setIsvalid] = useState(false)
     const [errorMessage, setErrorMessage] = useState('')
-
     const filePickerRef = useRef()
 
     useEffect(()=> {
@@ -38,9 +37,30 @@ const ModalConfiguration = (props) => {
         }
     }
 
+    const updateNotification = () => {
+        //verifying if the user change his/her option
+        if(props.user.notification != props.notification){
+            const decoded = jwt_decode(localStorage.userToken)
+            const config = {
+                token: localStorage.userToken,
+                id: decoded.uid,
+                notification: props.notification
+            }
+            axios.post(`/user/update/notification`, config)
+            .then(res=> {
+                toast.info(`Alteração de configuração registrada!`);
+            })
+            .catch(err => {
+                setErrorMessage('Ops. Algo deu errado.')
+            })
+        }
+    }
+
     const submit = (ev) => {
         ev.preventDefault();
         const token = localStorage.userToken
+        if(token)
+            updateNotification()
         if(previewUrl && token){
             const decoded = jwt_decode(token)
             const formData = new FormData()
@@ -98,6 +118,17 @@ const ModalConfiguration = (props) => {
                                 className="btn btn-info" 
                                 onClick={pickImageHandler}>Escolha imagem</button>
                         </div>
+                    </div>
+                    <div className="form-group text-center">
+                        <input
+                            className="form-check-input"
+                            name="notificação"
+                            type="checkbox"
+                            checked={props.notification}
+                            onChange={props.notificationChange}/>
+                        <label className="form-check-label">
+                            Receber notificações por email
+                        </label>
                     </div>
                     {
                         !isValid && errorMessage &&
