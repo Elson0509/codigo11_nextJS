@@ -46,7 +46,7 @@ const ModalConfiguration = (props) => {
                 id: decoded.uid,
                 notification: props.notification
             }
-            axios.post(`/user/update/notification`, config)
+            axios.patch(`/user/update/notification`, config)
             .then(res=> {
                 toast.info(`Alteração de configuração registrada!`);
                 props.updateUser({
